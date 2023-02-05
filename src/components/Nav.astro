@@ -21,7 +21,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 ];
 ---
 
-<div id="navbar">
+<div id="navbar" class="mb-10 bg-black bg-opacity-5 backdrop-blur-sm">
 	<nav>
 		<div class="menu-header">
 			<a href="/" class="site-title">
@@ -132,8 +132,6 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 		position: sticky;
 		top: 0;
 		z-index: 99;
-		background-color: var(--bg-nav);
-		backdrop-filter: blur(8px);
 	}
 	nav {
 		position: relative;
@@ -148,8 +146,6 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 		gap: 0.5rem;
 		padding: 1.5rem;
 	}
-
-	
 
 	.site-title {
 		display: flex;

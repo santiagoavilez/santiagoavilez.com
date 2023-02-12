@@ -17,7 +17,9 @@ const { data, slug } = Astro.props.project;
 	<a href={`/work/${slug}`}>
 		<Image
 			class="rounded-t-lg"
-			src={import(`../../public${data.img}` /* @vite-ignore */)}
+			width={data.img_w}
+			height={data.img_h}
+			src={data.img}
 			alt={data.img_alt || ""}
 		/>
 	</a>

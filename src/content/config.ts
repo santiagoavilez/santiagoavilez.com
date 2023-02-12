@@ -16,6 +16,8 @@ export const collections = {
 			live: z.string().optional(),
 			git: z.string().optional(),
 			img: z.string(),
+			img_w: z.number(),
+			img_h: z.number(),
 			img_alt: z.string().optional(),
 
 		}),

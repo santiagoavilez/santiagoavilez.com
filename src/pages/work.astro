@@ -1,27 +1,27 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-import ContactCTA from '../components/ContactCTA.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
-import Hero from '../components/Hero.astro';
-import Grid from '../components/Grid.astro';
+import ContactCTA from "../components/ContactCTA.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
+import Hero from "../components/Hero.astro";
+import Grid from "../components/Grid.astro";
 
-const projects = (await getCollection('work')).sort(
+const projects = (await getCollection("work")).sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
 ---
 
 <BaseLayout
 	title="Mis Trabajos | Santiago Avilez"
-	description="Learn about Santiago Avilez's most recent projects"
+	description="Learn about Santiago Avilez's most recent projects and work experience. Aprende sobre los trabajos de Santiago Avilez y su experiencia laboral."
 >
 	<div class="stack gap-20">
 		<main class="wrapper stack gap-8">
 			<Hero
 				title="Mis Trabajos"
-				tagline="See my most recent projects below to get an idea of my past experience."
+				tagline="Mira mis trabajos mas recientes, para que tengas una idea de mis experiencias como desarrollador en los ultimos años."
 				align="start"
 			/>
 			<Grid variant="offset">

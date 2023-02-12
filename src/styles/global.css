@@ -17,10 +17,10 @@
 	--gray-999-basis: 0, 0%, 100%;
 	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
 	--gray-999: #ffffff;
-	--accent-light: #c561f6;
-	--accent-regular: #7611a6;
-	--accent-dark: #c561f6;
-	--accent-overlay: hsla(280, 89%, 67%, 0.33);
+	--accent-light: #aedefb;
+	--accent-regular: #1f5396;
+	--accent-dark: #0B5B8C;
+	--accent-overlay: hsla(207, 95%, 75%, 0.47);
 	--accent-subtle-overlay: var(--accent-overlay);
 	--accent-text-over: var(--gray-999);
 
@@ -87,11 +87,11 @@
 	--gray-999-basis: 225, 31%, 5%;
 	--gray-999: #090b11;
 
-	--accent-light: #1c0056;
-	--accent-regular: #7611a6;
-	--accent-dark: #c561f6;
-	--accent-overlay: hsla(280, 89%, 67%, 0.33);
-	--accent-subtle-overlay: hsla(281, 81%, 36%, 0.33);
+	--accent-light: #aedefb;
+	--accent-regular: #479be9c1;
+	--accent-dark: #4dacf9;
+	--accent-overlay: hsla(253, 100%, 52%, 0.445);
+	--accent-subtle-overlay: hsla(207, 95%, 75%, 0.47);
 	--accent-text-over: var(--gray-0);
 
 	--link-color: var(--accent-dark);
@@ -190,7 +190,7 @@ h5 {
 
 .wrapper {
 	width: 100%;
-	max-width: 83rem;
+	max-width: 64rem;
 	margin-inline: auto;
 	padding-inline: 1.25rem;
 }

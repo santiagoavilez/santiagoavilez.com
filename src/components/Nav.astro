@@ -21,15 +21,18 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 ];
 ---
 
-<div id="navbar" class="mb-10 bg-black bg-opacity-5 backdrop-blur-sm">
+<div
+	id="navbar"
+	class="mb-10 transition duration-1000 bg-white dark:bg-[#090B11] filter backdrop-blur-md"
+>
 	<nav>
 		<div class="menu-header">
 			<a href="/" class="site-title">
-				<Icon
-					icon="terminal-window"
-					color="var(--accent-regular)"
-					size="1.6em"
-					gradient
+				<img class="dark:hidden" src="/Recurso 125.svg" width="40" />
+				<img
+					class="dark:block hidden"
+					src="/isologo-blanco.svg"
+					width="40"
 				/>
 				Santiago Avilez
 			</a>
@@ -89,6 +92,21 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 	</nav>
 </div>
 
+<script is:inline>
+	window.addEventListener("scroll", myFunction, true);
+	// Get the header
+	var header = document.getElementById("navbar");
+	// Get the offset position of the navbar
+
+	// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+	function myFunction() {
+		if (window.scrollY + 100 < header.offsetTop) {
+			header.classList.add("bg-opacity-90", "dark:bg-opacity-90");
+		} else {
+			header.classList.remove("bg-opacity-90", "dark:bg-opacity-90");
+		}
+	}
+</script>
 <script>
 	class MenuButton extends HTMLElement {
 		constructor() {

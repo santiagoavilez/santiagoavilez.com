@@ -15,7 +15,7 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<MainHead title={title} description={description} />
 	</head>
@@ -34,7 +34,7 @@ const { title, description } = Astro.props;
 		</script>
 
 		<style>
-			:root {
+			/* :root {
 				--_placeholder-bg: linear-gradient(transparent, transparent);
 				--bg-image-main: url("/assets/backgrounds/bg-main-light-800w.jpg");
 				--bg-image-main-curves: url("/assets/backgrounds/bg-main-light.svg");
@@ -49,18 +49,18 @@ const { title, description } = Astro.props;
 					var(--bg-image-aspect-ratio) / var(--bg-scale)
 				);
 				--bg-gradient-size: calc(var(--bg-scale) * 100%);
-			}
+			} */
 
-			:root.theme-dark {
+			/* :root.theme-dark {
 				--bg-image-main: url("/assets/backgrounds/bg-main-dark-800w.jpg");
 				--bg-image-main-curves: url("/assets/backgrounds/bg-main-dark.svg");
 				--bg-svg-blend-mode: darken;
 				--bg-blend-mode: lighten;
-			}
+			} */
 
 			/* These backgrounds are displayed below the fold, so we lazy load them
 			   once the `.loaded` class has been set.  */
-			:root.loaded {
+			/* :root.loaded {
 				--bg-image-subtle-1: url("/assets/backgrounds/bg-subtle-1-light-800w.jpg");
 				--bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2-light-800w.jpg");
 				--bg-image-footer: url("/assets/backgrounds/bg-footer-light-800w.jpg");
@@ -69,9 +69,9 @@ const { title, description } = Astro.props;
 				--bg-image-subtle-1: url("/assets/backgrounds/bg-subtle-1-dark-800w.jpg");
 				--bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2-dark-800w.jpg");
 				--bg-image-footer: url("/assets/backgrounds/bg-footer-dark-800w.jpg");
-			}
+			} */
 
-			@media (min-width: 50em) {
+			/* @media (min-width: 50em) {
 				:root {
 					--bg-scale: 1;
 					--bg-image-main: url("/assets/backgrounds/bg-main-light-1440w.jpg");
@@ -90,7 +90,7 @@ const { title, description } = Astro.props;
 					--bg-image-subtle-2: url("/assets/backgrounds/bg-subtle-2-dark-1440w.jpg");
 					--bg-image-footer: url("/assets/backgrounds/bg-footer-dark-1440w.jpg");
 				}
-			}
+			} */
 
 			.backgrounds {
 				min-height: 100%;

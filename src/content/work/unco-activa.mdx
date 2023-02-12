@@ -1,7 +1,7 @@
 ---
 title: Unco Activa
 publishDate: 2022-10-06 00:00:00
-img: /assets/Unco_Activa.jpg
+img: /uncoactiva/Unco_Activa.jpg
 img_alt: Unco Activa cover
 description: |
   Diseñamos, desarrollamos y desplegamos una página que permitió la difusión e inscripción a la carrera en las bardas por los 50 años de la Universidad del comahue.
@@ -14,11 +14,6 @@ live: https://uncoactiva.fi.uncoma.edu.ar
 
 ---
 import { Image } from '@astrojs/image/components';
-
-import scoketio from "../../../public/assets/logos/socket-io.svg";
-import tailwind from "../../../public/assets/logos/Tailwind_isologo.svg";
-import strapi from "../../../public/assets/logos/Strapi.monogram.logo.svg";
-
 
 
 
@@ -34,36 +29,42 @@ Este proyecto se dio mediante una pasantía en conjunto con la facultad de depor
 
 Trabaje junto a **@cris** un colega y en su momento compañero de cursada, bajo la supervisión de la facultad de deportes y un tutor de la facultad de informática.
 
+### Inicio de proyecto
+
+
+
+> Diseño
+
 Diseñamos un prototipo de la UI/UX usando **Figma** para tener feedback previo a la implementación, basándonos en una propuesta de identidad visual que les fue entregada por una diseñadora a la facultad de deportes.
 
 <div class="flex justify-center my-10">
-<img class="rounded-3xl" src="/login.svg" alt="login page." loading="lazy"	decoding="async" />
+<Image class="rounded-3xl" src="/uncoactiva/pagina_inscrip.jpg" alt="login page." width={375} aspectRatio={375/587} />
 </div>
 
 <div class="flex  justify-center my-10">
-<img class="rounded-3xl" src="/home.jpg" alt="login page." loading="lazy"	decoding="async" />
+<Image class="rounded-3xl" src="/uncoactiva/modales.jpg" alt="login page." width={375} aspectRatio={375/667} />
 </div>
 
-### Inicio de proyecto
+
 
 >Ahora si...
 
-Empezamos a elegir el stack tecnológico del sitio, que se adaptara a las necesidades del cliente y el servidor que nos proveía la facultad, el cual tenía una versión de PHP 8 y node.js 16
-
-Laravel, PHP y MySQL hacían un backend robusto y confiable, el cual ya dominaba y conocía de proyectos anteriores. Mientras React y Tailwind CSS nos daban elegancia, dinamismo e interactividad, además de ser tecnologías ampliamente utilizadas en el mercado.
+Empezamos a elegir el stack tecnológico del sitio, que se adaptara a las necesidades del cliente y el servidor que nos proveía la facultad, el cual le tuvimos que instalar **PHP 8.6**, **node.js v16** y **MySQL**. No tenia experiencia configurando un servidor pero gracias a la ayuda de un compañero de la facultad de informática, logramos instalar todo lo necesario para poder trabajar.
 
 
-### Frontend
+> Backend
 
-Para el frontend utilice **Next.js** y **Tailwind CSS**. 
+Aunque **Laravel** es un framework bastante pesado para un proyecto de este tamaño, lo elegí por la comodidad de trabajar con el y por la experiencia que ya tenía con el. Usando Laravel como **API REST** y **React** como frontend, nos daba la posibilidad de tener un proyecto escalable y mantenible.
 
-### Backend
 
-Para el backend utilice **Strapi**.
+> Frontend
 
-### Haciendo el chat
+**React** es una librería de JavaScript que nos permite crear interfaces de usuario de forma sencilla y rápida. Usamos **Tailwind CSS** para darle estilo a las interfaces de manera responsiva, lo que fue fundamental ya que la mayoria de usuarios hiban a usar el sitio desde dispositivos mobiles.
 
-Una de las funcionalidades más importantes de la aplicación es el chat. Para ello utilice **Socket.io**.
+
+
+
+
 
 
 

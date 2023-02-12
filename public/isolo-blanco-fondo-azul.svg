@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Capa_2"
+   data-name="Capa 2"
+   viewBox="0 0 468.70604 468.70604"
+   version="1.1"
+   sodipodi:docname="isolo-blanco-fondo-azul.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   width="468.70602"
+   height="468.70602"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview22"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.0797287"
+     inkscape:cx="176.43321"
+     inkscape:cy="191.25175"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g16"
+     fit-margin-top="1"
+     fit-margin-left="1"
+     fit-margin-bottom="1"
+     fit-margin-right="1"
+     lock-margins="true" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">
+      .cls-1 {
+        fill: #121c2f;
+      }
+
+      .cls-2 {
+        fill: #ededed;
+      }
+    </style>
+  </defs>
+  <g
+     id="Capa_1-2"
+     data-name="Capa 1"
+     transform="translate(-10.576978,-10.576983)">
+    <g
+       id="g18">
+      <g
+         id="g16"
+         transform="matrix(1.3990296,0,0,1.3990296,-97.727335,-97.720329)">
+        <polygon
+           class="cls-2"
+           points="283.42,268.44 241.89,268.44 215.92,332.83 258.09,332.83 271.53,299.62 337.95,299.62 351.13,332.83 393.3,332.83 323.98,157.03 286.82,157.03 286.56,157.67 305.94,211.31 326.88,268.52 283.39,268.52 "
+           id="polygon8"
+           transform="matrix(1.5262267,0,0,1.5262267,-212.69691,-135.51871)"
+           style="fill:#0091ff;fill-opacity:1" />
+      </g>
+    </g>
+  </g>
+</svg>

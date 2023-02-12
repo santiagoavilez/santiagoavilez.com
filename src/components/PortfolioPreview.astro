@@ -9,30 +9,16 @@ interface Props {
 }
 
 const { data, slug } = Astro.props.project;
-console.log(data);
 ---
 
-<!-- <div class="flex flex-col">
-	<a class="card" href={`/work/${slug}`}>
-		<span class="title">{data.title}</span>
-		<img
-			src={data.img}
-			alt={data.img_alt || ""}
-			loading="lazy"
-			decoding="async"
-		/>
-	</a>
-	<LivePreviewProject href={data?.livepreview} />
-	<LivePreviewProject href={data?.livepreview} />
-</div> -->
 <div
 	class="w-full bg-gray-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
 >
 	<a href={`/work/${slug}`}>
 		<Image
 			class="rounded-t-lg"
-			src={import("../../public/" + data.img)}
-			alt={"figma logo"}
+			src={import(`../../public/${data.img}` /* @vite-ignore */)}
+			alt={data.img_alt || ""}
 		/>
 	</a>
 	<div class="p-5">
@@ -40,10 +26,15 @@ console.log(data);
 		<p class="my-3 font-normal text-gray-700 dark:text-gray-400">
 			{data.description}
 		</p>
-		<div class="flex flex-row justify-start gap-2">
-			{(<LivePreviewProject href={data?.live} />)}
-			{data?.git && <GithubProject href={data?.git} />}
-		</div>
+
+		{
+			(data?.live || data?.git) && (
+				<div class="flex flex-row flex-wrap justify-start gap-2 pt-5">
+					{data?.live && <LivePreviewProject href={data?.live} />}
+					{data?.git && <GithubProject href={data?.git} />}
+				</div>
+			)
+		}
 	</div>
 </div>
 

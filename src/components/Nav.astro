@@ -167,7 +167,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 			});
 			window.addEventListener("click", function (e) {
 				if (!document.getElementById("navbar").contains(e.target)) {
-					setExpanded(menu.hidden);
+					setExpanded(false);
 				}
 			});
 

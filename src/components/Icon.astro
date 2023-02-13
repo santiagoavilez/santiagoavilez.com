@@ -8,9 +8,17 @@ export interface Props {
 	gradient?: boolean;
 	size?: string;
 	class?: string;
+	other?: boolean;
 }
 
-const { color = "currentcolor", gradient, icon, size, class: c } = Astro.props;
+const {
+	color = "currentcolor",
+	gradient,
+	icon,
+	size,
+	class: c,
+	other,
+} = Astro.props;
 const iconPath = iconPaths[icon];
 
 const attrs: HTMLAttributes<"svg"> = {};
@@ -27,6 +35,7 @@ const gradientId =
 		height="40"
 		viewBox="0 0 256 256"
 		aria-hidden="true"
+		class={`fill-[#3B7DBB] hover:fill-black dark:hover:fill-white`}
 		stroke={gradient ? `url(#${gradientId})` : color}
 		{...attrs}
 	>

@@ -27,7 +27,7 @@ const projects = (await getCollection("work")).sort(
 			<Grid variant="offset">
 				{
 					projects.map((project, index) => (
-						<li>
+						<li class="overflow-hidden">
 							<PortfolioPreview
 								index={index % 2}
 								project={project}

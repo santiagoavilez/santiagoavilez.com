@@ -1,0 +1,27 @@
+---
+export interface Props {
+    width: string;
+    color?: string;
+    title: string;
+    gradient?: boolean;
+}
+const { color = "currentcolor", gradient, width, title } = Astro.props;
+---
+
+<dl>
+    <dt class="text-lg font-medium text-gray-500 dark:text-gray-400">
+        {title}
+    </dt>
+    <dd class="flex items-center mb-5">
+        <div class="w-full bg-gray-200 rounded h-2.5 dark:bg-gray-700 mr-2">
+            <div
+                class="bg-blue-600 h-2.5 rounded dark:bg-blue-500 progress"
+                style={{ width: width }}
+            >
+            </div>
+        </div>
+        <span class="text-lg font-medium text-gray-500 dark:text-gray-400"
+            >{width}
+        </span>
+    </dd>
+</dl>

@@ -5,13 +5,18 @@ import { Image } from "@astrojs/image/components";
 import GithubProject from "./GithubProject.astro";
 
 interface Props {
+	index: number;
 	project: CollectionEntry<"work">;
 }
 
-const { data, slug } = Astro.props.project;
+const {
+	index,
+	project: { data, slug },
+} = Astro.props;
 ---
 
 <div
+	data-aos={index ? "fade-left" : "fade-right"}
 	class="w-full bg-gray-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
 >
 	<a href={`/work/${slug}`}>

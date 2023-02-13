@@ -3,9 +3,13 @@
 // https://docs.astro.build/en/core-concepts/layouts/
 
 // Component Imports
+
 import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import AOS from "aos/dist/aos.js";
+import "aos/dist/aos.css"; // You can also use <link> for styles
+// ..
 
 interface Props {
 	title?: string | undefined;
@@ -20,17 +24,45 @@ const { title, description } = Astro.props;
 		<MainHead title={title} description={description} />
 	</head>
 	<body>
+		<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script is:inline>
+			AOS.init({
+				duration: 1200,
+			});
+		</script>
 		<div class="stack backgrounds">
 			<Nav />
 			<slot />
 			<Footer />
 		</div>
+		<script is:inline>
+			const observer = new IntersectionObserver((entries) => {
+				// We will fill in the callback later...
+				entries.forEach((entry) => {
+					const progressbar =
+						entry.target.querySelectorAll(".progress");
+					if (entry.isIntersecting) {
+						progressbar.forEach((bar) => {
+							bar.classList.add("animate-progress");
+						});
 
+						return; // if we added the class, exit the function
+					}
+					progressbar.forEach((bar) => {
+						bar.classList.remove("animate-progress");
+					});
+					// We're not intersecting, so remove the class!
+				});
+			});
+			// Tell the observer which elements to track
+			const bar = document.querySelector(".bar");
+			if (bar) observer.observe(bar);
+		</script>
 		<script>
 			// Add “loaded” class once the document has completely loaded.
-			addEventListener("load", () =>
-				document.documentElement.classList.add("loaded")
-			);
+			addEventListener("load", () => {
+				document.documentElement.classList.add("loaded");
+			});
 		</script>
 
 		<style>

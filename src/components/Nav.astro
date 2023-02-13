@@ -23,38 +23,43 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 
 <div
 	id="navbar"
-	class="mb-10 transition duration-1000 bg-white dark:bg-[#090B11] filter backdrop-blur-md"
+	tabindex="0"
+	class="mb-10 transition duration-1000 bg-white dark:bg-[#090B11] filter backdrop-blur-sm nav"
 >
-	<nav>
-		<div class="menu-header">
-			<a href="/" class="site-title">
-				<img class="dark:hidden" src="/Recurso 125.svg" width="40" />
+	<nav id="nav" class="nav">
+		<div class="menu-header nav">
+			<a href="/" class="site-title nav">
 				<img
-					class="dark:block hidden"
+					class="dark:hidden nav"
+					src="/Recurso 125.svg"
+					width="40"
+				/>
+				<img
+					class="dark:block hidden nav"
 					src="/isologo-blanco.svg"
 					width="40"
 				/>
 				Santiago Avilez
 			</a>
 
-			<menu-button>
-				<template>
-					<button class="menu-button" aria-expanded="false">
-						<span class="sr-only">Menu</span>
+			<menu-button class="nav">
+				<template class="nav">
+					<button class="menu-button nav" aria-expanded="false">
+						<span class="sr-only nav">Menu</span>
 						<Icon icon="list" />
 					</button>
 				</template>
 			</menu-button>
 		</div>
-		<div id="menu-content">
-			<ul class="nav-items">
+		<div id="menu-content" class="bg-inherit nav">
+			<ul class="nav-items bg-inherit nav">
 				{
 					textLinks.map(({ label, href }) => (
-						<li>
+						<li class="nav">
 							<a
 								aria-current={Astro.url.pathname === href}
 								class:list={[
-									"link",
+									"link nav",
 									{
 										active:
 											Astro.url.pathname === href ||
@@ -72,19 +77,19 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 					))
 				}
 			</ul>
-			<div class="menu-footer">
-				<div class="socials">
+			<div class="menu-footer bg-inherit nav">
+				<div class="socials nav">
 					{
 						iconLinks.map(({ href, icon, label }) => (
-							<a href={href} class="social">
-								<span class="sr-only">{label}</span>
-								<Icon icon={icon} />
+							<a href={href} class="social nav">
+								<span class="sr-only nav">{label}</span>
+								<Icon class="nav" icon={icon} />
 							</a>
 						))
 					}
 				</div>
 
-				<div class="theme-toggle">
+				<div class="theme-toggle nav">
 					<ThemeToggle />
 				</div>
 			</div>
@@ -100,7 +105,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 
 	// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 	function myFunction() {
-		if (window.scrollY + 100 < header.offsetTop) {
+		if (window.scrollY > 200) {
 			header.classList.add("bg-opacity-90", "dark:bg-opacity-90");
 		} else {
 			header.classList.remove("bg-opacity-90", "dark:bg-opacity-90");
@@ -127,9 +132,20 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 				btn.setAttribute("aria-expanded", expand ? "true" : "false");
 				menu.hidden = !expand;
 			};
-
+			var nav = document.getElementById("navbar")!;
 			// Toggle menu visibility when the menu button is clicked.
-			btn.addEventListener("click", () => setExpanded(menu.hidden));
+			btn.addEventListener("click", () => {
+				setExpanded(menu.hidden);
+				nav.focus();
+			});
+
+			nav!.onfocus = function () {
+				console.log("focus");
+			};
+			nav!.onblur = function () {
+				console.log("blu");
+				setExpanded(menu.hidden);
+			};
 
 			// Hide menu button for large screens.
 			const handleViewports = (
@@ -206,12 +222,6 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 		z-index: -1;
 	}
 
-	#menu-content {
-		position: absolute;
-		left: 0;
-		right: 0;
-	}
-
 	.nav-items {
 		margin: 0;
 		display: flex;
@@ -221,7 +231,6 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 		line-height: 1.2;
 		list-style: none;
 		padding: 2rem;
-		background-color: var(--gray-999);
 		border-bottom: 1px solid var(--gray-800);
 	}
 
@@ -243,7 +252,6 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 		justify-content: space-between;
 		gap: 0.75rem;
 		padding: 1.5rem 2rem 1.5rem 1.5rem;
-		background-color: var(--gray-999);
 		border-radius: 0 0 0.75rem 0.75rem;
 		box-shadow: var(--shadow-lg);
 	}
@@ -341,7 +349,6 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 			justify-self: flex-end;
 			align-items: center;
 			padding: 0;
-			background-color: transparent;
 			box-shadow: none;
 		}
 

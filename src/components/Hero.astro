@@ -4,13 +4,13 @@ interface Props {
 	tagline?: string;
 	align?: "start" | "center";
 }
-
+import "animate.css";
 const { align = "center", tagline, title } = Astro.props;
 ---
 
-<header class:list={["hero stack gap-4 justify-center h-full ", align]}>
+<header class:list={["hero stack gap-4 justify-center h-full", align]}>
 	<div class="stack gap-2">
-		<h1 class="title">{title}</h1>
+		<h1 class="title animate__animated animate__fadeInLeft">{title}</h1>
 		{tagline && <p class="tagline">{tagline}</p>}
 	</div>
 	<slot />

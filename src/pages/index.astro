@@ -45,14 +45,19 @@ const projects = (await getCollection("work"))
 						</Pill>
 					</div>
 				</Hero>
-
-				<Image
-					alt={"Santiago Avilez sentado "}
-					src={import("../../public/assets/retrato2.jpg")}
-					format="webp"
-					width={480}
-					height={620}
-				/>
+				<div
+					data-aos="fade-left"
+					data-aos-easing="linear"
+					data-aos-duration="800"
+				>
+					<Image
+						alt={"Santiago Avilez sentado "}
+						src={import("../../public/assets/retrato2.jpg")}
+						format="webp"
+						width={480}
+						height={620}
+					/>
+				</div>
 			</header>
 
 			<Skills />
@@ -61,7 +66,9 @@ const projects = (await getCollection("work"))
 		<main class="wrapper stack gap-20 lg:gap-48">
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>My Skills</h3>
+					<h3 data-aos="fade-right" class="overflow-x-hidden">
+						My Skills
+					</h3>
 				</header>
 				<div class="gallery">
 					<SkillsProgresBar />
@@ -71,7 +78,7 @@ const projects = (await getCollection("work"))
 					<CallToAction
 						href="mailto:santiago.avilez@est.fi.uncoma.edu.ar"
 					>
-						Hablemos
+						Enviame un mensaje
 						<Icon icon="paper-plane-tilt" size="1.2em" />
 					</CallToAction>
 				</div>
@@ -80,17 +87,20 @@ const projects = (await getCollection("work"))
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Trabajos realizados</h3>
 					<p>
-						Da un vistaso a mis trabajos mas destacados en los
-						ultimos años.
+						Da un vistazo a mis trabajos más destacados en los
+						últimos años.
 					</p>
 				</header>
 
 				<div class="gallery px-0 md:px-10">
 					<Grid variant="offset">
 						{
-							projects.map((project) => (
+							projects.map((project, index) => (
 								<li>
-									<PortfolioPreview project={project} />
+									<PortfolioPreview
+										index={index % 2}
+										project={project}
+									/>
 								</li>
 							))
 						}
@@ -135,8 +145,9 @@ const projects = (await getCollection("work"))
 				</div>
 			</section>
 		</main>
-
-		<ContactCTA />
+		<div class="overflow-x-hidden">
+			<ContactCTA />
+		</div>
 	</div>
 </BaseLayout>
 

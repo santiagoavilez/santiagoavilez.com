@@ -122,18 +122,18 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 	// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 	function myFunction() {
 		if (window.scrollY > 200) {
-			header.classList.add("bg-opacity-90", "dark:bg-opacity-90");
+			header.classList.add("bg-opacity-90", "dark:bg-opacity-95");
 			menu.classList.add(
 				"bg-opacity-90",
-				"dark:bg-opacity-90",
+				"dark:bg-opacity-95",
 				"filter",
 				"backdrop-blur-xl"
 			);
 		} else {
-			header.classList.remove("bg-opacity-90", "dark:bg-opacity-90");
+			header.classList.remove("bg-opacity-90", "dark:bg-opacity-95");
 			menu.classList.remove(
 				"bg-opacity-90",
-				"dark:bg-opacity-90",
+				"dark:bg-opacity-95",
 				"filter",
 				"backdrop-blur-xl"
 			);

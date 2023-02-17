@@ -22,10 +22,9 @@ const {
 	<a href={`/work/${slug}`}>
 		<Image
 			class="rounded-t-lg"
-			width={500}
-			height={700}
+			width={data.img_w}
+			height={data.img_h}
 			format={"webp"}
-			aspectRatio={10 / 14}
 			src={data.img}
 			alt={data.img_alt || ""}
 		/>

@@ -7,26 +7,9 @@ export const iconPaths = {
 	'arrow-right': `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M40 128h176m-72-72 72 72-72 72"/>`,
 	'arrow-left': `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M216 128H40m72-72-72 72 72 72"/>`,
 	code: `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="m64 88-48 40 48 40m128-80 48 40-48 40M160 40 96 216"/>`,
-	book: `<svg  viewBox = "0 -15 550 550"> <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="30" d="M160 96a96 96 0 1 1 192 0A96 96 0 1 1 160 96zm80 152V512l-48.4-24.2c-20.9-10.4-43.5-17-66.8-19.3l-96-9.6C12.5 457.2 0 443.5 0 427V224c0-17.7 14.3-32 32-32H62.3c63.6 0 125.6 19.6 177.7 56zm32 264V248c52.1-36.4 114.1-56 177.7-56H480c17.7 0 32 14.3 32 32V427c0 16.4-12.5 30.2-28.8 31.8l-96 9.6c-23.2 2.3-45.9 8.9-66.8 19.3L272 512z"/></svg> `,
+	book: `<svg  viewBox = "-20 -15 600 600" > <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="30" d="M160 96a96 96 0 1 1 192 0A96 96 0 1 1 160 96zm80 152V512l-48.4-24.2c-20.9-10.4-43.5-17-66.8-19.3l-96-9.6C12.5 457.2 0 443.5 0 427V224c0-17.7 14.3-32 32-32H62.3c63.6 0 125.6 19.6 177.7 56zm32 264V248c52.1-36.4 114.1-56 177.7-56H480c17.7 0 32 14.3 32 32V427c0 16.4-12.5 30.2-28.8 31.8l-96 9.6c-23.2 2.3-45.9 8.9-66.8 19.3L272 512z"/></svg> `,
 	idea: `<svg  viewBox="0 -20 384 550"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="25" d="M256 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C352 78.8 273.2 0 176 0S0 78.8 0 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0C66.5 324.9 86.4 352.1 96 384H256zM176 512c44.2 0 80-35.8 80-80V416H96v16c0 44.2 35.8 80 80 80zM96 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/></svg>`,
-	learning: `<svg fill="#000000" height="600px" width="600px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 viewBox="0 -50 1200 1200" xml:space="preserve">	
-		<g>
-			<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M287.501,0h-65c-42.449,0-82.645,17.038-113.183,47.975C79.566,78.117,62.501,118.949,62.501,160v59.01l-19.806,99.029
-				c-0.588,2.938,0.173,5.984,2.072,8.301c1.899,2.317,4.737,3.66,7.733,3.66h34.396c8.319,15.016,7.408,28.473,6.596,40.473
-				c-0.722,10.669-1.468,21.702,6.173,29.878c6.237,6.674,16.364,9.649,32.835,9.649h110v80h20v-90c0-5.522-4.477-10-10-10h-120
-				c-14.043,0-17.499-2.53-18.224-3.306c-1.713-1.832-1.265-8.461-0.831-14.872c0.996-14.725,2.361-34.891-12.626-57.369
-				c-1.852-2.782-4.975-4.453-8.318-4.453H64.699l17.607-88.039c0.129-0.646,0.194-1.303,0.194-1.961v-60
-				c0-75.888,64.112-140,140-140h65c77.196,0,140,62.804,140,140v330h20V160C447.501,71.775,375.725,0,287.501,0z"/>
-			<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M396.445,195.528l-25-50c-1.694-3.389-5.157-5.528-8.944-5.528s-7.25,2.14-8.944,5.528l-25,50
-				c-0.706,1.411-1.038,2.943-1.038,4.472h-0.018v200v40c0,5.522,4.477,10,10,10h50c5.523,0,10-4.478,10-10v-40V200h-0.018
-				C397.483,198.472,397.151,196.939,396.445,195.528z M362.501,172.36l8.82,17.64h-17.64L362.501,172.36z M377.501,430h-30v-20h30
-				V430z M377.501,390h-30V210h30V390z"/>
-			<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M277.501,70h-20v65h-95v20h50v35h-75c-5.523,0-10,4.477-10,10v65h20v-55h65v35h20v-55h40v110h20V180
-				c0-5.523-4.477-10-10-10h-50v-15h90v-20h-45V70z"/>
-		</g>
-</svg>`,
-	'microphone-stage': `<circle cx="168" cy="88" r="64" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="m213.3 133.3-90.6-90.6M100 156l-12 12m16.8-70.1L28.1 202.5a7.9 7.9 0 0 0 .8 10.4l14.2 14.2a7.9 7.9 0 0 0 10.4.8l104.6-76.7"/>`,
+
 	'pencil-line': `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M96 216H48a8 8 0 0 1-8-8v-44.7a7.9 7.9 0 0 1 2.3-5.6l120-120a8 8 0 0 1 11.4 0l44.6 44.6a8 8 0 0 1 0 11.4Zm40-152 56 56"/><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M216 216H96l-55.5-55.5M164 92l-96 96"/>`,
 	'rocket-launch': `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M94.1 184.6c-11.4 33.9-56.6 33.9-56.6 33.9s0-45.2 33.9-56.6m124.5-56.5L128 173.3 82.7 128l67.9-67.9C176.3 34.4 202 34.7 213 36.3a7.8 7.8 0 0 1 6.7 6.7c1.6 11 1.9 36.7-23.8 62.4Z"/><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M184.6 116.7v64.6a8 8 0 0 1-2.4 5.6l-32.3 32.4a8 8 0 0 1-13.5-4.1l-8.4-41.9m11.3-101.9H74.7a8 8 0 0 0-5.6 2.4l-32.4 32.3a8 8 0 0 0 4.1 13.5l41.9 8.4"/>`,
 	list: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M40 128h176M40 64h176M40 192h176"/>`,

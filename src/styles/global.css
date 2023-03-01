@@ -18,9 +18,9 @@
 	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
 	--gray-999: #ffffff;
 	--accent-light: #aedefb;
-	--accent-regular: #1f5396;
-	--accent-dark: #0B5B8C;
-	--accent-overlay: hsla(207, 95%, 75%, 0.47);
+	--accent-regular: #0b7493;
+	--accent-dark: #0b7493;
+	--accent-overlay: #a3f3fee2;
 	--accent-subtle-overlay: var(--accent-overlay);
 	--accent-text-over: var(--gray-999);
 
@@ -63,8 +63,8 @@
 	/* Fonts */
 	--font-system: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-body: 'Public Sans', var(--font-system);
-	--font-brand: Rubik, var(--font-system);
+	--font-body: Futura, var(--font-system);
+	--font-brand: Futura, var(--font-system);
 
 	/* Transitions */
 	--theme-transition: 0.2s ease-in-out;
@@ -87,11 +87,11 @@
 	--gray-999-basis: 225, 31%, 5%;
 	--gray-999: #090b11;
 
-	--accent-light: #aedefb;
-	--accent-regular: #479be9c1;
-	--accent-dark: #4dacf9;
+	--accent-light: #01b7da;
+	--accent-regular: #0491b6;
+	--accent-dark: #01b7da;
 	--accent-overlay: hsla(253, 100%, 52%, 0.445);
-	--accent-subtle-overlay: hsla(207, 95%, 75%, 0.47);
+	--accent-subtle-overlay: #0b739397;
 	--accent-text-over: var(--gray-0);
 
 	--link-color: var(--accent-dark);

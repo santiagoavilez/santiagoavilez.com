@@ -2,7 +2,8 @@
 import { Image } from "@astrojs/image/components";
 import Icon, { Props as IconProps } from "./Icon.astro";
 import ThemeToggle from "./ThemeToggle.astro";
-
+import isologo500 from "/isologo-500.svg";
+import isologo900 from "/isologo-900.svg";
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
 	{ label: "Inicio", href: "/" },
@@ -36,14 +37,14 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 			<a href="/" class="site-title nav">
 				<Image
 					class="nav dark:hidden"
-					src="/isologo-900.svg"
+					src={isologo900}
 					width={40}
 					height={40}
 					alt="isologo santiago avilez"
 				/>
 				<Image
 					class="nav hidden dark:block"
-					src="/isologo-500.svg"
+					src={isologo500}
 					width={40}
 					height={40}
 					alt="isologo santiago avilez"

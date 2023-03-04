@@ -6,11 +6,10 @@
 npm create astro@latest -- --template portfolio
 ```
 
-
-[![Open the live preview on Vercel](https://res.cloudinary.com/dozjn0kxw/image/upload/c_thumb,w_20,g_face/v1677888503/isologo-500.png)](https://santiagodeveloper.vercel.app)
-
+[![Go to live preview](https://res.cloudinary.com/dozjn0kxw/image/upload/v1677889863/live-preview.svg)](https://santiagodeveloper.vercel.app)
 
 
+> A preview of the proyect
 
 ![preview](https://res.cloudinary.com/dozjn0kxw/image/upload/v1677888051/preview-santiago-developer.png)
 

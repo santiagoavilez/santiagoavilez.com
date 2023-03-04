@@ -1,15 +1,18 @@
-# Astro Starter Kit: Portfolio
+# Santiago Avilez: Website 
+
+> Based on template:
 
 ```
 npm create astro@latest -- --template portfolio
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/portfolio)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/portfolio)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[![Open the live preview on vercel](https://res.cloudinary.com/dozjn0kxw/image/upload/v1677887784/santiago-developer-isologo-500.svg)](https://santiagodeveloper.vercel.app)
 
-![portfolio](https://user-images.githubusercontent.com/357379/210779178-a98f0fb7-6b1a-4068-894c-8e1403e26654.jpg)
+
+
+
+![preview](https://res.cloudinary.com/dozjn0kxw/image/upload/v1677888051/preview-santiago-developer.png)
 
 
 ## 🧞 Commands
@@ -25,6 +28,4 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

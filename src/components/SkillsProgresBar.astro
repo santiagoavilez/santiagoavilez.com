@@ -17,22 +17,4 @@ import ProgressBar from "./ProgressBar.astro";
     </div>
 </div>
 
-<script>
-    const observer = new IntersectionObserver((entries) => {
-        // We will fill in the callback later...
-        entries.forEach((entry) => {
-            const progressbar = entry.target;
-            let animate = false;
-            if (entry.isIntersecting && !animate) {
-                progressbar.classList.add("animate-progress");
-                animate = true;
-                return; // if we added the class, exit the function
-            }
-            // We're not intersecting, so remove the class!
-        });
-    });
-    // Tell the observer which elements to track
-    const bar = document.querySelectorAll(".progress").forEach((bar) => {
-        if (bar) observer.observe(bar);
-    });
-</script>
+

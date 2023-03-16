@@ -112,9 +112,8 @@
 		0px 16px 16px rgba(255, 255, 255, 0.1), 0px 4px 9px rgba(255, 255, 255, 0.12);
 }
 
-[data-aos='progress'] {
-	width: 0;
-	animation: load 1.5s normal forwards;
+.progress {
+	width: 0;	
 }
 
 @keyframes load {
@@ -127,8 +126,7 @@
 	}
 }
 
-.animate-progress {
-	width: 0;
+.animate-progress {	
 	animation: load 2s normal forwards;
 }
 

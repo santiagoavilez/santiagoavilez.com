@@ -2,7 +2,9 @@
 import { Image } from "@astrojs/image/components";
 import Icon, { Props as IconProps } from "./Icon.astro";
 import ThemeToggle from "./ThemeToggle.astro";
-import isologo500 from "../../public/assets/isologo-500.png";
+import isologo500 from "../../public/assets/isologo-500.webp";
+import isologo600 from "../../public/assets/isologo-600.webp";
+
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
 	{ label: "Inicio", href: "/" },
@@ -42,10 +44,17 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 >
 	<nav id="nav" class="nav">
 		<div class="menu-header nav">
-			<a href="/" class="site-title nav">				
+			<a href="/" class="site-title nav">
 				<Image
-					class="nav"
+					class="nav hidden dark:block"
 					src={isologo500}
+					width={40}
+					height={40}
+					alt="isologo santiago avilez"
+				/>
+				<Image
+					class="nav dark:hidden"
+					src={isologo600}
 					width={40}
 					height={40}
 					alt="isologo santiago avilez"
@@ -273,7 +282,11 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 	}
 
 	.link.active {
-		color: var(--gray-0);
+		color: var(--accent-dark);
+		text-decoration-line: underline;
+		text-underline-offset: 7px;
+		text-decoration-thickness: 3px;
+		font-weight: bolder;
 	}
 
 	.menu-footer {
@@ -369,6 +382,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 		}
 
 		.link.active {
+			text-decoration: none;
 			color: var(--accent-text-over);
 			background-color: var(--accent-regular);
 		}

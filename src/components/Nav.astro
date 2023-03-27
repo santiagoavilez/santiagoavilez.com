@@ -3,7 +3,6 @@ import { Image } from "@astrojs/image/components";
 import Icon, { Props as IconProps } from "./Icon.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import isologo500 from "../../public/assets/isologo-500.png";
-import isologo900 from "../../public/assets/isologo-900.png";
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
 	{ label: "Inicio", href: "/" },
@@ -14,11 +13,20 @@ const textLinks: { label: string; href: string }[] = [
 /** Icon links to social media — edit these with links to your profiles! */
 const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 	{
-		label: "Twitter",
+		label: "LinkedIn",
 		href: "https://linkedin.com/in/santiago-avilez-ariza/",
 		icon: "linkedin",
 	},
-
+	{
+		label: "Instagram",
+		href: "https://www.instagram.com/santiago.avilez.dev/",
+		icon: "instagram",
+	},
+	{
+		label: "Tiktok",
+		href: "https://www.tiktok.com/@santiago.avilez.dev",
+		icon: "tiktok",
+	},
 	{
 		label: "GitHub",
 		href: "https://github.com/santiagoavilez",
@@ -34,16 +42,9 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 >
 	<nav id="nav" class="nav">
 		<div class="menu-header nav">
-			<a href="/" class="site-title nav">
+			<a href="/" class="site-title nav">				
 				<Image
-					class="nav dark:hidden"
-					src={isologo900}
-					width={40}
-					height={40}
-					alt="isologo santiago avilez"
-				/>
-				<Image
-					class="nav hidden dark:block"
+					class="nav"
 					src={isologo500}
 					width={40}
 					height={40}

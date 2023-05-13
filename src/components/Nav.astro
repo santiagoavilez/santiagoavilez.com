@@ -1,9 +1,9 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image, Picture } from "@astrojs/image/components";
 import Icon, { Props as IconProps } from "./Icon.astro";
 import ThemeToggle from "./ThemeToggle.astro";
-import isologo500 from "../../public/assets/isologo-500-40px.webp";
-import isologo600 from "../../public/assets/isologo-600-40px.webp";
+import isologo500 from "../../public/assets/isologo-horizontal-500.png";
+import isologo600 from "../../public/assets/isologo-horizontal-600.png";
 
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
@@ -46,23 +46,15 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 	<nav id="nav" class="nav">
 		<div class="menu-header nav">
 			<a href="/" class="site-title nav">
-				<Image
-					class="nav hidden dark:block"
-					src={isologo500}
-					width={60}
-					height={60}
-					loading={"eager"}
+				<Picture
+					class="nav"
+					src={"../../public/assets/isologo-horizontal-600.png"}
+					format={"webp"}
+					sizes="(max-width: 480px) 100px, 150px "
+					widths={[100, 150]}
+					aspectRatio={716 / 284}
 					alt="isologo santiago avilez"
 				/>
-				<Image
-					class="nav dark:hidden"
-					src={isologo600}
-					width={60}
-					height={60}
-					loading={"eager"}
-					alt="isologo santiago avilez"
-				/>
-				Santiago Avilez
 			</a>
 
 			<menu-button class="nav">

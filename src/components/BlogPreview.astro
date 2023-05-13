@@ -19,7 +19,7 @@ const {
 	data-aos={index ? "fade-left" : "fade-right"}
 	class="w-full bg-gray-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
 >
-	<a href={`/work/${slug}`}>
+	<a href={`/blog/${slug}`}>
 		<Image
 			class="rounded-t-lg"
 			width={data.img_w}
@@ -34,15 +34,6 @@ const {
 		<p class="my-3 font-normal text-gray-700 dark:text-gray-400">
 			{data.description}
 		</p>
-
-		{
-			(data?.live || data?.git) && (
-				<div class="flex flex-row flex-wrap justify-start gap-2 pt-5">
-					{data?.live && <LivePreviewProject href={data?.live} />}
-					{data?.git && <GithubProject href={data?.git} />}
-				</div>
-			)
-		}
 	</div>
 </div>
 

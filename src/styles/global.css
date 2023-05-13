@@ -17,6 +17,7 @@
 	--gray-999-basis: 0, 0%, 100%;
 	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
 	--gray-999: #ffffff;
+	--vscode: #011627;
 	--accent-light: #63e9fd;
 	--accent-regular: #01b7da;
 	--accent-dark: #0491b6;
@@ -86,7 +87,7 @@
 	--gray-900: #141925;
 	--gray-999-basis: 225, 31%, 5%;
 	--gray-999: #090b11;
-
+	--vscode: #011627;
 	--accent-light: #01b7da;
 	--accent-regular: #0b7493;
 	--accent-dark: #01b7da;
@@ -114,6 +115,14 @@
 
 .progress {
 	width: 0;
+}
+
+pre {
+	background-color: var(--vscode) !important;
+	color: var(--gray-200) !important;
+	padding: 1rem;
+	/* border-radius: 1rem; */
+	overflow-x: auto;
 }
 
 @keyframes load {
@@ -260,6 +269,10 @@ h5 {
 @media (min-width: 50em) {
 	.lg\:gap-2 {
 		gap: 0.5rem;
+	}
+
+	.wrapper {
+		padding: 3rem;
 	}
 
 	.lg\:gap-4 {

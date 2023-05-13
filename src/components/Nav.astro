@@ -2,13 +2,14 @@
 import { Image } from "@astrojs/image/components";
 import Icon, { Props as IconProps } from "./Icon.astro";
 import ThemeToggle from "./ThemeToggle.astro";
-import isologo500 from "../../public/assets/isologo-500-40px.png";
-import isologo600 from "../../public/assets/isologo-600-40px.png";
+import isologo500 from "../../public/assets/isologo-500-40px.webp";
+import isologo600 from "../../public/assets/isologo-600-40px.webp";
 
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
 	{ label: "Inicio", href: "/" },
-	{ label: "Trabajos", href: "/work/" },
+	{ label: "Projectos", href: "/projects/" },
+	{ label: "Blog", href: "/blog/" },
 	{ label: "Sobre mi", href: "/about/" },
 ];
 
@@ -48,7 +49,6 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 				<Image
 					class="nav hidden dark:block"
 					src={isologo500}
-					format={"webp"}
 					width={40}
 					height={40}
 					alt="isologo santiago avilez"
@@ -56,7 +56,6 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 				<Image
 					class="nav dark:hidden"
 					src={isologo600}
-					format={"webp"}
 					width={40}
 					height={40}
 					alt="isologo santiago avilez"
@@ -107,12 +106,12 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 				}
 			</ul>
 			<div class="menu-footer nav">
-				<div class="socials nav">
+				<div class="md:hidden socials nav">
 					{
 						iconLinks.map(({ href, icon, label }) => (
 							<a
 								href={href}
-								class="social hover:text-gray-800 dark:hover:text-white hover:bg-gray-300 dark:hover:bg-gray-100 dark:hover:bg-opacity-20 nav"
+								class="social md:hidden hover:text-gray-800 dark:hover:text-white hover:bg-gray-300 dark:hover:bg-gray-100 dark:hover:bg-opacity-20 nav"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -332,7 +331,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 	@media (min-width: 50em) {
 		nav {
 			display: grid;
-			grid-template-columns: 1fr auto 1fr;
+			grid-template-columns: 10fr auto 1fr;
 			align-items: center;
 			padding: 1rem 5rem;
 			gap: 1rem;
@@ -353,20 +352,16 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 		.nav-items {
 			position: relative;
 			flex-direction: row;
-			font-size: var(--text-sm);
-			border-radius: 999rem;
+			font-size: var(--text-lg);
+			font-weight: bolder;
 			border: 0;
 			padding: 0.5rem 0.5625rem;
-			background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
-			box-shadow: var(--shadow-md);
 		}
 
 		.nav-items::before {
 			position: absolute;
 			inset: -1px;
 			content: "";
-			background: var(--gradient-stroke);
-			border-radius: 999rem;
 			z-index: -1;
 		}
 
@@ -378,15 +373,12 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 		}
 
 		.link:hover,
-		.link:focus {
-			color: var(--gray-100);
-			background-color: var(--accent-subtle-overlay);
-		}
-
+		.link:focus,
 		.link.active {
-			text-decoration: none;
-			color: var(--gray-100);
-			background-color: var(--accent-regular);
+			text-decoration-line: underline;
+			text-underline-offset: 7px;
+			text-decoration-thickness: 3px;
+			color: var(--accent-dark);
 		}
 
 		.menu-footer {
@@ -405,7 +397,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 
 	@media (min-width: 60em) {
 		.socials {
-			display: flex;
+			display: none;
 			justify-content: flex-end;
 			gap: 0;
 		}

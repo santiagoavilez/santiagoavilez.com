@@ -1,0 +1,227 @@
+---
+title: Introduccion HTML
+publishDate: 2023-01-04 00:00:00
+img: /assets/cover_data_fetch.webp
+img_w: 504
+img_h: 360
+img_alt: Laborar Cover
+git: https://github.com/lavorar/lavorar
+live: https://laborar.vercel.app
+description: |
+  Descubre como hacer data fetching en react, y como la forma en que lo haces puede influir en la experiencia de los usuarios finales de tu aplicación.
+tags:
+  - Desarrollo web
+  - React
+  - Javascript
+
+tools:
+- name: React
+- name: Fetch API
+- name: Axios
+- name: React Query
+---
+import { Image , Picture   } from '@astrojs/image/components';
+
+
+
+### Introduccion
+
+
+En el mundo de la programación web, es común que nuestras aplicaciones necesiten consumir datos de una fuente externa, ya sea una API, una base de datos o cualquier otro servicio en línea. Para hacer esto, utilizamos una técnica llamada "data fetching" (obtención de datos).
+
+
+En el tutorial que te presento a continuación, te mostraré cómo hacer data fetching en React usando diferentes enfoques, incluyendo el uso de la librería axios, el custom hook useFetch, la librería react-query.
+
+
+Cada uno de estos enfoques tiene sus propias ventajas y desventajas, y es importante entender cuál es la mejor opción para tu proyecto en particular.
+<br> </br>
+
+### Fetch API
+
+Este es el método más básico para hacer peticiones HTTP en JavaScript. Es una API incorporada en los navegadores que te permite enviar y recibir datos a través de HTTP.
+
+Es bastante simple de usar y no requiere de ninguna librería adicional.
+
+Sin embargo, puede resultar tedioso tener que lidiar con las promesas que devuelve Fetch API, lo que puede llevar a un código difícil de leer y mantener.
+
+Además, su manejo de errores no es tan amigable como otras opciones y hay que realizar más trabajo manual para hacer una petición con configuraciones adicionales.
+
+<br> </br>
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+export default function App() {
+    const [data, seData] = useState([])
+    useEffect(() => {
+        fetch("https://dummyjson.com/products")
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                seData(data)
+            })
+    }, [])
+    return (
+        <div>
+            {data.map((item) => (
+                <div key={item.id}>
+                    <h2>{item.title}</h2>
+                    <p>{item.description}</p>
+                </div>
+            ))}
+        </div>
+    )
+}
+```
+
+### Axios
+
+En segundo lugar, tenemos a axios. Esta librería es muy popular en el mundo de React, y es muy fácil de usar gracias a su sintaxis clara y concisa. A diferencia de Fetch API, axios ofrece soporte para múltiples métodos HTTP como GET, POST, PUT, DELETE, etc.
+
+Además, su manejo de errores es más detallado y fácil de entender. El único inconveniente es que se necesita instalar la librería para poder usarla.
+
+```javascript
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+export default function App() {
+    const [data, seData] = useState([])
+    useEffect(() => {
+        axios.get("https://dummyjson.com/products")
+        .then((res) => {
+            seData(res.data)
+        })
+    }, [])
+    return (
+        <div>
+            {data.map((item) => (
+                <div key={item.id}>
+                    <h2>{item.title}</h2>
+                    <p>{item.description}</p>
+                </div>
+            ))}
+        </div>
+    )
+}
+```
+
+### Async/Await
+
+ Esta característica de JavaScript nos permite escribir código asíncrono de forma síncrona. Con Async/await, puedes simplificar el manejo de promesas y hacer que tu código sea más legible y fácil de entender.
+
+Además, su sintaxis es muy parecida a la de una función síncrona, lo que hace que sea muy fácil de usar.
+
+La única desventaja es que Async/await no soporta la cancelación de promesas, no es compatible con todas las versiones de navegadores y requiere más configuración manual para hacer una petición con configuraciones adicionales.
+
+```javascript
+async () => {
+    try {
+        const res = await axios.get("https://dummyjson.com/products");
+        seData(res.data)
+    }
+    catch {
+        console.log("error")
+    }
+}
+```
+
+### Custom Hooks
+
+Custom Hooks son funciones que encapsulan lógica común en React.
+
+Estos Pueden ser usados para hacer Data Fetching. Además de poder ser reutilizados en múltiples componentes, reduciendo la duplicación de código y haciendo que tu aplicación sea más modular.
+
+Sin embargo, si eres nuevo en React, crear un custom hook puede resultar complicado.
+
+Pero no te preocupes, te dejo un ejemplo de un custom hook que puedes usar para hacer data fetching en React.
+
+```javascript
+import useFetch from "./useFetch";
+
+export default function App() {
+    const { data, error, loading } =
+        useFetch("https://dummyjson.com/products");
+    return (
+        <div>
+            {loading && <p>Loading...⌛⏳</p>}
+            {error && <p>something went wrong while fetching the data 😓</p>}
+            {data && data.map((item) => (
+                <div key={item.id}>
+                    <h2>{item.title}</h2>
+                    <p>{item.completed ? "Completed" : "Not completed"}</p>
+                </div>
+            ))}
+        </div>
+    );
+}
+```
+```javascript
+import { useState, useEffect } from "react";
+import axios from "axios";
+export default function useFetch(url) {
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const { data } = await axios.get(url);
+                setData(data);
+                setLoading(false);
+            } catch (error) {
+                setError(error);
+            }
+        };
+        fetchData();
+    }, [url]);
+    return { data, error, loading };
+}
+```
+
+### React-Query
+
+Esta librería te permite hacer llamadas HTTP de forma sencilla y eficiente. React Query ofrece una serie de herramientas muy útiles, como la caché de datos y la actualización automática de los datos en tiempo real.
+
+Además, React Query maneja los errores y el estado de carga de forma excelente y permite hacer solicitudes con parámetros y paginación.
+
+La única desventaja es que se necesita aprender una nueva sintaxis y familiarizarse con sus conceptos antes de poder usarla con fluidez.
+
+
+```javascript
+import axios from "axios";
+import { useQuery } from "react-query";
+export default function App() {
+    const { data, error, loading } =
+        useQuery(['todos'], async () => {
+            const { data } = await axios.get("https://dummyjson.com/products");
+            return data;
+        });
+
+    return (
+        <div>
+            {loading && <p>Loading...⌛⏳</p>}
+            {error && <p>something went wrong while fetching the data 😓</p>}
+            {data && data.map((item) => (
+                <div key={item.id}>
+                    <h2>{item.title}</h2>
+                    <p>{item.completed ? "Completed" : "Not completed"}</p>
+                </div>
+            ))}
+        </div>
+    );
+}
+```
+
+
+¡Y eso es todo! Espero que hayas disfrutado de este tutorial sobre diferentes métodos para hacer data fetching en React.
+
+A medida que vamos avanzando en nuestras carreras como desarrolladores, nos damos cuenta de que elegir el método adecuado para hacer data fetching es una parte importante de la creación de aplicaciones web modernas y eficientes.
+
+Si eres nuevo en React o simplemente buscas mejorar tus habilidades, te invito a que sigas aprendiendo y experimentando con diferentes métodos.
+
+¡Gracias por leer este tutorial! Si te gustó, no dudes en compartirlo con tus amigos y colegas. Y si tienes alguna pregunta, observación o comentario, escribeme en mis redes sociales.
+
+Próximamente, estaré implementando comentarios en mi blog, así como también un sistema de suscripción a mi newsletter para que no te pierdas ningún post.
+
+¡Nos vemos en el próximo post!

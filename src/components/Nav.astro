@@ -176,8 +176,14 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 			btn.addEventListener("click", () => {
 				setExpanded(menu.hidden);
 			});
-			window.addEventListener("click", function (e) {
-				if (!document.getElementById("navbar")?.contains(e?.target)) {
+			function assertIsNode(e: EventTarget | null): asserts e is Node {
+				if (!e || !("nodeType" in e)) {
+					throw new Error(`Node expected`);
+				}
+			}
+			window.addEventListener("click", function ({ target }: MouseEvent) {
+				assertIsNode(target);
+				if (!document.getElementById("navbar")?.contains(target)) {
 					setExpanded(false);
 				}
 			});

@@ -2,14 +2,15 @@
   "extends": "astro/tsconfigs/strict",
   "baseUrl": "./",
   "compilerOptions": {
-    // Replace `astro/client` with `@astrojs/image/client`
     "types": [
       "@astrojs/image/client"
-    ]
+    ],
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
   },
   "paths": {
     "public/*": [
       "public/*"
-    ],
+    ]
   }
 }

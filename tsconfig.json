@@ -5,8 +5,8 @@
     "types": [
       "@astrojs/image/client"
     ],
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
   "paths": {
     "public/*": [

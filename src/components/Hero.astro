@@ -5,12 +5,21 @@ interface Props {
 	align?: "start" | "center";
 }
 import "animate.css";
+import AnimatedSpan from "./react/animatedSpan";
 const { align = "center", tagline, title } = Astro.props;
+
+const animatedTexts = ["atractivo", "impactante", "escalable"];
 ---
 
 <header class:list={["hero stack gap-4 justify-center h-full", align]}>
 	<div class="stack gap-2">
-		<h1 class="title animate__animated animate__fadeInLeft">{title}</h1>
+		<h1 class="title animate__animated animate__fadeInLeft">
+			Transforma tu visión en un MVP, <AnimatedSpan
+				client:load
+				arrayText={animatedTexts}
+			/> sin desperdiciar inversión.
+		</h1>
+
 		{tagline && <p class="tagline">{tagline}</p>}
 	</div>
 	<slot />
@@ -29,7 +38,7 @@ const { align = "center", tagline, title } = Astro.props;
 	}
 
 	.title {
-		font-size: var(--text-3xl);
+		font-size: var(--text-2xl);
 		color: var(--gray-0);
 	}
 
@@ -48,7 +57,7 @@ const { align = "center", tagline, title } = Astro.props;
 		}
 
 		.title {
-			font-size: var(--text-4xl);
+			font-size: var(--text-3xl);
 		}
 	}
 </style>

@@ -32,19 +32,10 @@ const projects = (await getCollection("projects"))
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero overflow-hidden">
 				<Hero
-					title="Hola, soy Santiago Avilez."
-					tagline="Me apasiona resolver problemas complejos y crear soluciones innovadoras para mis clientes."
+					title="Transforma tu visión en un MVP impactante y escalable, sin desperdiciar inversión"
+					tagline=""
 					align="start"
-				>
-					<div class="roles justify-center md:justify-start">
-						<Pill>
-							<Icon icon="code" size="1.33em" /> Desarrollador
-						</Pill>
-						<Pill>
-							<Icon icon="pencil-line" size="1.33em" /> Diseñador
-						</Pill>
-					</div>
-				</Hero>
+				/>
 				<div
 					data-aos="fade-left"
 					data-aos-easing="ease"
@@ -52,7 +43,7 @@ const projects = (await getCollection("projects"))
 				>
 					<Image
 						alt={"Santiago Avilez sentado sonriendo "}
-						src={import("../../public/assets/retrato.webp")}
+						src={import("../../public/assets/photos/retrato.jpg")}
 						format="webp"
 						loading={"eager"}
 						width={280}
@@ -73,7 +64,9 @@ const projects = (await getCollection("projects"))
 					<SkillsProgresBar />
 				</div>
 				<div class="cta">
-					<CallToAction href="/work/">
+					<CallToAction
+						href="mailto:santiago.avilez@est.fi.uncoma.edu.ar"
+					>
 						Hablemos
 						<Icon icon="paper-plane-tilt" size="1.2em" />
 					</CallToAction>
@@ -104,7 +97,7 @@ const projects = (await getCollection("projects"))
 				</div>
 
 				<div class="cta">
-					<CallToAction href="/work/">
+					<CallToAction href="/projects/">
 						Ver todos
 						<Icon icon="arrow-right" size="1.2em" />
 					</CallToAction>
@@ -162,7 +155,7 @@ const projects = (await getCollection("projects"))
 	.hero img {
 		aspect-ratio: 1 / 1;
 		object-fit: cover;
-		object-position: top;
+		object-position: center;
 		border-radius: 999px;
 		box-shadow: var(--shadow-md);
 	}
@@ -184,7 +177,8 @@ const projects = (await getCollection("projects"))
 		.hero img {
 			aspect-ratio: 4 / 4;
 			border-radius: 999px;
-			object-fit: cover;
+			object-fit: none;
+			object-position: center;
 		}
 	}
 

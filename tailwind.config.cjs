@@ -17,7 +17,17 @@ module.exports = {
 					'800': '#135d77',
 					'900': '#144e65',
 				},
-			}
+			},
+			keyframes:{
+				"bg-animation":{
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+			},
+			animation: {
+				"bg-animation": "bg-animation 10s linear infinite",
+			},
 		},
 	},
 	plugins: [],

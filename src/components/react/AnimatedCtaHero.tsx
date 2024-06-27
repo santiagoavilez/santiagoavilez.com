@@ -40,7 +40,7 @@ const AnimatedCtaHero = ({ ctaArray }: { ctaArray: IanimatedCta[] }) => {
                 setIndex((prevIndex) => (prevIndex + 1) % ctaArray.length);
                 setIsOpen(true);
             }, 100);
-        }, 5000);
+        }, 10000);
 
         return () => {
             clearInterval(interval);

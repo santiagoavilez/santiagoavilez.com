@@ -9,41 +9,43 @@ export interface IanimatedCta {
 
 const AnimatedCta = ({ arrayText }: IanimatedCta) => {
     const [index, setIndex] = useState(0);
-    const [isOpen, setIsOpen] = useState(true);
     const [displayText, setDisplayText] = useState<JSX.Element[]>([]);
+    const [typingSymbolVisible, setTypingSymbolVisible] = useState(true);
 
 
 
     useEffect(() => {
-        let i = 0; // Índice para las letras de la palabra actual
+        let i = 0; //index for the current word
         const typingInterval = setInterval(() => {
             if (i < arrayText[index].text.length) {
                 setDisplayText((prev) => [
-                    ...prev,
-                    <span key={`${index}-${i}`} className={arrayText[index].highlight ? 'dark:text-[#3E88CF] text-[#3E88CF]/70 ' : ''}
-                    >
+                    ...prev.filter((_, idx) => idx !== prev.length - 1), // Remove the last element (typing symbol) before adding a new letter
+                    <span key={`${index}-${i}`} className={arrayText[index].highlight ? 'dark:text-[#3E88CF] text-[#3E88CF]/70 ' : ''}>
                         {arrayText[index].text[i]}
-                    </span>
+                    </span>,
+                    <span key={`${index}-typing-symbol`} className="typing-symbol animate-pulse dark:text-gray-50 text-gray-900">|  </span> // Add the typing symbol at the end
                 ]);
                 i++;
             } else {
                 clearInterval(typingInterval);
-                // Espera un momento antes de pasar a la siguiente palabra
+                // wait for a while and then start the next word
+                setDisplayText((prev) => prev.filter((_, idx) => idx !== prev.length - 1)); // Remove the typing symbol after finishing typing
+
                 setTimeout(() => {
                     if (index < arrayText.length - 1) {
-                        setIndex(index + 1); // Actualiza el índice para la siguiente palabra
+                        setIndex(index + 1); // update the index to the next word
                     } else {
-                        // Opcional: Reiniciar la animación desde el principio
+                        // optional: restart the animation
                         // setIndex(0);
-                        // setDisplayText([]); // Limpia el texto para empezar de nuevo
+                        // setDisplayText([]); // clean the display text
                     }
-                    i = 0; // Reinicia el contador de letras para la nueva palabra
-                }, 25); // Ajusta este tiempo de espera según sea necesario
+                    i = 0; // reset the index for the next word
+                }, 35); // adjust this value to control the speed of the animation
             }
-        }, 25); // Ajusta este valor para controlar la velocidad de la animación
+        }, 35); // adjust this value to control the speed of the animation
 
-        return () => clearInterval(typingInterval); // Limpieza al desmontar
-    }, [index, isOpen, arrayText]);
+        return () => clearInterval(typingInterval); // cleanup the interval
+    }, [index,  arrayText]);
     return (
         <span className="animate-bg-animation">
             {displayText}

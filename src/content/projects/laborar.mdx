@@ -34,10 +34,10 @@ tools:
   icon: /assets/logos/socket-io.svg
   alt: Socket.io logo
 ---
-import { Image , Picture   } from '@astrojs/image/components';
+import { Image    } from 'astro:assets';
+import laborarlogin from '../../assets/laborar/login.jpg';
 
-
-
+import laborarw50 from '../../assets/laborar/home500w.jpg';
 
 
 ### Introducción.
@@ -65,7 +65,7 @@ Para diseñar la estructura del proyecto, primero hice prototipos en papel, para
 </div> */}
 
 <div class="flex justify-center my-10 ">
-<Image class="rounded-3xl" src={"/laborar/login.jpg"} format='webp' alt={'login page'} aspectRatio={495/844} width={300}   />
+<Image class="rounded-3xl" src={laborarimg} format='webp' width={300} alt={'login page'} />
 </div>
 
 
@@ -74,7 +74,7 @@ Para diseñar la estructura del proyecto, primero hice prototipos en papel, para
 </div> */}
 
 <div class="flex justify-center my-10 ">
-<Image class="rounded-3xl" src="/laborar/home500w.jpg" format='webp' alt={'login page'} aspectRatio={512/631} width={512}   />
+<Image class="rounded-3xl" src={laborarw50} format='webp' alt={'login page'}  width={512}   />
 </div>
 
 >Ya teniendo mi boceto inicial.....

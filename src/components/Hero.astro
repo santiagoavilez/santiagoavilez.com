@@ -31,11 +31,19 @@ const animatedTextsArray1 = {
 			text: "Transforma tu visión en un MVP, ",
 		},
 		{
+			text: " atractivo e  ",
+			highlight: true,
+		},
+		{
 			text: " impactante ",
 			highlight: true,
 		},
 		{
-			text: " sin desperdiciar inversión.",
+			text: "  sin desperdiciar ",
+		},
+		{
+			text: "  inversión.",
+			highlight: true,
 		},
 	],
 };
@@ -68,7 +76,7 @@ const ctaArray = [animatedTextsArray1, animatedTextsArray2];
 		<!-- <h1 class="title">
 			<AnimatedCta arrayText={animatedTextsArray} client:load />
 		</h1> -->
-		<h1 class="title h-52">
+		<h1 class="title h-60">
 			<AnimatedCtaHero ctaArray={ctaArray} client:load />
 		</h1>
 		{tagline && <p class="tagline">{tagline}</p>}

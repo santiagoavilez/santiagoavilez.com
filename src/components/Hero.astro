@@ -1,8 +1,8 @@
 ---
 interface Props {
-	title: string;
-	tagline?: string;
-	align?: "start" | "center";
+  title: string;
+  tagline?: string;
+  align?: "start" | "center";
 }
 import "animate.css";
 import AnimatedSpan from "./react/animatedSpan";
@@ -14,109 +14,110 @@ const { align = "center", tagline, title } = Astro.props;
 const animatedTexts = ["atractivo", "impactante", "escalable"];
 
 const animatedTextsArray = [
-	{
-		text: "Transforma tu visión en un MVP, ",
-	},
-	{
-		text: " impactante ",
-		highlight: true,
-	},
-	{
-		text: " sin desperdiciar inversión.",
-	},
+  {
+    text: "Transforma tu visión en un MVP, ",
+  },
+  {
+    text: " impactante ",
+    highlight: true,
+  },
+  {
+    text: " sin desperdiciar inversión.",
+  },
 ];
 const animatedTextsArray1 = {
-	arrayText: [
-		{
-			text: "Transforma tu visión en un MVP, ",
-		},
-		{
-			text: " atractivo e  ",
-			highlight: true,
-		},
-		{
-			text: " impactante ",
-			highlight: true,
-		},
-		{
-			text: "  sin desperdiciar ",
-		},
-		{
-			text: "  inversión.",
-			highlight: true,
-		},
-	],
+  arrayText: [
+    {
+      text: "Transforma tu visión en un MVP, ",
+    },
+    {
+      text: " atractivo e  ",
+      highlight: true,
+    },
+    {
+      text: " impactante ",
+      highlight: true,
+    },
+    {
+      text: "  sin desperdiciar ",
+    },
+    {
+      text: "  inversión.",
+      highlight: true,
+    },
+  ],
 };
 const animatedTextsArray2 = {
-	arrayText: [
-		{
-			text: "T e ayudamos a crear un MVP, ",
-		},
-		{
-			text: " escalable ",
-			highlight: true,
-		},
-		{
-			text: " y atractivo para tus usuarios.",
-		},
-	],
+  arrayText: [
+    {
+      text: "T e ayudamos a crear un MVP, ",
+    },
+    {
+      text: " escalable ",
+      highlight: true,
+    },
+    {
+      text: " y atractivo para tus usuarios.",
+    },
+  ],
 };
 
 const ctaArray = [animatedTextsArray1, animatedTextsArray2];
 ---
 
 <header class:list={["hero stack gap-4 justify-center h-full", align]}>
-	<div class="stack gap-2">
-		<!-- <h1 class="title animate__animated animate__fadeInLeft">
+  <div class="stack gap-2">
+    <!-- <h1 class="title animate__animated animate__fadeInLeft">
 			Transforma tu visión en un MVP, <AnimatedSpan
 				client:load
 				arrayText={animatedTexts}
 			/> sin desperdiciar inversión.
 		</h1> -->
-		<!-- <h1 class="title">
+    <!-- <h1 class="title">
 			<AnimatedCta arrayText={animatedTextsArray} client:load />
 		</h1> -->
-		<h1 class="title h-60">
-			<AnimatedCtaHero ctaArray={ctaArray} client:load />
-		</h1>
-		{tagline && <p class="tagline">{tagline}</p>}
-	</div>
-	<slot />
+    <h1 class="title h-60">
+      <AnimatedCtaHero ctaArray={ctaArray} client:load />
+    </h1>
+    <!-- <h1 class="title animate__animated animate__fadeInLeft">{title}</h1> -->
+    {tagline && <p class="tagline">{tagline}</p>}
+  </div>
+  <slot />
 </header>
 
 <style>
-	.hero {
-		font-size: var(--text-lg);
-		text-align: center;
-	}
+  .hero {
+    font-size: var(--text-lg);
+    text-align: center;
+  }
 
-	.title,
-	.tagline {
-		max-width: 37ch;
-		margin-inline: auto;
-	}
+  .title,
+  .tagline {
+    max-width: 37ch;
+    margin-inline: auto;
+  }
 
-	.title {
-		font-size: var(--text-2xl);
-		color: var(--gray-0);
-	}
+  .title {
+    font-size: var(--text-2xl);
+    color: var(--gray-0);
+  }
 
-	@media (min-width: 50em) {
-		.hero {
-			font-size: var(--text-xl);
-		}
+  @media (min-width: 50em) {
+    .hero {
+      font-size: var(--text-xl);
+    }
 
-		.start {
-			text-align: start;
-		}
+    .start {
+      text-align: start;
+    }
 
-		.start .title,
-		.start .tagline {
-			margin-inline: unset;
-		}
+    .start .title,
+    .start .tagline {
+      margin-inline: unset;
+    }
 
-		.title {
-			font-size: var(--text-3xl);
-		}
-	}
+    .title {
+      font-size: var(--text-3xl);
+    }
+  }
 </style>

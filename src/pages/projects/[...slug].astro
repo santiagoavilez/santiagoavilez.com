@@ -1,5 +1,5 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
@@ -55,6 +55,7 @@ const { Content } = await entry.render();
 								class="rounded-3xl border animate__animated animate__fadeInUp border-gray-800"
 								src={entry.data.img}
 								alt={entry.data.img_alt || ""}
+								loading="eager"
 							/>
 						)
 					}

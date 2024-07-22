@@ -13,7 +13,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@components/ui/card";
-import { ArrowBigRightDash, MoveUpRight } from "lucide-react";
+import { MoveUpRight } from "lucide-react";
+import Services from "@components/home/hero/Services.astro";
 const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
 ---
 
@@ -30,31 +31,34 @@ const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
 
       <!-- Circulos -->
       <Circles />
+      <div class="flex w-full flex-col flw"></div>
       <div class="container flex">
         <div class="w-full aspect-video relative flex">
-          <Card className="w-1/2 h-full flex flex-col rounded-r-none border-r-0">
+          <Card
+            className="w-1/2 h-full flex flex-col rounded-xl rounded-r-none border-r-0"
+          >
             <CardHeader>
               <CardTitle> Solucionado </CardTitle>
               <CardDescription>
                 Construcción de Sitio Web y Creación de Identidad Visual.
               </CardDescription>
             </CardHeader>
-            <CardContent className="grow"></CardContent>
-            <CardFooter>
-              ver más
-            </CardFooter>
+            <CardContent className="grow" />
+            <CardFooter> ver más </CardFooter>
           </Card>
           <Card />
-          <div class="w-1/2 relative">
+          <div class="w-1/2 relative rounded-lg rounded-l-none">
             <Image
-              class="w-full h-full rounded-lg rounded-l-none"
+              class="w-full h-full rounded-xl rounded-l-none filter"
               src={melina}
               width={500}
               height={500}
               alt={"coso"}
             />
-            <div class="absolute top-4 right-4 p-2 cursor-pointer bg-gray-200/50 rounded-full">
-              <MoveUpRight size={50}  />
+            <div
+              class="absolute top-4 right-4 p-2 cursor-pointer bg-gray-200/50 rounded-full"
+            >
+              <MoveUpRight size={50} />
             </div>
           </div>
           <Card
@@ -62,14 +66,14 @@ const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
           >
             <div class="w-full h-full relative">
               <Image
-                class={"w-full rounded-full aspect-square absolute z-10"}
+                class={"w-full rounded-full aspect-square filter backdrop-blur-sm blur-[2px] absolute z-10"}
                 src={melina}
                 width={500}
                 height={500}
                 alt={"coso"}
               />
               <div
-                class="rounded-full w-1/2 h-full rounded-l-none absolute bg-[#090B11] translate-x-[0%] bg-transparent translate-y-[-50%] left-[50%] top-[50%] z-50"
+                class="rounded-full w-1/2 h-full rounded-l-none absolute bg-[#090B11] translate-x-[0%] translate-y-[-50%] left-[50%] top-[50%] z-50"
               >
               </div>
             </div>
@@ -78,4 +82,5 @@ const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
       </div>
     </div>
   </div>
+  <Services />
 </BaseLayout>

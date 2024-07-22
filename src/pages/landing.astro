@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import AnimatedSpan from "../components/react/animatedSpan";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import melina from "@assets/hero/melina.jpg";
+import solucionador from "@assets/hero/solucionado-pantallazo.png";
+const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
+---
+
+<BaseLayout>
+  <div class="wrapper h-full">
+    <div class="stack gap-4 items-center text-center h-full">
+      <h1 class="text-4xl md:text-7xl text-center leading-tight font-bold">
+        Digitaliza tu Negocio
+      </h1>
+      <h3 class="text-xl md:text-2xl">
+        Construir tu <AnimatedSpan arrayText={arrayText} client:load />
+        es una tarea compleja, pero no tiene que serlo.
+      </h3>
+
+      <!-- Circulos -->
+      <div
+        class="h-full min-h-screen relative md:p-20 md:mt-20 w-full flex flex-col "
+      >
+        <div
+          class="w-full md:w-1/2 aspect-square  cursor-pointer bg-[#FFA127] rounded-full border-[6px] border-neutral-900 md:absolute right-[calc(55%)] top-0 z-10 hover:z-50 transition-all duration-200 transform hover:scale-105"
+        >
+          <div
+            class="w-8/12 h-full flex flex-col justify-center text-left items-center p-6"
+          >
+            <p>
+              Construcción de ​Sitios Web - Redes ​Sociales - ​Mantenimiento -
+              ​Asesoría - Bussines ​Coach
+            </p>
+          </div>
+        </div>
+
+        <Image
+          class="w-full md:w-1/2 aspect-square -mt-20 md:mt-0 cursor-pointer bg-blue-500 rounded-full border-[6px] border-neutral-900 md:absolute left-1/4 top-0 z-20 hover:z-50 transition-all duration-200 transform hover:scale-105"
+          src={melina}
+          width={500}
+          height={500}
+          alt={"melina"}
+        />
+
+        <Image
+          class="w-full md:w-1/2 aspect-square -mt-20 md:mt-0 cursor-pointer bg-red-500 rounded-full border-[6px] border-neutral-900 md:absolute left-[calc(55%)] top-0 z-30 hover:z-50 transition-all duration-200 transform hover:scale-105"
+          src={solucionador}
+          width={500}
+          height={500}
+          alt={"melina"}
+        />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

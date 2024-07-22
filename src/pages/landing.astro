@@ -4,6 +4,16 @@ import AnimatedSpan from "../components/react/animatedSpan";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import melina from "@assets/hero/melina.jpg";
 import solucionador from "@assets/hero/solucionado-pantallazo.png";
+import Circles from "@components/home/hero/Circles.astro";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@components/ui/card";
+import { ArrowBigRightDash, MoveUpRight } from "lucide-react";
 const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
 ---
 
@@ -19,37 +29,52 @@ const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
       </h3>
 
       <!-- Circulos -->
-      <div
-        class="h-full min-h-screen relative md:p-20 md:mt-20 w-full flex flex-col "
-      >
-        <div
-          class="w-full md:w-1/2 aspect-square  cursor-pointer bg-[#FFA127] rounded-full border-[6px] border-neutral-900 md:absolute right-[calc(55%)] top-0 z-10 hover:z-50 transition-all duration-200 transform hover:scale-105"
-        >
-          <div
-            class="w-8/12 h-full flex flex-col justify-center text-left items-center p-6"
-          >
-            <p>
-              Construcción de ​Sitios Web - Redes ​Sociales - ​Mantenimiento -
-              ​Asesoría - Bussines ​Coach
-            </p>
+      <Circles />
+      <div class="container flex">
+        <div class="w-full aspect-video relative flex">
+          <Card className="w-1/2 h-full flex flex-col rounded-r-none border-r-0">
+            <CardHeader>
+              <CardTitle> Solucionado </CardTitle>
+              <CardDescription>
+                Construcción de Sitio Web y Creación de Identidad Visual.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="grow"></CardContent>
+            <CardFooter>
+              ver más
+            </CardFooter>
+          </Card>
+          <Card />
+          <div class="w-1/2 relative">
+            <Image
+              class="w-full h-full rounded-lg rounded-l-none"
+              src={melina}
+              width={500}
+              height={500}
+              alt={"coso"}
+            />
+            <div class="absolute top-4 right-4 p-2 cursor-pointer bg-gray-200/50 rounded-full">
+              <MoveUpRight size={50}  />
+            </div>
           </div>
+          <Card
+            className=" aspect-square w-1/3 absolute  translate-x-[-50%] bg-transparent translate-y-[-50%] border-0 left-[50%] top-[50%] "
+          >
+            <div class="w-full h-full relative">
+              <Image
+                class={"w-full rounded-full aspect-square absolute z-10"}
+                src={melina}
+                width={500}
+                height={500}
+                alt={"coso"}
+              />
+              <div
+                class="rounded-full w-1/2 h-full rounded-l-none absolute bg-[#090B11] translate-x-[0%] bg-transparent translate-y-[-50%] left-[50%] top-[50%] z-50"
+              >
+              </div>
+            </div>
+          </Card>
         </div>
-
-        <Image
-          class="w-full md:w-1/2 aspect-square -mt-20 md:mt-0 cursor-pointer bg-blue-500 rounded-full border-[6px] border-neutral-900 md:absolute left-1/4 top-0 z-20 hover:z-50 transition-all duration-200 transform hover:scale-105"
-          src={melina}
-          width={500}
-          height={500}
-          alt={"melina"}
-        />
-
-        <Image
-          class="w-full md:w-1/2 aspect-square -mt-20 md:mt-0 cursor-pointer bg-red-500 rounded-full border-[6px] border-neutral-900 md:absolute left-[calc(55%)] top-0 z-30 hover:z-50 transition-all duration-200 transform hover:scale-105"
-          src={solucionador}
-          width={500}
-          height={500}
-          alt={"melina"}
-        />
       </div>
     </div>
   </div>

@@ -1,86 +1,12 @@
 ---
-import { Image } from "astro:assets";
-import AnimatedSpan from "../components/react/animatedSpan";
+import Hero from "@components/home/hero/Hero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import melina from "@assets/hero/melina.jpg";
-import solucionador from "@assets/hero/solucionado-pantallazo.png";
-import Circles from "@components/home/hero/Circles.astro";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@components/ui/card";
-import { MoveUpRight } from "lucide-react";
 import Services from "@components/home/hero/Services.astro";
-const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
 ---
 
 <BaseLayout>
-  <div class="wrapper h-full">
-    <div class="stack gap-4 items-center text-center h-full">
-      <h1 class="text-4xl md:text-7xl text-center leading-tight font-bold">
-        Digitaliza tu Negocio
-      </h1>
-      <h3 class="text-xl md:text-2xl">
-        Construir tu <AnimatedSpan arrayText={arrayText} client:load />
-        es una tarea compleja, pero no tiene que serlo.
-      </h3>
-
-      <!-- Circulos -->
-      <Circles />
-      <div class="flex w-full flex-col flw"></div>
-      <div class="container flex">
-        <div class="w-full aspect-video relative flex">
-          <Card
-            className="w-1/2 h-full flex flex-col rounded-xl rounded-r-none border-r-0"
-          >
-            <CardHeader>
-              <CardTitle> Solucionado </CardTitle>
-              <CardDescription>
-                Construcción de Sitio Web y Creación de Identidad Visual.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="grow" />
-            <CardFooter> ver más </CardFooter>
-          </Card>
-          <Card />
-          <div class="w-1/2 relative rounded-lg rounded-l-none">
-            <Image
-              class="w-full h-full rounded-xl rounded-l-none filter"
-              src={melina}
-              width={500}
-              height={500}
-              alt={"coso"}
-            />
-            <div
-              class="absolute top-4 right-4 p-2 cursor-pointer bg-gray-200/50 rounded-full"
-            >
-              <MoveUpRight size={50} />
-            </div>
-          </div>
-          <Card
-            className=" aspect-square w-1/3 absolute  translate-x-[-50%] bg-transparent translate-y-[-50%] border-0 left-[50%] top-[50%] "
-          >
-            <div class="w-full h-full relative">
-              <Image
-                class={"w-full rounded-full aspect-square filter backdrop-blur-sm blur-[2px] absolute z-10"}
-                src={melina}
-                width={500}
-                height={500}
-                alt={"coso"}
-              />
-              <div
-                class="rounded-full w-1/2 h-full rounded-l-none absolute bg-[#090B11] translate-x-[0%] translate-y-[-50%] left-[50%] top-[50%] z-50"
-              >
-              </div>
-            </div>
-          </Card>
-        </div>
-      </div>
-    </div>
+  <div class="w-full flex flex-col px-6 md:p-10 md:pt-0">
+    <Hero />
+    <Services />
   </div>
-  <Services />
 </BaseLayout>

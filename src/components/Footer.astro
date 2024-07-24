@@ -3,9 +3,9 @@ import Icon from "./Icon.astro";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer>
+<footer class="p-6 md:p-10">
 	<div class="group items-center">
-		<p class="whitespace-nowrap">
+		<p class="">
 			Designed & Developed in Argentina with
 			<a class="" href="https://astro.build/"> Astro</a>
 			<Icon
@@ -29,7 +29,6 @@ const currentYear = new Date().getFullYear();
 		flex-direction: column;
 		gap: 3rem;
 		margin-top: auto;
-		padding: 3rem 2rem 3rem;
 		text-align: center;
 		color: var(--gray-400);
 		font-size: var(--text-sm);
@@ -64,7 +63,6 @@ const currentYear = new Date().getFullYear();
 		footer {
 			flex-direction: row;
 			justify-content: space-between;
-			padding: 2.5rem 5rem;
 		}
 
 		.group {

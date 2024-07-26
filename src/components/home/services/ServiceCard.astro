@@ -9,7 +9,7 @@ import {
 } from "@components/ui/card";
 import { Image } from "astro:assets";
 
-import { MoveUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface Props {
     title: string;
@@ -30,9 +30,9 @@ const { title, description, image } = Astro.props;
                 alt={"coso"}
             />
             <div
-                class="absolute top-4 right-4 p-2 cursor-pointer bg-gray-200/50 rounded-full"
+                class="absolute top-4 right-4 p-2 cursor-pointer bg-gray-100/50 rounded-full"
             >
-                <MoveUpRight size={50} />
+                <ArrowUpRight size={50} />
             </div>
         </div>
         <div
@@ -41,13 +41,13 @@ const { title, description, image } = Astro.props;
             <Card
                 className="flex h-full flex-col justify-between bg-black rounded-xl"
             >
-                <CardHeader>
+                <CardHeader className="h-full justify-between">
                     <CardTitle> {title} </CardTitle>
                     <CardDescription>
                         {description}
                     </CardDescription>
+                    <CardFooter className="p-0"> Ver más </CardFooter>
                 </CardHeader>
-                <CardFooter> ver más </CardFooter>
             </Card>
         </div>
     </div>

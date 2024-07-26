@@ -1,12 +1,18 @@
 ---
 import Hero from "@components/home/hero/Hero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Services from "@components/home/hero/Services.astro";
+import Services from "@components/home/services/Services.astro";
+import ServiceCTA from "@components/home/services/ServiceCTA.astro";
+import Grid from "@components/Grid.astro";
+import { Card, CardHeader } from "@components/ui/card";
+import AboutUs from "@components/home/about/AboutUs.astro";
 ---
 
 <BaseLayout>
   <div class="w-full flex flex-col px-6 md:p-10 md:pt-0">
     <Hero />
     <Services />
+    <ServiceCTA />
+    <AboutUs />
   </div>
 </BaseLayout>

@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import melina from "@assets/hero/melina.jpg";
+import { CardDescription, CardTitle } from "@components/ui/card";
+import { ArrowUpRight } from "lucide-react";
+
+interface Props {
+    title: string;
+    description: string;
+    image: ImageMetadata;
+    odd?: boolean;
+}
+
+const { odd, title, description, image } = Astro.props;
+---
+
+<div
+    class="flex flex-col md:flex-row h-full w-full justify-center gap-3 md:gap-8"
+>
+    <div
+        class={`flex gap-3 w-full max-w-sm pal ${odd ? "md:-translate-y-52" : ""}`}
+    >
+        <div
+            class={`border-2 border-gray-50/85 h-fit rounded-full p-2 w-auto place-self-center md:place-self-start ${odd && "order-4 md:place-self-end "}`}
+        >
+            <ArrowUpRight
+                className={`"w-7 md:w-12 md:h-12 h-7  ${odd && "rotate-180"}`}
+            />
+        </div>
+        <div
+            class={`relative w-full h-full aspect-square border-2 border-gray-50/85 g-transparent rounded-lg ${odd ? "ml-4" : "mr-4"}`}
+        >
+            <Image
+                class={`absolute w-full h-full rounded-lg top-4  ${odd ? "right-4" : "left-4"}`}
+                src={image}
+                alt="melina"
+                width={500}
+                height={500}
+            />
+        </div>
+    </div>
+    <div class={`pt-4 ${odd && "md:order-first text-right "}`}>
+        <CardTitle> {title} </CardTitle>
+        <CardDescription className="pt-2">
+            {description}
+        </CardDescription>
+    </div>
+</div>

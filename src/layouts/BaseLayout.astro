@@ -51,10 +51,11 @@ const { title, description } = Astro.props;
     <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script is:inline>
       AOS.init({
-        easing: "ease-in-out",
-        delay: 50,
+        easing: "ease-in",
+        delay: 100,
         once: true,
-        duration: 1000,
+        mirror: true,
+        duration: 450,
       });
     </script>
 

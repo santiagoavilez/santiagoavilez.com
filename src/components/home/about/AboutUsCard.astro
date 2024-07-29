@@ -5,44 +5,52 @@ import { CardDescription, CardTitle } from "@components/ui/card";
 import { ArrowUpRight } from "lucide-react";
 
 interface Props {
-    title: string;
-    description: string;
-    image: ImageMetadata;
-    odd?: boolean;
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  odd?: boolean;
 }
 
 const { odd, title, description, image } = Astro.props;
 ---
 
 <div
-    class="flex flex-col md:flex-row h-full w-full justify-center gap-3 md:gap-8"
+  data-aos={odd ? "fade-left" : "fade-right"}
+  data-aos-duration="500"
+  data-aos-easing="ease-in-sine"
+  data-aos-once="false"
+  class="flex flex-col md:flex-row h-full w-full items-center md:items-start justify-center gap-3 md:gap-8"
 >
+  <div
+    class={`flex gap-3 w-full max-w-sm justify-between  ${odd ? "md:-translate-y-52" : ""}`}
+  >
     <div
-        class={`flex gap-3 w-full max-w-sm pal ${odd ? "md:-translate-y-52" : ""}`}
+      data-aos={odd ? "fade-down-left" : "fade-up-right"}
+      data-aos-duration="600"
+      data-aos-easing="ease-in"
+      data-aos-once="false"
+      class={`border-2 border-gray-50/85 w-fit h-auto  rounded-full p-2 aspect-square place-self-center ${odd ? "order-4 md:place-self-end md:mb-4" : " md:place-self-start md:mt-4"}`}
     >
-        <div
-            class={`border-2 border-gray-50/85 h-fit rounded-full p-2 w-auto place-self-center md:place-self-start ${odd && "order-4 md:place-self-end "}`}
-        >
-            <ArrowUpRight
-                className={`"w-7 md:w-12 md:h-12 h-7  ${odd && "rotate-180"}`}
-            />
-        </div>
-        <div
-            class={`relative w-full h-full aspect-square border-2 border-gray-50/85 g-transparent rounded-lg ${odd ? "ml-4" : "mr-4"}`}
-        >
-            <Image
-                class={`absolute w-full h-full rounded-lg top-4  ${odd ? "right-4" : "left-4"}`}
-                src={image}
-                alt="melina"
-                width={500}
-                height={500}
-            />
-        </div>
+      <ArrowUpRight className={`"w-8 md:w-12 md:h-12 ${odd && "rotate-180"}`} />
     </div>
-    <div class={`pt-4 ${odd && "md:order-first text-right "}`}>
-        <CardTitle> {title} </CardTitle>
-        <CardDescription className="pt-2">
-            {description}
-        </CardDescription>
+    <div
+      class={`relative w-full h-full aspect-square border-2 border-gray-50/85 g-transparent rounded-lg ${odd ? "ml-4" : "mr-4"}`}
+    >
+      <Image
+        class={`absolute w-full h-full rounded-lg top-4  ${odd ? "right-4" : "left-4"}`}
+        src={image}
+        alt="melina"
+        width={500}
+        height={500}
+      />
     </div>
+  </div>
+  <div
+    class={`pt-4 max-w-sm text-left ${odd && "md:order-first md:text-right "}`}
+  >
+    <CardTitle> {title} </CardTitle>
+    <CardDescription className="pt-2">
+      {description}
+    </CardDescription>
+  </div>
 </div>

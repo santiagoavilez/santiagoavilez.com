@@ -17,17 +17,20 @@ const {
 } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/*.{jpeg,jpg,png,gif}",
+  "src/assets/*/*.{jpeg,jpg,png,gif}"
 );
+console.log(images);
 const previewImage = images[data.img];
+console.log(data.img);
 if (!images[data.img])
   throw new Error(
-    `"${data.img}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`,
+    `"${data.img}" does not exist in glob:  "src/assets/*/*.{jpeg,jpg,png,gif}"`
   );
 ---
 
 <div
-  data-aos={index ? "fade-left" : "fade-right"}
+  data-aos={index ? "fade-up-left" : "fade-up-right"}
+
   class="w-full rounded-lg bg-gray-950 text-gray-50 shadow-md"
 >
   <a href={`/projects/${slug}`}>

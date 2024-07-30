@@ -40,84 +40,74 @@ import laborarlogin from '../../assets/laborar/login.jpg';
 import laborarw50 from '../../assets/laborar/home500w.jpg';
 
 
-### Introducción.
+## Introducción.
 
-A finales del año 2022 me encontré con un problema: se dañó una de las tuberías de mi casa. Por lo que busqué un plomero en Internet sin resultado alguno.
-
-En ese momento me encontraba finalizando mis estudios en la facultad. Cuyo trabajo final era desarrollar una aplicación web con tema y tecnología a libre elección. Vi esta situación como una posibilidad.
-
-La idea base es entonces: crear una plataforma web en la que se puedan encontrar trabajadores de diversas profesiones, contratarlos y reseñarlos.
-
-#### Inicio de proyecto
+Hoy quiero compartir con ustedes un caso de éxito que destaca mi capacidad para liderar proyectos, coordinar equipos y utilizar las tecnologías más avanzadas en el desarrollo de soluciones web. Este proyecto se llama "Solucionado App", una plataforma que conecta prestadores de servicios domésticos con clientes potenciales.
 
 
+### Descripcion del proyecto
 
-Empecé a investigar proyectos similares para inspirarme y tener una idea de lo que hay en el mercado actual, encontré que no había ningún sitio ni plataforma en mi zona pero sí en otras regiones del mundo.
-
-> Diseño
-
-Para diseñar la estructura del proyecto, primero hice prototipos en papel, para tener una idea de como iba a ser la aplicación. Despues diseñe el **Modelo de Datos**, el cual consiste en una tabla de usuarios, una tabla de servicios y una tabla de reseñas. Por ultimo use **Figma** para diseñar UI/UX del usuario. Lo que me dio un boceto inicial de la aplicación.
-
-{/* <Image class="rounded-full " src={figma} alt={'figma logo'} height={64} width={64} /> */}
-
-{/* <div class="flex justify-center my-10 ">
-<img class="rounded-3xl " src={"/laborar/login.svg"} alt="login page" loading="lazy"	decoding="async"  />
-</div> */}
-
-<div class="flex justify-center my-10 ">
-<Image class="rounded-3xl" src={laborarlogin} format='webp' width={300} alt={'login page'} />
-</div>
+**Solucionado App** es un MVP (Minimum Viable Product) desarrollado para una startup tecnológica cuyo objetivo es simplificar la contratación de servicios domésticos. La plataforma permite a los usuarios encontrar y contratar profesionales de limpieza, reparación, y otros servicios de manera eficiente y segura.
 
 
-{/* <div class="my-10">
-<img class="rounded-3xl" src="/laborar/home.jpg" alt="login page." loading="lazy"	decoding="async" />
-</div> */}
+> Responsabilidades y Rol
 
-<div class="flex justify-center my-10 ">
-<Image class="rounded-3xl" src={laborarw50} format='webp' alt={'login page'}  width={512}   />
-</div>
+En este proyecto, asumí el rol de Desarrollador Web y Líder de Proyecto. Mis principales responsabilidades incluyeron:
 
->Ya teniendo mi boceto inicial.....
-
-Empece a elegir el stack tecnológico de la aplicación. Decidí utilizar **Next.js** y **Tailwind CSS** como frontend. Para el backend: **Strapi** como Headless CMS junto a una base de datos **MySQL** e integrado con web sockets para darle dinamismo en tiempo real gracias a **Socket.io**, además de diversas librerías. Si bien estas opciones se adaptaban a mis necesidades, eran totalmente nuevas para mí, lo que fue un gran reto personal, ya que quería ampliar mis conocimientos en el desarrollo web.
-
-
-> Backend
-
-**Strapi** es un framework de código abierto que permite crear una API RESTful en muy poco tiempo. Esto me permitió concentrarme en el frontend y el diseño de la aplicación. Si bien strapi es muy fácil de usar, no es tan fácil de configurar. La integracion con **Socket.io** fue un poco complicada, ya que no hay mucha documentación al respecto.
-
-Finalmente ice despliegue de el backend y la base de datos en **Railwap.app** un servicio de Cloud hosting que permite automatizar el despliegue por medio de un repositorio de **GitHub**.
-
-> Frontend
-
-**Next.js** es un framework de **React** que permite crear aplicaciones web de forma rápida y sencilla. Permitiendo el uso de **SSR**, **SSG** y **ISR**. Esto  me permitió crear una aplicación web con un rendimiento excelente, ya que el servidor renderiza el contenido de la página antes de que el cliente la solicite, ademas de que el contenido de los prestadores de servicios es estático, lo que permite que la aplicación sea muy rápida. Gracias a **Tailwind CSS** pude crear un diseño responsive y con una gran variedad de componentes.
+-  **Liderazgo de Equipo:** Dirigí un equipo de tres desarrolladores, asegurando una comunicación fluida y efectiva con el cliente para definir y priorizar los requisitos funcionales del proyecto.
 
 
 
 
-#### Haciendo el chat
-
-Una de las funcionalidades más importantes de la aplicación es el chat. Para ello utilice **Socket.io**.
-
-**Socket.io** es una librería que permite la comunicación en tiempo real entre el servidor y el cliente. Esto me permitio crear un chat en tiempo real, en el que los usuarios pueden enviar mensajes, ademas de que el prestador de servicio puede ver cuando el usuario esta escribiendo un mensaje.
-
-Pude crear un sistema de notificaciones que permite mantener al tanto a los prestadores de servicios cuando, algun cliente los quiere contactar o los ha reseñado en tiempo real. Adicionalmente se puede ver el historial de mensajes y notificaciones entre el usuario y el prestador de servicio, ya que los estos se guardan en la base de datos.
-
-<div class="flex justify-center my-10 object-contain max-w-[272px] m-auto sm:max-w-none ">
-  <video class="my-10 w-full" src="/videos/chatapp.mp4" type="video/webm" preload="metadata" loading="lazy"	decoding="async" poster="/assets/cover_laborar.jpg" controls >
-  </video >
-</div>
-
-
-#### Haciendo el sistema de reseñas
-
-El sistema de reseñas es una de las partes mas importantes de la aplicación. Ya que permite que los usuarios puedan reseñar a los prestadores de servicios. Para esto se utilizo **React Hook Form** para crear un formulario de reseñas, el cual permite validar los datos ingresados por el usuario. Ademas de que se puede ver el historial de reseñas de cada prestador de servicio.
+-  **Gestión de Requerimientos:** Hablé con el cliente, Francisco Maldonado, para gestionar sus requerimientos y convertirlos en features. Planifiqué y diseñé el plan de implementación para el equipo, priorizando las tareas según su importancia.
 
 
 
+-  **Reuniones de Feedback:** Coordiné reuniones regulares con el cliente para obtener feedback, corregir errores y mejorar la aplicación continuamente.
 
 
-#### Haciendo la busqueda de servicios
 
-Para la busqueda de servicios se utilizo **Algolia** un servicio de busqueda que permite crear una busqueda instantanea de los servicios. Esto permite que el usuario pueda buscar un servicio de forma rapida y sencilla. Ademas de que se puede filtrar los servicios por categoria, precio y ubicación.
+-  **Selección del Stack Tecnológico:** Tomé la decisión de seleccionar un stack tecnológico moderno y emergente (Next.js, TypeScript, tRPC, TailwindCSS, ShadcnUI, Prisma) para desarrollar la aplicación de la forma más rápida y eficiente posible, asegurando que fuera funcional, escalable y atractiva, a pesar del riesgo de no conocer del todo bien las tecnologías ni su documentación.
+
+
+
+> Tecnologías y Servicios Utilizados
+
+Para asegurar un producto robusto y eficiente, implementé una variedad de tecnologías y servicios:
+
+-  **Autenticación: Clerk** para gestionar la autenticación de usuarios de manera segura.
+
+
+-  **Gateway de Pagos:** Mercado Pago para facilitar transacciones seguras y rápidas.
+-  **Almacenamiento y Optimización de Imágenes:** Cloudinary para manejar y optimizar las imágenes de manera eficiente.
+
+
+-  **Mensajería:** Twilio (WhatsApp) para permitir la comunicación directa entre clientes y prestadores de servicios.
+
+
+-   **Mailing Programable:** Mailersend para gestionar las comunicaciones por correo electrónico de manera automatizada.
+
+### Logros y Resultados
+El proyecto Solucionado App fue un éxito rotundo, con varios logros destacados:
+
+-  **Implementación Exitosa del MVP:** Logramos entregar un producto funcional con todas las características principales solicitadas por el cliente.
+
+
+-  **Mejora en la Eficiencia del Equipo:** Gracias a una asignación clara de tareas y objetivos, el equipo trabajó de manera más eficiente y coordinada.
+
+
+-  **Satisfacción del Cliente:** Francisco Maldonado quedó sumamente satisfecho con el resultado, destacando la calidad y la rapidez en la entrega del proyecto.
+
+
+>Impacto y Beneficios
+
+La implementación de Solucionado App no solo mejoró la experiencia de los usuarios al facilitar la contratación de servicios domésticos, sino que también permitira a la startup posicionarse como un competidor fuerte en el mercado. La plataforma escalable y bien diseñada asegura que la empresa pueda crecer y adaptarse a nuevas necesidades sin problemas técnicos significativos.
+
+
+#### Conclusión
+
+Solucionado App es un claro ejemplo de cómo un proyecto bien gestionado y desarrollado puede transformar una idea en una solución real y exitosa. Como desarrollador web freelancer, estoy comprometido con la excelencia y la innovación en cada proyecto que emprendo.
+
+
+Si tienes una idea que quieres convertir en realidad o necesitas mejorar tu plataforma actual, no dudes en contactarme. Estoy aquí para ayudarte a alcanzar tus objetivos y llevar tu proyecto al siguiente nivel.
 

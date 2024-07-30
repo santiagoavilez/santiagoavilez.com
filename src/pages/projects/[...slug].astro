@@ -126,6 +126,10 @@ const { Content } = await entry.render();
 		margin: 1.5rem 0;
 	}
 
+	.content :global(li) {
+		margin: 0.75rem;
+		list-style: none inside;
+	}
 	.content :global(img) {
 		/* border-radius: 1.5rem; */
 		box-shadow: var(--shadow-sm);

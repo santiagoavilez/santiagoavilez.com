@@ -18,89 +18,90 @@ import Skills from "../components/Skills.astro";
 import { Image } from "astro:assets";
 import SkillsProgresBar from "../components/SkillsProgresBar.astro";
 import AnimatedCtaHero from "../components/react/AnimatedCtaHero";
+import ProjectsPreview from "@components/home/projects/ProjectsPreview.astro";
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection("projects"))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 2);
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 2);
 const animatedTextsArray1 = [
-	{
-		text: "Transformare tu visión en un producto, ",
-	},
-	{
-		text: " impactante ",
-		highlight: true,
-	},
-	{
-		text: "  sin desperdiciar ",
-	},
-	{
-		text: "  inversión.",
-		highlight: true,
-	},
+  {
+    text: "Transformare tu visión en un producto, ",
+  },
+  {
+    text: " impactante ",
+    highlight: true,
+  },
+  {
+    text: "  sin desperdiciar ",
+  },
+  {
+    text: "  inversión.",
+    highlight: true,
+  },
 ];
 const animatedTextsArray2 = [
-	{
-		text: "T e ayudare a crear un MVP, ",
-	},
-	{
-		text: " escalable ",
-		highlight: true,
-	},
-	{
-		text: " y ",
-	},
-	{
-		text: " atractivo ",
-		highlight: true,
-	},
-	{
-		text: "  para tus usuarios.",
-	},
+  {
+    text: "T e ayudare a crear un MVP, ",
+  },
+  {
+    text: " escalable ",
+    highlight: true,
+  },
+  {
+    text: " y ",
+  },
+  {
+    text: " atractivo ",
+    highlight: true,
+  },
+  {
+    text: "  para tus usuarios.",
+  },
 ];
 const animatedTextsArray3 = [
-	{
-		text: "A celera ",
-		highlight: true,
-	},
-	{
-		text: " el lanzamiento de tu ",
-	},
-	{
-		text: " startup ",
-		highlight: true,
-	},
-	{
-		text: " con tecnologias, ",
-	},
-	{
-		text: " innovadoras y escalables. ",
-		highlight: true,
-	},
+  {
+    text: "A celera ",
+    highlight: true,
+  },
+  {
+    text: " el lanzamiento de tu ",
+  },
+  {
+    text: " startup ",
+    highlight: true,
+  },
+  {
+    text: " con tecnologias, ",
+  },
+  {
+    text: " innovadoras y escalables. ",
+    highlight: true,
+  },
 ];
 
 const mainAnimatedText = [
-	{
-		text: "C reo MVP´S que  ",
-	},
-	{
-		text: " validan ",
-		highlight: true,
-	},
-	{
-		text: " tu idea en ",
-	},
-	{
-		text: "  tiempo récord.",
-		highlight: true,
-	},
+  {
+    text: "C reo MVP´S que  ",
+  },
+  {
+    text: " validan ",
+    highlight: true,
+  },
+  {
+    text: " tu idea en ",
+  },
+  {
+    text: "  tiempo récord.",
+    highlight: true,
+  },
 ];
 
 const ctaArray = [
-	mainAnimatedText,
-	animatedTextsArray3,
-	animatedTextsArray2,
-	animatedTextsArray1,
+  mainAnimatedText,
+  animatedTextsArray3,
+  animatedTextsArray2,
+  animatedTextsArray1,
 ];
 
 const staticTextForSEO = animatedTextsArray2.map((item, idx) => item.text);
@@ -109,24 +110,24 @@ const staticTextForSEO = animatedTextsArray2.map((item, idx) => item.text);
 ---
 
 <BaseLayout>
-	<div class="stack gap-20 lg:gap-48">
-		<div class="wrapper stack gap-8 lg:gap-20">
-			<header class=" hero">
-				<h1
-					class="text-4xl md:text-6xl text-center leading-tight md:text-left max-w-[38ch] h-72"
-				>
-					<span class="sr-only">
-						{"MVP´S que validan tu idea en tiempo récord."}
-					</span>
+  <div class="stack gap-20 lg:gap-48">
+    <div class="wrapper stack gap-8 lg:gap-20">
+      <header class="hero">
+        <h1
+          class="text-4xl md:text-6xl text-center leading-tight md:text-left max-w-[38ch] h-72"
+        >
+          <span class="sr-only">
+            {"MVP´S que validan tu idea en tiempo récord."}
+          </span>
 
-					<AnimatedCtaHero ctaArray={ctaArray} client:load />
-				</h1>
-				<!-- <Hero
+          <AnimatedCtaHero ctaArray={ctaArray} client:load />
+        </h1>
+        <!-- <Hero
           title="Transforma tu visión en un MVP impactante y escalable, sin desperdiciar inversión"
           tagline=""
           align="start"
         /> -->
-				<!-- <div
+        <!-- <div
           data-aos="fade-left"
           data-aos-easing="ease"
           data-aos-duration="800"
@@ -140,238 +141,206 @@ const staticTextForSEO = animatedTextsArray2.map((item, idx) => item.text);
             height={280}
           />
         </div> -->
-			</header>
+      </header>
 
-			<!-- <Skills /> -->
-		</div>
+      <!-- <Skills /> -->
+    </div>
 
-		<main class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-background with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3 data-aos="fade-right" class="w-full my-1">My Skills</h3>
-				</header>
-				<div class="gallery w-full">
-					<SkillsProgresBar />
-				</div>
-				<div class="cta">
-					<CallToAction
-						href="mailto:santiago.avilez@est.fi.uncoma.edu.ar"
-					>
-						Hablemos
-						<Icon icon="paper-plane-tilt" size="1.2em" />
-					</CallToAction>
-				</div>
-			</section>
-			<section class="section with-background with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Trabajos realizados</h3>
-					<p>
-						Da un vistazo a mis trabajos más destacados en los
-						últimos años.
-					</p>
-				</header>
+    <main class="wrapper stack gap-20 lg:gap-48">
+      <section class="section with-background with-cta">
+        <header class="section-header stack gap-2 lg:gap-4">
+          <h3 data-aos="fade-right" class="w-full my-1">My Skills</h3>
+        </header>
+        <div class="gallery w-full">
+          <SkillsProgresBar />
+        </div>
+        <div class="cta">
+          <CallToAction href="mailto:santiago.avilez@est.fi.uncoma.edu.ar">
+            Hablemos
+            <Icon icon="paper-plane-tilt" size="1.2em" />
+          </CallToAction>
+        </div>
+      </section>
+      <ProjectsPreview />
 
-				<div class="gallery px-0 md:px-10">
-					<Grid variant="offset">
-						{
-							projects.map((project, index) => (
-								<li class="overflow-hidden">
-									<PortfolioPreview
-										index={index % 2}
-										project={project}
-									/>
-								</li>
-							))
-						}
-					</Grid>
-				</div>
+      <section class="section with-background bg-variant">
+        <header class="section-header stack gap-2 lg:gap-4">
+          <h3>Menciones</h3>
+          <p>
+            He tenido la suerte de haber trabajado con diferentes
+            Organizaciones, Clientes y equipos de trabajo. Echa un vistazo a
+            continuación para aprender más.
+          </p>
+        </header>
 
-				<div class="cta">
-					<CallToAction href="/projects/">
-						Ver todos
-						<Icon icon="arrow-right" size="1.2em" />
-					</CallToAction>
-				</div>
-			</section>
+        <div class="gallery">
+          <Grid variant="small">
+            {
+              [
+                "Melina Batalla",
+                "UnCo Activa",
+                "FAI Uncoma",
+                "Stellas",
+                "Cristian",
+                "Santi",
+              ].map((brand) => (
+                <li class="mention-card">
+                  <p>{brand}</p>
+                </li>
+              ))
+            }
+          </Grid>
+        </div>
+      </section>
+    </main>
 
-			<section class="section with-background bg-variant">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Menciones</h3>
-					<p>
-						He tenido la suerte de haber trabajado con diferentes
-						Organizaciones, Clientes y equipos de trabajo. Echa un
-						vistazo a continuación para aprender más.
-					</p>
-				</header>
-
-				<div class="gallery">
-					<Grid variant="small">
-						{
-							[
-								"Melina Batalla",
-								"UnCo Activa",
-								"FAI Uncoma",
-								"Stellas",
-								"Cristian",
-								"Santi",
-							].map((brand) => (
-								<li class="mention-card">
-									<p>{brand}</p>
-								</li>
-							))
-						}
-					</Grid>
-				</div>
-			</section>
-		</main>
-
-		<ContactCTA />
-	</div>
+    <ContactCTA />
+  </div>
 </BaseLayout>
 
 <style>
-	.hero {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 2rem;
-	}
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 
-	.roles {
-		display: flex;
-		gap: 0.5rem;
-	}
+  .roles {
+    display: flex;
+    gap: 0.5rem;
+  }
 
-	.hero img {
-		aspect-ratio: 1 / 1;
-		object-fit: cover;
-		object-position: center;
-		border-radius: 999px;
-		box-shadow: var(--shadow-md);
-	}
+  .hero img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 999px;
+    box-shadow: var(--shadow-md);
+  }
 
-	@media (min-width: 50em) {
-		.hero {
-			display: grid;
-			grid-template-columns: 6fr 4fr;
-			padding-inline: 2.5rem;
-			gap: 3.75rem;
-		}
+  @media (min-width: 50em) {
+    .hero {
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+      padding-inline: 2.5rem;
+      gap: 3.75rem;
+    }
 
-		.roles {
-			margin-top: 0.5rem;
-			display: flex;
-			gap: 0.5rem;
-		}
+    .roles {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
 
-		.hero img {
-			aspect-ratio: 4 / 4;
-			border-radius: 999px;
-			object-fit: none;
-			object-position: center;
-		}
-	}
+    .hero img {
+      aspect-ratio: 4 / 4;
+      border-radius: 999px;
+      object-fit: none;
+      object-position: center;
+    }
+  }
 
-	/* ====================================================== */
+  /* ====================================================== */
 
-	.section {
-		display: grid;
-		gap: 2rem;
-	}
+  .section {
+    display: grid;
+    gap: 2rem;
+  }
 
-	.with-background {
-		position: relative;
-	}
+  .with-background {
+    position: relative;
+  }
 
-	.with-background::before {
-		--hero-bg: var(--bg-image-subtle-2);
+  .with-background::before {
+    --hero-bg: var(--bg-image-subtle-2);
 
-		content: "";
-		position: absolute;
-		pointer-events: none;
-		left: 50%;
-		width: 100vw;
-		aspect-ratio: calc(2.25 / var(--bg-scale));
-		top: 0;
-		transform: translateY(-75%) translateX(-50%);
-		background:
-			url("/assets/backgrounds/noise.png") top center/220px repeat,
-			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
-			var(--gray-999);
-		background-blend-mode: overlay, normal, normal, normal;
-		mix-blend-mode: var(--bg-blend-mode);
-		z-index: -1;
-	}
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 50%;
+    width: 100vw;
+    aspect-ratio: calc(2.25 / var(--bg-scale));
+    top: 0;
+    transform: translateY(-75%) translateX(-50%);
+    background:
+      url("/assets/backgrounds/noise.png") top center/220px repeat,
+      var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+      var(--gray-999);
+    background-blend-mode: overlay, normal, normal, normal;
+    mix-blend-mode: var(--bg-blend-mode);
+    z-index: -1;
+  }
 
-	.with-background.bg-variant::before {
-		--hero-bg: var(--bg-image-subtle-1);
-	}
+  .with-background.bg-variant::before {
+    --hero-bg: var(--bg-image-subtle-1);
+  }
 
-	.section-header {
-		justify-self: center;
-		text-align: center;
-		max-width: 50ch;
-		font-size: var(--text-md);
-		color: var(--gray-200);
-	}
+  .section-header {
+    justify-self: center;
+    text-align: center;
+    max-width: 50ch;
+    font-size: var(--text-md);
+    color: var(--gray-200);
+  }
 
-	.section-header h3 {
-		font-size: var(--text-2xl);
-	}
+  .section-header h3 {
+    font-size: var(--text-2xl);
+  }
 
-	@media (min-width: 50em) {
-		.section {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: "header header header header" "gallery gallery gallery gallery";
-			gap: 5rem;
-		}
+  @media (min-width: 50em) {
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas: "header header header header" "gallery gallery gallery gallery";
+      gap: 5rem;
+    }
 
-		.section.with-cta {
-			grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
-		}
+    .section.with-cta {
+      grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
+    }
 
-		.section-header {
-			grid-area: header;
-			font-size: var(--text-lg);
-		}
+    .section-header {
+      grid-area: header;
+      font-size: var(--text-lg);
+    }
 
-		.section-header h3 {
-			font-size: var(--text-4xl);
-		}
+    .section-header h3 {
+      font-size: var(--text-4xl);
+    }
 
-		.with-cta .section-header {
-			justify-self: flex-start;
-			text-align: left;
-		}
+    .with-cta .section-header {
+      justify-self: flex-start;
+      text-align: left;
+    }
 
-		.gallery {
-			grid-area: gallery;
-		}
+    .gallery {
+      grid-area: gallery;
+    }
 
-		.cta {
-			grid-area: cta;
-		}
-	}
+    .cta {
+      grid-area: cta;
+    }
+  }
 
-	/* ====================================================== */
+  /* ====================================================== */
 
-	.mention-card {
-		display: flex;
-		height: 7rem;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		color: var(--gray-200);
-		background: var(--gradient-subtle);
-		box-shadow: var(--shadow-sm);
-	}
+  .mention-card {
+    display: flex;
+    height: 7rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--gray-800);
+    border-radius: 1.5rem;
+    color: var(--gray-200);
+    background: var(--gradient-subtle);
+    box-shadow: var(--shadow-sm);
+  }
 
-	@media (min-width: 50em) {
-		.mention-card {
-			border-radius: 1.5rem;
-			height: 9.5rem;
-		}
-	}
+  @media (min-width: 50em) {
+    .mention-card {
+      border-radius: 1.5rem;
+      height: 9.5rem;
+    }
+  }
 </style>

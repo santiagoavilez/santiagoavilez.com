@@ -22,12 +22,12 @@ import ProgressBar from "./ProgressBar.astro";
     const observer = new IntersectionObserver((entries) => {
         // We will fill in the callback later...
         entries.forEach((entry) => {
-            const progressbar = entry.target;
+            const progressbar = entry.target as HTMLElement;
             let animate = false;
             if (entry.isIntersecting && !animate) {
-                progressbar.style.width = progressbar.dataset.width;
+                progressbar.style.width = progressbar.dataset.width!;
                 progressbar.classList.add("animate-progress");
-                
+
                 animate = true;
                 return; // if we added the class, exit the function
             }

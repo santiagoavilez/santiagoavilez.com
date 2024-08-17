@@ -18,15 +18,13 @@ interface Props {
   index: number;
 }
 const { title, description, image, index } = Astro.props;
-const delay = 200 +(index * 200);
+const delay =  index * 250;
 ---
 
 <div
-  data-aos="slide-up"
-  data-aos-duration="300"
+  data-aos="zoom-out-up"
+  data-aos-duration="150"
   data-aos-delay={delay}
-
-
   class="flex w-full max-w-sm"
 >
   <div class="w-full min-w-72 relative aspect-video">

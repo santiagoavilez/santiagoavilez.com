@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import melina from "@assets/hero/melina.jpg";
-import solucionador from "@assets/hero/solucionado-pantallazo.png";
+import solucionador from "@assets/ieai.png";
 import { ArrowUpRight } from "lucide-react";
 import ServiceCTA from "../services/ServiceCTA.astro";
 ---
@@ -15,7 +15,7 @@ import ServiceCTA from "../services/ServiceCTA.astro";
     <div
       class="w-8/12 h-full flex flex-col justify-center text-left items-center p-6"
     >
-      <p>
+      <p class="text-black font-bold">
         Construcción de ​Sitios Web - Redes ​Sociales - ​Mantenimiento -
         ​Asesoría - Bussines ​Coach
       </p>
@@ -33,7 +33,7 @@ import ServiceCTA from "../services/ServiceCTA.astro";
   />
 
   <Image
-    class="w-full md:w-1/2 aspect-square -mt-20 md:mt-0 cursor-pointer bg-red-500 rounded-full border-[6px] border-neutral-900 md:absolute left-[calc(55%)] top-0 z-30 transition-all duration-200 transform"
+    class="w-full md:w-1/2 aspect-square -mt-20 md:mt-0 cursor-pointer bg-red-500 rounded-full border-[6px] border-neutral-900 md:absolute left-[calc(55%)] top-0 z-30 transition-all duration-200 transform object-cover"
     src={solucionador}
     width={500}
     height={500}
@@ -41,7 +41,7 @@ import ServiceCTA from "../services/ServiceCTA.astro";
     fetchpriority={"high"}
     alt={"melina"}
   />
-  <div class="md:absolute md:w-auto relative w-full z-50 -mt-3">
+  <div class="md:absolute top-0 right-0 md:w-auto relative w-full z-50 -mt-3">
     <ServiceCTA />
     <div
       class="border-2 absolute -z-10 -top-7 right-0 border-gray-50/85 h-fit rounded-full p-3 w-fit"

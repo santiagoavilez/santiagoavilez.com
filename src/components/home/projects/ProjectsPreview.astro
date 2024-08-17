@@ -1,0 +1,31 @@
+---
+import CallToAction from "@components/CallToAction.astro";
+import Grid from "@components/Grid.astro";
+import Icon from "@components/Icon.astro";
+import PortfolioPreview from "@components/PortfolioPreview.astro";
+import { CardDescription, CardTitle } from "@components/ui/card";
+import ProjectsCarousel from "@components/home/projects/ProjectsCarrousel";
+import { getCollection } from "astro:content";
+
+
+---
+
+<section class=" w-full flex flex-col py-6">
+  <header class="flex justify-between items-center gap-2 lg:gap-4 pb-6">
+    <div class="">
+      <CardTitle className="text-5xl pb-2">Trabajos realizados</CardTitle>
+      <CardDescription className="text-lg ">
+        Da un vistazo a mis trabajos más destacados en los últimos años.</CardDescription
+      >
+    </div>
+
+    <div class="cta">
+      <CallToAction href="/projects/">
+        Ver todos
+        <Icon icon="arrow-right" size="1.2em" />
+      </CallToAction>
+    </div>
+  </header>
+
+  <ProjectsCarousel client:visible ></ProjectsCarousel>
+</section>

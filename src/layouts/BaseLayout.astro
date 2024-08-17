@@ -59,7 +59,7 @@ const { title, description } = Astro.props;
       });
     </script>
 
-    <div class="stack relative">
+    <div class="stack relative item">
       <Nav />
       <aside
         class="hidden absolute lg:flex flex-col w-10 top-[450px] lg:text-3xl xl:text-4xl pl-2 xl:pl-10 gap-5 left-0"
@@ -78,7 +78,9 @@ const { title, description } = Astro.props;
           ))
         }
       </aside>
-      <slot />
+      <div class="flex w-full relative justify-center">
+        <slot />
+      </div>
       <Footer />
     </div>
 

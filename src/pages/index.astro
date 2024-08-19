@@ -24,6 +24,8 @@ import ProjectsPreview from "@components/home/projects/ProjectsPreview.astro";
 const projects = (await getCollection("projects"))
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
   .slice(0, 2);
+
+
 const animatedTextsArray1 = [
   {
     text: "Transformare tu visión en un producto, ",
@@ -161,7 +163,9 @@ const staticTextForSEO = animatedTextsArray2.map((item, idx) => item.text);
           </CallToAction>
         </div>
       </section>
-      <ProjectsPreview />
+      <section class="section with-background with-cta">
+        <ProjectsPreview />
+      </section>
 
       <section class="section with-background bg-variant">
         <header class="section-header stack gap-2 lg:gap-4">
@@ -263,10 +267,7 @@ const staticTextForSEO = animatedTextsArray2.map((item, idx) => item.text);
     aspect-ratio: calc(2.25 / var(--bg-scale));
     top: 0;
     transform: translateY(-75%) translateX(-50%);
-    background:
-      url("/assets/backgrounds/noise.png") top center/220px repeat,
-      var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
-      var(--gray-999);
+
     background-blend-mode: overlay, normal, normal, normal;
     mix-blend-mode: var(--bg-blend-mode);
     z-index: -1;

@@ -11,7 +11,6 @@ export interface IanimatedCta {
 const AnimatedCta = ({ arrayText , isDeleting }: IanimatedCta) => {
     const [index, setIndex] = useState(0);
     const [displayText, setDisplayText] = useState<JSX.Element[]>([]);
-    const [typingSymbolVisible, setTypingSymbolVisible] = useState(true);
 
 
 
@@ -69,7 +68,7 @@ const AnimatedCta = ({ arrayText , isDeleting }: IanimatedCta) => {
                         setIndex(0); // Restart from the first word
                     }
                 }
-            }, 25); // adjust this value for deletion speed
+            }, 10); // adjust this value for deletion speed
         }
 
         return () => clearInterval(typingInterval); // cleanup the interval

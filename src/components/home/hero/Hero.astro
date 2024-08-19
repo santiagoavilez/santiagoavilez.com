@@ -1,21 +1,100 @@
 ---
 import AnimatedSpan from "@components/react/animatedSpan";
 import Circles from "./Circles.astro";
+import AnimatedCtaHero from "@components/react/AnimatedCtaHero";
 
+const animatedTextsArray1 = [
+  {
+    text: "Transformare tu visión en un producto, ",
+  },
+  {
+    text: " impactante ",
+    highlight: true,
+  },
+  {
+    text: "  sin desperdiciar ",
+  },
+  {
+    text: "  inversión.",
+    highlight: true,
+  },
+];
+const animatedTextsArray2 = [
+  {
+    text: "T e ayudare a crear un MVP, ",
+  },
+  {
+    text: " escalable ",
+    highlight: true,
+  },
+  {
+    text: " y ",
+  },
+  {
+    text: " atractivo ",
+    highlight: true,
+  },
+  {
+    text: "  para tus usuarios.",
+  },
+];
+const animatedTextsArray3 = [
+  {
+    text: "A celera ",
+    highlight: true,
+  },
+  {
+    text: " el lanzamiento de tu ",
+  },
+  {
+    text: " startup ",
+    highlight: true,
+  },
+  {
+    text: " con tecnologias, ",
+  },
+  {
+    text: " innovadoras y escalables. ",
+    highlight: true,
+  },
+];
+
+const mainAnimatedText = [
+  {
+    text: "C reo MVP´S que  ",
+  },
+  {
+    text: " validan ",
+    highlight: true,
+  },
+  {
+    text: " tu idea en ",
+  },
+  {
+    text: "  tiempo récord.",
+    highlight: true,
+  },
+];
+
+const ctaArray = [
+  mainAnimatedText,
+  animatedTextsArray3,
+  animatedTextsArray2,
+  animatedTextsArray1,
+];
 const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
-
 ---
-<div class="w-full max-w-[64rem] m-auto p-2 md:p-10 md:pt-2 h-full">
-    <div class="stack gap-4 items-center text-center h-full">
-      <h1 class="text-4xl md:text-7xl text-center leading-tight font-bold">
-        Digitaliza tu Negocio
-      </h1>
-      <h3 class="text-xl md:text-2xl">
-        Construir tu <AnimatedSpan arrayText={arrayText} client:load />
-        es una tarea compleja, pero no tiene que serlo.
-      </h3>
 
-      <!-- Circulos -->
-      <Circles />
-    </div>
+<div class="w-full bg-gray-900  m-auto p-2 md:p-10 md:pt-2 h-full">
+  <div class="stack min-h-screen justify-center gap-4 items-center text-center h-full">
+    <h1 class="text-4xl md:text-7xl text-center leading-tight font-bold">
+      Digitaliza tu Negocio
+    </h1>
+
+    <h3 class="text-xl md:text-2xl">
+      <AnimatedCtaHero ctaArray={ctaArray} client:load />
+    </h3>
+
+    <!-- Circulos -->
   </div>
+</div>

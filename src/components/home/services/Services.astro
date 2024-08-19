@@ -3,27 +3,27 @@ import ServiceCard from "./ServiceCard.astro";
 import melina from "@assets/hero/melina.jpg";
 ---
 
-<section class="w-full py-10 flex justify-center">
-    <div
-        class="flex w-full flex-col items-center justify-around md:flex-row gap-10 container"
-    >
-        <ServiceCard
-            title="Desarrollo"
-            description="Construcción de sitios web, aplicaciones móviles y aplicaciones web."
-            image={melina}
-            index={0}
-        />
-        <ServiceCard
-            title="Diseño"
-            description="Contruccion de Branding, identidad visual a medida. "
-            image={melina}
-            index={1}
-        />
-        <ServiceCard
-            title="Mantenimiento"
-            description="Mantenimiento de tu proyecto, actualizaciones y soporte técnico."
-            image={melina}
-            index={2}
-        />
-    </div>
+<section class="max-w-[68rem] w-full py-10 flex justify-center">
+  <div
+    class="flex w-full flex-col items-center justify-around md:flex-row gap-10"
+  >
+    <ServiceCard
+      title="Desarrollo"
+      description="Construcción de sitios web, aplicaciones móviles y aplicaciones web."
+      image={melina}
+      index={0}
+    />
+    <ServiceCard
+      title="Diseño"
+      description="Contruccion de Branding, identidad visual a medida. "
+      image={melina}
+      index={1}
+    />
+    <ServiceCard
+      title="Mantenimiento"
+      description="Mantenimiento de tu proyecto, actualizaciones y soporte técnico."
+      image={melina}
+      index={2}
+    />
+  </div>
 </section>

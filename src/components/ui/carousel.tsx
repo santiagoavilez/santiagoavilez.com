@@ -63,6 +63,8 @@ const Carousel = React.forwardRef<
       },
       plugins
     )
+    const list = api?.scrollSnapList()
+    console.log(list)
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
@@ -160,7 +162,7 @@ const CarouselContent = React.forwardRef<
         ref={ref}
         className={cn(
           "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+          orientation === "horizontal" ? "-ml-1 md:-ml-4" : "-mt-1 md:-mt-4 flex-col",
           className
         )}
         {...props}
@@ -182,8 +184,8 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
+        "min-w-0 shrink-0 grow-0 basis-full transition-opacity",
+        orientation === "horizontal" ? "pl-1 md:pl-4" : "pt-1 md:pt-4",
         className
       )}
       {...props}

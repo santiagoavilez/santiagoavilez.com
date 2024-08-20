@@ -10,6 +10,8 @@ import type { ImageMetadata } from "astro";
 import { getCollection } from "astro:content";
 
 import Autoplay from "embla-carousel-autoplay"
+import AutoScroll from "embla-carousel-auto-scroll"
+
 import ClassNames from 'embla-carousel-class-names'
 
 
@@ -43,12 +45,16 @@ export default function ProjectsCarrousel() {
 
       }}
       plugins={[
-         Autoplay({
-           delay: 3000,
-         }),
+        //  Autoplay({
+        //    delay: 3000,
+        //  }),
+        AutoScroll({
+          playOnInit: true,
+          speed: 4,
+        }),
         ClassNames( {
           snapped: 'is-snapped',
-          active: true,
+          active: false,
         })
       ]}
       className="w-full  "
@@ -56,7 +62,7 @@ export default function ProjectsCarrousel() {
       <CarouselContent  >
         {projectImagesResolved.map((project, index) => {
           return (
-            <CarouselItem key={index} className="  [&:not(.is-snapped)]:opacity-20 basis-10/12  md:basis-1/2 lg:basis-2/5  ">
+            <CarouselItem key={index} className="  [&:not(.is-snapped)]:opacity-20 basis-10/12  md:basis-1/2 lg:basis-3/12  ">
               <div className="p-1 h-full">
                 <a href={`/projects/${project.slug}`}>
                 <Card  className="overflow-hidden h-full  ">

@@ -3,6 +3,7 @@ import AnimatedSpan from "@components/react/animatedSpan";
 import Circles from "./Circles.astro";
 import AnimatedCtaHero from "@components/react/AnimatedCtaHero";
 import AnimatedFlickerHVO from "./AnimatedFlickerHVO";
+import ProjectsCarrousel from "../projects/ProjectsCarrousel";
 
 const animatedTextsArray1 = [
   {
@@ -90,12 +91,16 @@ const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
   <div
     class="stack min-h-screen pt-20 md:justify-center gap-4 items-center text-center h-full"
   >
-    <div class="w-full absolute top-0 right-0 h-full z-50">
-      <img
+    <div class="w-full absolute top-1/4 right-0 h-full z-50">
+      <!-- <img
         src="https://www.prisma.io/illustrations/home-page/hero-lines.svg"
         width="100%"
         height="100%"
-      />
+      /> -->
+      <div class="w-full -rotate-12 opacity-10">
+        <ProjectsCarrousel client:visible />
+      </div>
+
     </div>
     <h1 class="text-4xl md:text-7xl text-center leading-tight font-bold">
       Digitaliza tu Negocio

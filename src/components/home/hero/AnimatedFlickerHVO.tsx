@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import type { IanimatedCta } from './animated-cta';
-import AnimatedCta from './animated-cta';
+import AnimatedHVO from './animated-HVO';
 
 
 const AnimatedCtaHero = ({ ctaArray }: {
     ctaArray: {
         text: string;
         highlight?: boolean | undefined;
-    }[][] }) => {
+    }[][]
+}) => {
 
     const [index, setIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -17,9 +17,11 @@ const AnimatedCtaHero = ({ ctaArray }: {
             setIsDeleting(true); // Iniciar el borrado antes de cambiar el texto
 
             setTimeout(() => {
+                setIsDeleting(false); // Finalizar el borrado
+
                 setIndex((prevIndex) => (prevIndex + 1) % ctaArray.length);
-            }, 1500);
-        }, 10000);
+            }, 500);
+        }, 3500);
 
         return () => {
             clearInterval(interval);
@@ -28,13 +30,10 @@ const AnimatedCtaHero = ({ ctaArray }: {
 
     return (
         <>
-
-            <span key={index} className={` not-sr-only	text-gray-50 font-bold`}>
-                <AnimatedCta arrayText={ctaArray[index]} isDeleting={isDeleting} />
+            <span key={index} className={`not-sr-only text-gray-50 font-bold transition-all ${isDeleting ? 'animate-zoom-out' : 'animate-zoom-in'}`}>
+                <AnimatedHVO arrayText={ctaArray[index]} isDeleting={isDeleting} />
             </span>
         </>
-
-
     );
 };
 

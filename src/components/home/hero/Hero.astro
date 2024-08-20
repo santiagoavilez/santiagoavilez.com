@@ -2,6 +2,7 @@
 import AnimatedSpan from "@components/react/animatedSpan";
 import Circles from "./Circles.astro";
 import AnimatedCtaHero from "@components/react/AnimatedCtaHero";
+import AnimatedFlickerHVO from "./AnimatedFlickerHVO";
 
 const animatedTextsArray1 = [
   {
@@ -21,7 +22,7 @@ const animatedTextsArray1 = [
 ];
 const animatedTextsArray2 = [
   {
-    text: "T e ayudare a crear un MVP, ",
+    text: "Te ayudare a crear un MVP, ",
   },
   {
     text: " escalable ",
@@ -35,12 +36,12 @@ const animatedTextsArray2 = [
     highlight: true,
   },
   {
-    text: "  para tus usuarios.",
+    text: " para tus usuarios.",
   },
 ];
 const animatedTextsArray3 = [
   {
-    text: "A celera ",
+    text: "Acelera ",
     highlight: true,
   },
   {
@@ -61,7 +62,7 @@ const animatedTextsArray3 = [
 
 const mainAnimatedText = [
   {
-    text: "C reo MVP´S que  ",
+    text: "Creo MVP´S que  ",
   },
   {
     text: " validan ",
@@ -85,14 +86,23 @@ const ctaArray = [
 const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
 ---
 
-<div class="w-full bg-gray-900  m-auto p-2 md:p-10 md:pt-2 h-full">
-  <div class="stack min-h-screen justify-center gap-4 items-center text-center h-full">
+<div class="w-full m-auto p-2 md:p-10 md:pt-2 h-full">
+  <div
+    class="stack min-h-screen pt-20 md:justify-center gap-4 items-center text-center h-full"
+  >
+    <div class="w-full absolute top-0 right-0 h-full z-50">
+      <img
+        src="https://www.prisma.io/illustrations/home-page/hero-lines.svg"
+        width="100%"
+        height="100%"
+      />
+    </div>
     <h1 class="text-4xl md:text-7xl text-center leading-tight font-bold">
       Digitaliza tu Negocio
     </h1>
 
-    <h3 class="text-xl md:text-2xl">
-      <AnimatedCtaHero ctaArray={ctaArray} client:load />
+    <h3 class="text-2xl md:text-4xl max-w-screen-md">
+      <AnimatedFlickerHVO ctaArray={ctaArray} client:load />
     </h3>
 
     <!-- Circulos -->

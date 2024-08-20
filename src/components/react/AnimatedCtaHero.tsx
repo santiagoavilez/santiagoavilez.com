@@ -30,13 +30,10 @@ const AnimatedCtaHero = ({ ctaArray }: {
 
     return (
         <>
-
-            <span key={index} className={` not-sr-only	text-gray-50 font-bold`}>
+            <span key={index} className={` not-sr-only	text-gray-50 font-bold transition-all  ${isDeleting ? 'fade-in zoom-out-125 transition-all ' : 'fade-in-100 zoom-in-125 '}`}>
                 <AnimatedCta arrayText={ctaArray[index]} isDeleting={isDeleting} />
             </span>
         </>
-
-
     );
 };
 

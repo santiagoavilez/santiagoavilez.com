@@ -8,8 +8,10 @@ import ProjectsCarousel from "@components/home/projects/ProjectsCarrousel";
 import { getCollection } from "astro:content";
 ---
 
-<section class="flex flex-col py-6 gap-4 w-full">
-  <header class="md:flex md:justify-between items-center gap-2 lg:gap-4 pb-6">
+<section class="flex flex-col p-6 gap-4 w-full">
+  <header
+    class="md:flex max-w-[68rem] w-full place-self-center md:justify-between items-center gap-2 lg:gap-4 pb-6"
+  >
     <div class="">
       <CardTitle className="text-6xl pb-2">Trabajos realizados</CardTitle>
       <CardDescription className="text-lg text-wrap">
@@ -34,5 +36,3 @@ import { getCollection } from "astro:content";
     </CallToAction>
   </div>
 </section>
-
-

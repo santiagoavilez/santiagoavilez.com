@@ -77,11 +77,31 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeOut: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+        "zoom-in": {
+          from: { transform: 'scale(0.5)', opacity: '0' },
+          to: { transform: 'scale(1)', opacity: '1' },
+        },
+        "zoom-out": {
+          from: { transform: 'scale(1)', opacity: '1' },
+          to: { transform: 'scale(0.5)' , opacity: '0' },
+        },
       },
       animation: {
         "bg-animation": "bg-animation 8s ease infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'fade-in': 'fadeIn 1.5s forwards ',
+        'fade-out': 'fadeOut 1.5s forwards',
+        'zoom-in': 'zoom-in 1s ease ',
+        'zoom-out': 'zoom-in 1s ease ',
       },
     },
   },

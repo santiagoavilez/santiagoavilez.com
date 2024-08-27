@@ -1,18 +1,14 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@components/ui/card";
+import { Card, CardHeader, CardTitle } from "@components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@components/ui/carousel";
 import type { ImageMetadata } from "astro";
 import { getCollection } from "astro:content";
 
-import Autoplay from "embla-carousel-autoplay"
 import AutoScroll from "embla-carousel-auto-scroll"
 
-import ClassNames from 'embla-carousel-class-names'
 
 
 const projects = (await getCollection("projects")).sort(
@@ -41,12 +37,13 @@ interface HeroCarrouselProps {
 }
 
 export default function HeroCarrousel({ direction, speed }: HeroCarrouselProps) {
+
   return (
     <Carousel
       opts={{
         align: "center",
-        loop: true,
         dragFree: false,
+        loop: true,
 
       }}
       draggable={false}
@@ -56,6 +53,7 @@ export default function HeroCarrousel({ direction, speed }: HeroCarrouselProps) 
           stopOnMouseEnter: false,
           stopOnFocusIn: false,
           speed: speed,
+          startDelay: 50,
         }),
       ]}
       className="w-full "

@@ -22,7 +22,6 @@ const projects = (await getCollection("projects")).sort(
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/previews/*.{jpeg,jpg,png,gif}"
 );
-console.log(images);
 
 const projectImagesResolved = await Promise.all(projects.map( async (project) => {
   const previewImg = images[`${project.data.img}`];

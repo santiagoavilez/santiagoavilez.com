@@ -1,0 +1,25 @@
+---
+import BrandsCarrousel from "./BrandsCarrousel";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/hero/brands/*.{jpeg,jpg,png,gif,webp,svg}"
+);
+
+// Resolver las imágenes y preparar los datos
+const brandsResolved = await Promise.all(
+  Object.values(images).map(async (image) => {
+    const img = await image();
+    const src = img.default.src;
+    const alt = src?.split("/").pop()?.split(".")[0];
+    return {
+      src: src,
+      alt: alt,
+      width: img.default.width,
+      height: img.default.height,
+    };
+  })
+);
+---
+
+  <BrandsCarrousel brands={brandsResolved} client:only="react" />
+

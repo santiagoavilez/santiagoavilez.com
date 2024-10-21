@@ -42,19 +42,15 @@ export default function ProjectsCarrousel() {
       opts={{
         align: "center",
         loop: true,
-
       }}
       plugins={[
-        //  Autoplay({
-        //    delay: 3000,
-        //  }),
-        AutoScroll({
-          playOnInit: true,
-          speed: 4,
-        }),
+          Autoplay({
+            delay: 4000,
+          }),
+
         ClassNames( {
-          snapped: 'is-snapped',
-          active: false,
+          snapped: 'snapped',
+          active: true,
         })
       ]}
       className="w-full  "
@@ -62,7 +58,7 @@ export default function ProjectsCarrousel() {
       <CarouselContent  >
         {projectImagesResolved.map((project, index) => {
           return (
-            <CarouselItem key={index} className="  [&:not(.is-snapped)]:opacity-20 basis-10/12  md:basis-1/2 lg:basis-3/12  ">
+            <CarouselItem key={index} className="  [&:not(.snapped)]:opacity-20 basis-10/12  md:basis-1/2 lg:basis-3/12  ">
               <div className="p-1 h-full">
                 <a href={`/projects/${project.slug}`}>
                 <Card  className="overflow-hidden h-full  ">

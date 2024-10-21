@@ -4,6 +4,7 @@ import Circles from "./Circles.astro";
 import AnimatedCtaHero from "@components/react/AnimatedCtaHero";
 import AnimatedFlickerHVO from "./AnimatedFlickerHVO";
 import ProjectsCarrousel from "../projects/ProjectsCarrousel";
+import { Image } from "astro:assets";
 
 const animatedTextsArray1 = [
   {
@@ -85,31 +86,51 @@ const ctaArray = [
   animatedTextsArray1,
 ];
 const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
+
+import portrait from "../../../assets/hero/profile_picture.jpg";
+import Brands from "./Brands.astro";
 ---
 
 <div class="w-full m-auto p-2 md:p-10 md:pt-2 h-full">
   <div
-    class="stack min-h-screen pt-20 md:justify-center gap-4 items-center text-center h-full"
+    class="stack container min-h-screen pt-20 md:justify-center gap-4 items-center text-center h-full"
   >
-    <div class="w-full absolute top-1/4 right-0 h-full z-50">
-      <!-- <img
+    <div
+      data-aos={"fade"}
+      data-aos-duration="800"
+      data-aos-easing="ease-in-sine"
+      data-aos-once="false"
+      class="w-full absolute top-0 right-0 h-full z-10"
+    >
+      <img
         src="https://www.prisma.io/illustrations/home-page/hero-lines.svg"
         width="100%"
         height="100%"
-      /> -->
-      <div class="w-full -rotate-12 opacity-10">
-        <ProjectsCarrousel client:visible />
-      </div>
-
+      />
     </div>
-    <h1 class="text-4xl md:text-7xl text-center leading-tight font-bold">
-      Digitaliza tu Negocio
-    </h1>
+    <div
+      class="flex flex-col min-h-[calc(60vh)] md:flex-row w-full opacity-100 z-40 justify-between gap-12 items-center"
+    >
+      <div class="w-72 md:w-96 md:order-2">
+        <Image src={portrait} alt="hero" class="w-full rounded-full" />
+      </div>
+      <div class="flex flex-col text-left gap-4">
+        <h1 class="text-4xl md:text-7xl leading-tight font-bold">
+          Digitaliza tu Negocio
+        </h1>
 
-    <h3 class="text-2xl md:text-4xl max-w-screen-md">
-      <AnimatedFlickerHVO ctaArray={ctaArray} client:load />
-    </h3>
-
-    <!-- Circulos -->
+        <h3 class="text-2xl md:text-4xl max-w-screen-md">
+          <AnimatedFlickerHVO ctaArray={ctaArray} client:load />
+        </h3>
+      </div>
+    </div>
+    <div
+      data-aos={"fade"}
+      data-aos-duration="800"
+      data-aos-easing="ease-in-sine"
+      class="z-10"
+    >
+      <Brands />
+    </div>
   </div>
 </div>

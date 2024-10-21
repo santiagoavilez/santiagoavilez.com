@@ -10,8 +10,6 @@ import type { ImageMetadata } from "astro";
 import { getCollection } from "astro:content";
 
 import Autoplay from "embla-carousel-autoplay"
-import AutoScroll from "embla-carousel-auto-scroll"
-
 import ClassNames from 'embla-carousel-class-names'
 
 
@@ -22,7 +20,6 @@ const projects = (await getCollection("projects")).sort(
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/previews/*.{jpeg,jpg,png,gif}"
 );
-console.log(images);
 
 const projectImagesResolved = await Promise.all(projects.map( async (project) => {
   const previewImg = images[`${project.data.img}`];
@@ -43,13 +40,14 @@ export default function ProjectsCarrousel() {
         align: "center",
         loop: true,
       }}
+
       plugins={[
-          Autoplay({
-            delay: 4000,
-          }),
+        Autoplay({
+          delay: 2000,
+        }),
 
         ClassNames( {
-          snapped: 'snapped',
+          snapped: 'is-snapped',
           active: true,
         })
       ]}
@@ -58,7 +56,7 @@ export default function ProjectsCarrousel() {
       <CarouselContent  >
         {projectImagesResolved.map((project, index) => {
           return (
-            <CarouselItem key={index} className="  [&:not(.snapped)]:opacity-20 basis-10/12  md:basis-1/2 lg:basis-3/12  ">
+            <CarouselItem key={index} className="[&:not(.snapped)]:opacity-20 basis-10/12  md:basis-1/2 lg:basis-3/12  ">
               <div className="p-1 h-full">
                 <a href={`/projects/${project.slug}`}>
                 <Card  className="overflow-hidden h-full  ">

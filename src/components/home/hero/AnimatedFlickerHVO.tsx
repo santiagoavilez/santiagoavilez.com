@@ -21,7 +21,7 @@ const AnimatedCtaHero = ({ ctaArray }: {
 
                 setIndex((prevIndex) => (prevIndex + 1) % ctaArray.length);
             }, 500);
-        }, 3500);
+        }, 5000);
 
         return () => {
             clearInterval(interval);

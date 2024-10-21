@@ -63,8 +63,7 @@ const Carousel = React.forwardRef<
       },
       plugins
     )
-    const list = api?.scrollSnapList()
-    console.log(list)
+
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 

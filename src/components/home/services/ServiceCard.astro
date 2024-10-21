@@ -18,7 +18,7 @@ interface Props {
   index: number;
 }
 const { title, description, image, index } = Astro.props;
-const delay =  index * 250;
+const delay = index * 250;
 ---
 
 <div
@@ -31,7 +31,7 @@ const delay =  index * 250;
   <div class="w-full min-w-72 relative aspect-video">
     <div class="relative h-full w-full p-1">
       <Image
-        class="z-10 filter blur-[2px] backdrop-blur-xl w-full rounded-xl h-full"
+        class="-z-10 filter blur-[2px] backdrop-blur-xl w-full rounded-xl h-full"
         src={image}
         width={500}
         height={380}
@@ -47,7 +47,7 @@ const delay =  index * 250;
       class="w-3/4 md:w-8/12 h-full z-30 absolute translate-y-[-50%] top-[50%] left-0 rounded-xl"
     >
       <Card
-        className="flex h-full flex-col justify-between bg-black rounded-xl"
+        className="flex h-full flex-col justify-between border-0 shadow-sm bg-black rounded-xl"
       >
         <CardHeader className="h-full justify-between">
           <CardTitle> {title} </CardTitle>

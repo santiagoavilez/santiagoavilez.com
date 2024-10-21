@@ -7,12 +7,27 @@ import Grid from "@components/Grid.astro";
 import { Card, CardHeader } from "@components/ui/card";
 import AboutUs from "@components/home/about/AboutUs.astro";
 import ProjectsPreview from "@components/home/projects/ProjectsPreview.astro";
+import HeroCarrousel from "@components/home/hero/HeroCarrousel";
 ---
 
 <BaseLayout>
   <div
-    class="w-full h-full min-h-screen flex flex-col items-center mx-auto overflow-hidden"
+    class="w-full h-full min-h-screen flex flex-col items-center mx-auto overflow-x-hidden"
   >
+    <div class="w-full overflow-hidden absolute top-0 -z-50 right-0 h-[140vh]">
+      <img
+        src="https://www.prisma.io/illustrations/home-page/hero-lines.svg"
+        width="100%"
+        height="100%"
+      />
+      <!-- <div class="w-full -rotate-12 scale-125 opacity-10 pt-52">
+        <HeroCarrousel speed={1} client:visible />
+      </div>
+
+      <div class="w-full -rotate-12 scale-125 opacity-10 pt-28">
+        <HeroCarrousel speed={1} client:visible />
+      </div> -->
+    </div>
     <Hero />
     <Services />
     <ProjectsPreview />

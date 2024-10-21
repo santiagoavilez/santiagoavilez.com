@@ -3,8 +3,6 @@ import AnimatedSpan from "@components/react/animatedSpan";
 import Circles from "./Circles.astro";
 import AnimatedCtaHero from "@components/react/AnimatedCtaHero";
 import AnimatedFlickerHVO from "./AnimatedFlickerHVO";
-import ProjectsCarrousel from "../projects/ProjectsCarrousel";
-import { Image } from "astro:assets";
 
 const animatedTextsArray1 = [
   {
@@ -89,9 +87,14 @@ const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
 
 import portrait from "../../../assets/hero/profile_picture.jpg";
 import Brands from "./Brands.astro";
+
+import Santiago from "@assets/hero/retrato-old.webp";
+import { Image } from "astro:assets";
 ---
 
-<div class="w-full m-auto p-2 md:p-10 md:pt-2 h-full">
+<div
+  class="w-full flex flex-col md:flex-row items-center justify-center gap-20 m-auto p-2 md:p-10 md:py-28 min-h-screen h-full"
+>
   <div
     class="stack container min-h-screen pt-20 md:justify-center gap-4 items-center text-center h-full"
   >
@@ -132,5 +135,14 @@ import Brands from "./Brands.astro";
     >
       <Brands />
     </div>
+  </div>
+  <div class="bg-black rounded-full">
+    <Image
+      class={` rounded-full  `}
+      src={Santiago}
+      alt="melina"
+      width={350}
+      height={350}
+    />
   </div>
 </div>

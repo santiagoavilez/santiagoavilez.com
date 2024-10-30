@@ -43,7 +43,8 @@ export default function ProjectsCarrousel() {
 
       plugins={[
         Autoplay({
-          delay: 2000,
+          delay: 4000,
+          stopOnInteraction: false,
         }),
 
         ClassNames( {
@@ -56,7 +57,7 @@ export default function ProjectsCarrousel() {
       <CarouselContent  >
         {projectImagesResolved.map((project, index) => {
           return (
-            <CarouselItem key={index} className="[&:not(.snapped)]:opacity-20 basis-10/12  md:basis-1/2 lg:basis-3/12  ">
+            <CarouselItem key={index} className="[&:not(.is-snapped)]:opacity-20 basis-10/12  md:basis-1/2 lg:basis-3/12  ">
               <div className="p-1 h-full">
                 <a href={`/projects/${project.slug}`}>
                 <Card  className="overflow-hidden h-full  ">

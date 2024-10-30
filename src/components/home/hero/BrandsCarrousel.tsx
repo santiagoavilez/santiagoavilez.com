@@ -41,8 +41,11 @@ export default function bCarrousel({ brands }: BrandsCarrouselProps) {
                     playOnInit: true,
                     speed: 1,
                     direction: 'backward',
-
+                    stopOnInteraction: false,
+                    stopOnFocusIn: false,
+                    stopOnMouseEnter: true,
                 }),
+
                 ClassNames({
                     snapped: 'is-snapped',
                     active: false,

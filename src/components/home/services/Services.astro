@@ -1,7 +1,10 @@
 ---
 import CallToAction from "@components/CallToAction.astro";
 import ServiceCard from "./ServiceCard.astro";
-import melina from "@assets/hero/melina.jpg";
+import desing from "@assets/services/desing.jpg";
+import webDesing from "@assets/services/web-desing.jpg";
+import webdev from "@assets/services/web-dev-background.jpg";
+
 import { CardDescription, CardTitle } from "@components/ui/card";
 import Icon from "@components/Icon.astro";
 ---
@@ -22,18 +25,18 @@ import Icon from "@components/Icon.astro";
       </CardDescription>
     </div>
 
-    <div
+    <!-- <div
       data-aos="zoom-out"
       data-aos-easing="ease"
       data-aos-delay="600"
       data-aos-duration="300"
       class="hidden md:block"
     >
-      <CallToAction class:list={"w-auto"} href="/projects/">
+      <CallToAction class:list={"w-auto cursor-pointer"} href="https://wa.me/5492984648765">
         COTIZAR PRESUPUESTO
         <Icon icon="arrow-right" size="1.2em" />
       </CallToAction>
-    </div>
+    </div> -->
   </header>
   <div
     class="flex w-full flex-col items-center justify-around md:flex-row gap-10"
@@ -41,20 +44,20 @@ import Icon from "@components/Icon.astro";
     <ServiceCard
       title="Diseño"
       description="Contruccion de Branding, identidad visual a medida. "
-      image={melina}
+      image={webDesing}
       index={1}
     />
     <ServiceCard
       title="Desarrollo"
       description="Construcción de sitios web, aplicaciones móviles y aplicaciones web."
-      image={melina}
+      image={webdev}
       index={0}
     />
 
     <ServiceCard
       title="Mantenimiento"
       description="Mantenimiento de tu proyecto, actualizaciones y soporte técnico."
-      image={melina}
+      image={desing}
       index={2}
     />
   </div>

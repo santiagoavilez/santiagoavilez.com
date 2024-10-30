@@ -1,0 +1,62 @@
+---
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@components/ui/card";
+import { Image } from "astro:assets";
+
+import { ArrowUpRight } from "lucide-react";
+
+interface Props {
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  index: number;
+}
+const { title, description, image, index } = Astro.props;
+const delay = index * 250;
+---
+
+<div
+  data-aos="zoom-out-up"
+  data-aos-duration="150"
+  data-aos-delay={delay}
+  data-aos-once="true"
+  class="flex w-full max-w-sm"
+>
+  <div class="w-full min-w-72 relative aspect-video">
+    <div class="relative h-full w-full p-1">
+      <Image
+        class="-z-10 filter  w-full rounded-xl h-full"
+        src={image}
+        width={500}
+        height={380}
+        alt={"coso"}
+      />
+      <div
+        class="absolute top-4 right-4 p-2 cursor-pointer bg-gray-100/50 rounded-full"
+      >
+        <ArrowUpRight size={50} />
+      </div>
+    </div>
+    <div
+      class="w-3/4 md:w-8/12 h-full z-30 absolute translate-y-[-50%] top-[50%] left-0 rounded-xl"
+    >
+      <Card
+        className="flex h-full flex-col justify-between border-0 shadow-sm bg-black rounded-xl"
+      >
+        <CardHeader className="h-full justify-between">
+          <CardTitle> {title} </CardTitle>
+          <CardDescription>
+            {description}
+          </CardDescription>
+          <CardFooter className="p-0"> Ver más </CardFooter>
+        </CardHeader>
+      </Card>
+    </div>
+  </div>
+</div>

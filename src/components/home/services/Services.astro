@@ -1,0 +1,70 @@
+---
+import CallToAction from "@components/CallToAction.astro";
+import ServiceCard from "./ServiceCard.astro";
+import desing from "@assets/services/desing.jpg";
+import webDesing from "@assets/services/web-desing.jpg";
+import webdev from "@assets/services/web-dev-background.jpg";
+
+import { CardDescription, CardTitle } from "@components/ui/card";
+import Icon from "@components/Icon.astro";
+---
+
+<section
+  class="max-w-[68rem] w-full pb-20 px-6 flex flex-col gap-4 justify-start"
+>
+  <header class="md:flex md:justify-between items-center gap-2 lg:gap-4 pb-6">
+    <div
+      data-aos="fade-left"
+      data-aos-easing="ease"
+      data-aos-duration="300"
+      class=""
+    >
+      <CardTitle className="text-6xl pb-2">¿Que puedo hacer por vos?</CardTitle>
+      <CardDescription className="text-lg text-wrap">
+        Nuestro equipo puede ayudarte a construir tu proyecto digital.
+      </CardDescription>
+    </div>
+
+    <!-- <div
+      data-aos="zoom-out"
+      data-aos-easing="ease"
+      data-aos-delay="600"
+      data-aos-duration="300"
+      class="hidden md:block"
+    >
+      <CallToAction class:list={"w-auto cursor-pointer"} href="https://wa.me/5492984648765">
+        COTIZAR PRESUPUESTO
+        <Icon icon="arrow-right" size="1.2em" />
+      </CallToAction>
+    </div> -->
+  </header>
+  <div
+    class="flex w-full flex-col items-center justify-around md:flex-row gap-10"
+  >
+    <ServiceCard
+      title="Diseño"
+      description="Contruccion de Branding, identidad visual a medida. "
+      image={webDesing}
+      index={1}
+    />
+    <ServiceCard
+      title="Desarrollo"
+      description="Construcción de sitios web, aplicaciones móviles y aplicaciones web."
+      image={webdev}
+      index={0}
+    />
+
+    <ServiceCard
+      title="Mantenimiento"
+      description="Mantenimiento de tu proyecto, actualizaciones y soporte técnico."
+      image={desing}
+      index={2}
+    />
+  </div>
+  <div class="w-fit place-self-center md:hidden">
+    <CallToAction href="/projects/">
+      COTIZAR PRESUPUESTO
+      <Icon icon="arrow-right" size="1.2em" />
+    </CallToAction>
+  </div>
+</section>

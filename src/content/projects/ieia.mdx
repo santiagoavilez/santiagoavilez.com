@@ -1,0 +1,123 @@
+---
+title: IEIA - Instituto Empresarial de Inteligencia Artificial
+publishDate: 2024-01-05 00:00:00
+img: /src/assets/previews/ieia-1440.png
+img_w: 504
+img_h: 360
+img_alt: IEIA - Instituto Empresarial de Inteligencia Artificial cover
+git: https://github.com/santiagoavilez/MelinaBatalla
+live: https://melinabatalla.com/cursos/root-program
+description: |
+    Landing page para el Instituto Empresarial de Inteligencia Artificial, con un diseño moderno y atractivo, que permite a los visitantes conocer los cursos y servicios que ofrece el instituto.
+tags:
+  - Desarrollo web
+  - Diseño web
+  - Branding
+
+tools:
+- name: React
+  icon: /assets/logos/React_icon.svg"
+  alt: React logo
+- name: Figma
+  icon: /assets/logos/figma_icon.svg"
+  alt: Figma logo
+- name: Next.js
+  icon: /assets/logos/nextjs.svg
+  alt: Next.js logo
+- name: Tailwind CSS
+  icon: /assets/logos/Tailwind_isologo.svg
+  alt: Tailwind logo
+- name: Strapi
+  icon: /assets/logos/Strapi.monogram.logo.svg
+  alt: Strapi logo
+- name: Socket.io
+  icon: /assets/logos/socket-io.svg
+  alt: Socket.io logo
+---
+import { Image    } from 'astro:assets';
+import laborarlogin from '../../assets/laborar/login.jpg';
+
+import laborarw50 from '../../assets/laborar/home500w.jpg';
+
+
+### Introducción.
+
+A finales del año 2022 me encontré con un problema: se dañó una de las tuberías de mi casa. Por lo que busqué un plomero en Internet sin resultado alguno.
+
+En ese momento me encontraba finalizando mis estudios en la facultad. Cuyo trabajo final era desarrollar una aplicación web con tema y tecnología a libre elección. Vi esta situación como una posibilidad.
+
+La idea base es entonces: crear una plataforma web en la que se puedan encontrar trabajadores de diversas profesiones, contratarlos y reseñarlos.
+
+#### Inicio de proyecto
+
+
+
+Empecé a investigar proyectos similares para inspirarme y tener una idea de lo que hay en el mercado actual, encontré que no había ningún sitio ni plataforma en mi zona pero sí en otras regiones del mundo.
+
+> Diseño
+
+Para diseñar la estructura del proyecto, primero hice prototipos en papel, para tener una idea de como iba a ser la aplicación. Despues diseñe el **Modelo de Datos**, el cual consiste en una tabla de usuarios, una tabla de servicios y una tabla de reseñas. Por ultimo use **Figma** para diseñar UI/UX del usuario. Lo que me dio un boceto inicial de la aplicación.
+
+{/* <Image class="rounded-full " src={figma} alt={'figma logo'} height={64} width={64} /> */}
+
+{/* <div class="flex justify-center my-10 ">
+<img class="rounded-3xl " src={"/laborar/login.svg"} alt="login page" loading="lazy"	decoding="async"  />
+</div> */}
+
+<div class="flex justify-center my-10 ">
+<Image class="rounded-3xl" src={laborarlogin} format='webp' width={300} alt={'login page'} />
+</div>
+
+
+{/* <div class="my-10">
+<img class="rounded-3xl" src="/laborar/home.jpg" alt="login page." loading="lazy"	decoding="async" />
+</div> */}
+
+<div class="flex justify-center my-10 ">
+<Image class="rounded-3xl" src={laborarw50} format='webp' alt={'login page'}  width={512}   />
+</div>
+
+>Ya teniendo mi boceto inicial.....
+
+Empece a elegir el stack tecnológico de la aplicación. Decidí utilizar **Next.js** y **Tailwind CSS** como frontend. Para el backend: **Strapi** como Headless CMS junto a una base de datos **MySQL** e integrado con web sockets para darle dinamismo en tiempo real gracias a **Socket.io**, además de diversas librerías. Si bien estas opciones se adaptaban a mis necesidades, eran totalmente nuevas para mí, lo que fue un gran reto personal, ya que quería ampliar mis conocimientos en el desarrollo web.
+
+
+> Backend
+
+**Strapi** es un framework de código abierto que permite crear una API RESTful en muy poco tiempo. Esto me permitió concentrarme en el frontend y el diseño de la aplicación. Si bien strapi es muy fácil de usar, no es tan fácil de configurar. La integracion con **Socket.io** fue un poco complicada, ya que no hay mucha documentación al respecto.
+
+Finalmente ice despliegue de el backend y la base de datos en **Railwap.app** un servicio de Cloud hosting que permite automatizar el despliegue por medio de un repositorio de **GitHub**.
+
+> Frontend
+
+**Next.js** es un framework de **React** que permite crear aplicaciones web de forma rápida y sencilla. Permitiendo el uso de **SSR**, **SSG** y **ISR**. Esto  me permitió crear una aplicación web con un rendimiento excelente, ya que el servidor renderiza el contenido de la página antes de que el cliente la solicite, ademas de que el contenido de los prestadores de servicios es estático, lo que permite que la aplicación sea muy rápida. Gracias a **Tailwind CSS** pude crear un diseño responsive y con una gran variedad de componentes.
+
+
+
+
+#### Haciendo el chat
+
+Una de las funcionalidades más importantes de la aplicación es el chat. Para ello utilice **Socket.io**.
+
+**Socket.io** es una librería que permite la comunicación en tiempo real entre el servidor y el cliente. Esto me permitio crear un chat en tiempo real, en el que los usuarios pueden enviar mensajes, ademas de que el prestador de servicio puede ver cuando el usuario esta escribiendo un mensaje.
+
+Pude crear un sistema de notificaciones que permite mantener al tanto a los prestadores de servicios cuando, algun cliente los quiere contactar o los ha reseñado en tiempo real. Adicionalmente se puede ver el historial de mensajes y notificaciones entre el usuario y el prestador de servicio, ya que los estos se guardan en la base de datos.
+
+<div class="flex justify-center my-10 object-contain max-w-[272px] m-auto sm:max-w-none ">
+  <video class="my-10 w-full" src="/videos/chatapp.mp4" type="video/webm" preload="metadata" loading="lazy"	decoding="async" poster="/assets/cover_laborar.jpg" controls >
+  </video >
+</div>
+
+
+#### Haciendo el sistema de reseñas
+
+El sistema de reseñas es una de las partes mas importantes de la aplicación. Ya que permite que los usuarios puedan reseñar a los prestadores de servicios. Para esto se utilizo **React Hook Form** para crear un formulario de reseñas, el cual permite validar los datos ingresados por el usuario. Ademas de que se puede ver el historial de reseñas de cada prestador de servicio.
+
+
+
+
+
+#### Haciendo la busqueda de servicios
+
+Para la busqueda de servicios se utilizo **Algolia** un servicio de busqueda que permite crear una busqueda instantanea de los servicios. Esto permite que el usuario pueda buscar un servicio de forma rapida y sencilla. Ademas de que se puede filtrar los servicios por categoria, precio y ubicación.
+

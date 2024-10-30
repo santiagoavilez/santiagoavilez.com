@@ -1,0 +1,38 @@
+---
+import CallToAction from "@components/CallToAction.astro";
+import Grid from "@components/Grid.astro";
+import Icon from "@components/Icon.astro";
+import PortfolioPreview from "@components/PortfolioPreview.astro";
+import { CardDescription, CardTitle } from "@components/ui/card";
+import ProjectsCarousel from "@components/home/projects/ProjectsCarrousel";
+import { getCollection } from "astro:content";
+---
+
+<section class="flex flex-col p-6 gap-4 w-full">
+  <header
+    class="md:flex max-w-[68rem] w-full place-self-center md:justify-between items-center gap-2 lg:gap-4 pb-6"
+  >
+    <div class="">
+      <CardTitle className="text-6xl pb-2">Trabajos realizados</CardTitle>
+      <CardDescription className="text-lg text-wrap">
+        Da un vistazo a mis trabajos más destacados en los últimos años.</CardDescription
+      >
+    </div>
+
+    <div class="hidden md:block">
+      <CallToAction href="/projects/">
+        Ver todos
+        <Icon icon="arrow-right" size="1.2em" />
+      </CallToAction>
+    </div>
+  </header>
+  <div class="w-full">
+    <ProjectsCarousel client:visible />
+  </div>
+  <div class="w-full md:hidden">
+    <CallToAction href="/projects/">
+      Ver todos
+      <Icon icon="arrow-right" size="1.2em" />
+    </CallToAction>
+  </div>
+</section>

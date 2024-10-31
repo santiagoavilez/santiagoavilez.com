@@ -56,7 +56,7 @@ export default function bCarrousel({ brands }: BrandsCarrouselProps) {
             <CarouselContent  >
                 {brands.map((brand, index) => {
                     return (
-                        <CarouselItem key={index} className=" flex justify-center basis-10/12  md:basis-1/2 lg:basis-3/12 w-auto ">
+                        <CarouselItem key={index} className=" flex justify-center basis-5/12   lg:basis-3/12 w-auto ">
                             <div className="p-1 h-full w-fit flex items-center">
                                 <img className="" src={brand.src} alt={brand.alt} width={brand.width} height={brand.height} />
                             </div>

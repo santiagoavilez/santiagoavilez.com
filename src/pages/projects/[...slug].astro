@@ -26,7 +26,14 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-const img = import(`${entry.data.img}`);
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/previews/*.{jpeg,jpg,png,gif}"
+);
+
+if (!images[entry.data.img])
+  throw new Error(
+    `"${entry.data.img}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+  );
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
@@ -55,7 +62,7 @@ const img = import(`${entry.data.img}`);
             entry.data.img && (
               <Image
                 class="rounded-3xl border animate__animated animate__fadeInUp border-gray-800"
-                src={img}
+                src={images[entry.data.img]()}
                 alt={entry.data.img_alt || ""}
                 loading="eager"
               />

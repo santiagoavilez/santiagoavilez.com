@@ -31,14 +31,14 @@ const { Content } = await entry.render();
 	<div class="stack">
 		<div class="stack">
 			<header>
-				<div class="wrapper stack">
-					<a class="back-link" href="/work/"
+				<div class=" pt-28 max-w-4xl m-auto w-full stack">
+					<a class="back-link" href="/projects/"
 						><Icon icon="arrow-left" /> Work</a
 					>
 					<Hero title={entry.data.title} align="start">
 						<div class="details">
 							<div
-								class="tags flex flex-wrap sm:flex-nowrap justify-center md:justify-start"
+								class="tags flex flex-wrap sm:flex-nowrap justify-end md:justify-end"
 							>
 								{entry.data.tags.map((t) => <Pill>{t}</Pill>)}
 							</div>

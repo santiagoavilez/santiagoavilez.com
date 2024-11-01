@@ -94,20 +94,20 @@ import ServiceCTA from "../services/ServiceCTA.astro";
 ---
 
 <div
-  class="w-full flex flex-col md:flex-row items-center justify-center gap-20 m-auto md:p-10  min-h-screen h-full"
+  class="w-full flex flex-col md:flex-row items-center justify-center gap-20 m-auto md:p-10 min-h-screen h-full"
 >
   <div
-    class="stack container p-5 justify-center pt-20 md:justify-start gap-8 items-center text-center h-full"
+    class="stack container p-5 justify-center pt-20 md:justify-start gap-4 items-center text-center h-full"
   >
     <div
       class="flex flex-col md:flex-row w-full opacity-100 z-40 justify-between gap-12 items-center"
     >
-      <div class="flex flex-col text-left gap-4">
+      <div class="flex flex-col text-center md:text-left gap-4">
         <h1 class="text-4xl md:text-7xl leading-tight font-bold">
           Digitaliza tu Negocio
         </h1>
 
-        <h3 class="text-2xl h-32 md:text-4xl max-w-screen-md">
+        <h3 class="text-2xl h-28 md:text-4xl max-w-screen-md">
           <AnimatedFlickerHVO ctaArray={ctaArray} client:load />
         </h3>
       </div>
@@ -121,7 +121,8 @@ import ServiceCTA from "../services/ServiceCTA.astro";
       data-aos-easing="ease-in-sine"
       class="z-10"
     >
-      <Brands />
+      <div class="h-32"><Brands /></div>
+
       <ServiceCTA />
     </div>
   </div>

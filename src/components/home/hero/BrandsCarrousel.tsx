@@ -25,10 +25,20 @@ interface BrandsCarrouselProps {
         width: number;
         height: number;
     }[]
+    direction?: 'forward' | 'backward'
 }
 
 
-export default function bCarrousel({ brands }: BrandsCarrouselProps) {
+export default function bCarrousel({ brands, direction }: BrandsCarrouselProps) {
+    if (direction === 'forward') {
+         // reduce the number of brands to show in the carousel to 5
+        brands = brands.slice(0, 5)
+    }
+    else {
+        // reverse the order of the brands to show in the carousel
+        brands = brands.reverse()
+        brands = brands.slice(0, 5)
+    }
     return (
         <Carousel
             opts={{
@@ -40,7 +50,7 @@ export default function bCarrousel({ brands }: BrandsCarrouselProps) {
                 AutoScroll({
                     playOnInit: true,
                     speed: 1,
-                    direction: 'backward',
+                    direction: direction,
                     stopOnInteraction: false,
                     stopOnFocusIn: false,
                     stopOnMouseEnter: true,
@@ -56,7 +66,7 @@ export default function bCarrousel({ brands }: BrandsCarrouselProps) {
             <CarouselContent  >
                 {brands.map((brand, index) => {
                     return (
-                        <CarouselItem key={index} className=" flex justify-center basis-5/12   lg:basis-3/12 w-auto ">
+                        <CarouselItem key={index} className=" flex justify-center basis-3/12 w-auto ">
                             <div className="p-1 h-full w-fit flex items-center">
                                 <img className="" src={brand.src} alt={brand.alt} width={brand.width} height={brand.height} />
                             </div>

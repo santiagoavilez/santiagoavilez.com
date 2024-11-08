@@ -2,22 +2,18 @@
 import AboutUsCard from "./AboutUsCard.astro";
 import melina from "@assets/hero/melina.jpg";
 import Santiago from "@assets/hero/retrato.jpg";
+import { CardDescription } from "@components/ui/card";
 ---
 
 <section
-  class="w-full py-10 flex h-full flex-col gap-8 items-center justify-center md:gap-12"
+id="about"
+  class="w-full py-10 px-6 flex h-full flex-col gap-8 items-center justify-center md:gap-12"
 >
-  <h2 class="text-6xl">¿Quienes somos?</h2>
+  <h2 class="text-6xl">Sobre mi</h2>
 
   <AboutUsCard
-    title="Melina Batalla"
-    description={"Bussines Coach, Diseñadora Gráfica,​Especialista en Marketing y Redes sociales."}
-    image={melina}
-  />
-  <AboutUsCard
     title="Santiago Avilez"
-    description="Desarrollador web fullstack, especialista desarrollo y despliegue de aplicaciones web y móviles."
     image={Santiago}
-    odd
+    description=""
   />
 </section>

@@ -19,7 +19,17 @@ const brandsResolved = await Promise.all(
     };
   })
 );
+
+interface Props {
+  direction?: "forward" | "backward";
+}
+
+const { direction } = Astro.props;
+
 ---
 
-  <BrandsCarrousel brands={brandsResolved} client:only="react" />
-
+<BrandsCarrousel
+  brands={brandsResolved}
+  direction={direction}
+  client:only="react"
+/>

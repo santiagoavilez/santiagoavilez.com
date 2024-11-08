@@ -104,7 +104,7 @@ import ServiceCTA from "../services/ServiceCTA.astro";
     >
       <div class="flex flex-col text-center md:text-left gap-4">
         <h1 class="text-4xl md:text-7xl leading-tight font-bold">
-          Digitaliza tu Negocio
+          Lleva tu sitio web al siguiente nivel
         </h1>
 
         <h3 class="text-2xl h-28 md:text-4xl max-w-screen-md">
@@ -121,9 +121,15 @@ import ServiceCTA from "../services/ServiceCTA.astro";
       data-aos-easing="ease-in-sine"
       class="z-10"
     >
-      <div class="h-32"><Brands /></div>
+      <div class="h-32 ">
+        <Brands direction="backward" />
+      </div>
+      <div class="h-32 ">
+        <Brands  direction="forward"/>
+      </div>
 
-      <ServiceCTA />
     </div>
+          <ServiceCTA />
+
   </div>
 </div>

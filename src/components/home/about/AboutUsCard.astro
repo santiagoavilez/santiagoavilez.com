@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import melina from "@assets/hero/melina.jpg";
 import { CardDescription, CardTitle } from "@components/ui/card";
 import { ArrowUpRight } from "lucide-react";
 
@@ -22,7 +21,7 @@ const { odd, title, description, image } = Astro.props;
   class="flex flex-col md:flex-row h-full w-full items-center md:items-start justify-center gap-3 md:gap-8"
 >
   <div
-    class={`flex gap-3 w-full max-w-sm justify-between  ${odd ? "md:-translate-y-52" : ""}`}
+    class={`flex gap-3 w-full max-w-xl justify-between  ${odd ? "md:-translate-y-52" : ""}`}
   >
     <div
       data-aos={odd ? "fade-down-left" : "fade-up-right"}
@@ -34,23 +33,40 @@ const { odd, title, description, image } = Astro.props;
       <ArrowUpRight className={`"w-8 md:w-12 md:h-12 ${odd && "rotate-180"}`} />
     </div>
     <div
-      class={`relative w-full h-full aspect-square border-2 border-gray-50/85 g-transparent rounded-lg ${odd ? "ml-4" : "mr-4"}`}
+      class={`relative w-full aspect-square border-2 border-gray-50/85 g-transparent rounded-lg ${odd ? "ml-4" : "mr-4"}`}
     >
       <Image
-        class={`absolute w-full h-full rounded-lg top-4  ${odd ? "right-4" : "left-4"}`}
+        class={`absolute w-full rounded-lg top-4  ${odd ? "right-4" : "left-4"}`}
         src={image}
-        alt="melina"
+        alt="about us"
         width={500}
         height={500}
       />
     </div>
   </div>
   <div
-    class={`pt-4 max-w-sm text-left ${odd && "md:order-first md:text-right "}`}
+    class={`pt-4 max-w-2xl text-left ${odd && "md:order-first md:text-right "}`}
   >
-    <CardTitle> {title} </CardTitle>
-    <CardDescription className="pt-2">
-      {description}
+    <!-- <CardTitle className="text-3xl"> {title} </CardTitle> -->
+    <CardDescription className="pt-2 text-xl">
+      Apesar de mi corta trayectoria de 3 años como desarrollador web, he tenido
+      la oportunidad de colaborar en más de 20 proyectos de gran envergadura,
+      incluyendo ecommerces de alta demanda, diarios digitales y radios.
+    </CardDescription>
+    <CardDescription className="pt-6 text-xl">
+      Además, desde hace dos años brindo soporte técnico a más de 50 clientes de
+      Carlos Corral, una agencia de renting web en España, brindando
+      mantenimiento, optimización y desarrollo de soluciones personalizadas.
+    </CardDescription>
+    <CardDescription className="pt-6 text-xl">
+      Mi enfoque está en llevar sitios con puntajes de carga deficientes a un
+      rendimiento casi perfecto, mejorando tanto la velocidad como la
+      experiencia del usuario.
+    </CardDescription>
+    <CardDescription className="pt-6 text-xl">
+      Si buscas un profesional comprometido en
+      optimizar tu plataforma para ofrecer resultados tangibles, estás en el
+      lugar correcto.
     </CardDescription>
   </div>
 </div>

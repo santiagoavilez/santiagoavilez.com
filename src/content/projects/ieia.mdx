@@ -28,6 +28,9 @@ tools:
 ---
 import { Image    } from 'astro:assets';
 import promo from '../../assets/ieia/ieia_promo_preview.png';
+import optimizacionPromo from '../../assets/ieia/ieia_optimizacion_promo.png';
+import optimizacionHome from '../../assets/ieia/ieia_optimizacion_home.png';
+import optimizacionHomePc from '../../assets/ieia/ieia_optimizacion_home_pc.png';
 
 
 
@@ -58,6 +61,17 @@ Para el desarrollo de la landing page se utilizo **Wordpress** como CMS y **Elem
 
 Para la optimización de la página se utilizaron técnicas como la compresión de imágenes, la minificación de archivos CSS y JavaScript, la eliminación de recursos innecesarios, entre otras. Estas técnicas permitieron mejorar la velocidad de carga y el rendimiento de la página.
 
+
+<div class="flex justify-center my-10 ">
+<Image class="rounded-3xl" src={optimizacionPromo} format='webp' alt="Puntaje de 96 en Google Lighthouse de la pagina promo"  width={512}   />
+</div>
+<div class="flex justify-center my-10 ">
+<Image class="rounded-3xl" src={optimizacionHome} format='webp' alt={'Puntaje de 91 en Google Lighthouse de la home page en mobile'}  width={512}   />
+</div>
+
+<div class="flex justify-center my-10 ">
+<Image class="rounded-3xl" src={optimizacionHomePc} format='webp' alt={'Puntaje de 96 en Google Lighthouse de la home page en PC'}  width={512}   />
+</div>
 
 
 

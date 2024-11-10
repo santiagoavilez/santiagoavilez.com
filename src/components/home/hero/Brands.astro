@@ -6,7 +6,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 // Resolver las imágenes y preparar los datos
-const brandsResolved = await Promise.all(
+let brandsResolved = await Promise.all(
   Object.values(images).map(async (image) => {
     const img = await image();
     const src = img.default.src;
@@ -26,6 +26,14 @@ interface Props {
 
 const { direction } = Astro.props;
 
+if (direction === "forward") {
+  // reduce the number of brands to show in the carousel to 5
+  brandsResolved = brandsResolved.slice(0, 5);
+} else {
+  // reverse the order of the brandsResolved to show in the carousel
+  brandsResolved = brandsResolved.reverse();
+  brandsResolved = brandsResolved.slice(0, 5);
+}
 ---
 
 <BrandsCarrousel

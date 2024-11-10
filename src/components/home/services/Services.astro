@@ -7,10 +7,11 @@ import webdev from "@assets/services/web-dev-background.jpg";
 
 import { CardDescription, CardTitle } from "@components/ui/card";
 import Icon from "@components/Icon.astro";
+import ServiceCTA from "./ServiceCTA.astro";
 ---
 
 <section
-  class="max-w-[68rem] w-full pb-20 px-6 flex flex-col gap-4 justify-start"
+  class="max-w-[68rem] w-full py-20 px-6 flex flex-col gap-4 justify-start"
 >
   <header class="md:flex md:justify-between items-center gap-2 lg:gap-4 pb-6">
     <div
@@ -21,22 +22,19 @@ import Icon from "@components/Icon.astro";
     >
       <CardTitle className="text-6xl pb-2">¿Que puedo hacer por vos?</CardTitle>
       <CardDescription className="text-lg text-wrap">
-        Nuestro equipo puede ayudarte a construir tu proyecto digital.
+        Mi equipo puede ayudarte a construir tu proyecto digital.
       </CardDescription>
     </div>
 
-    <!-- <div
+    <div
       data-aos="zoom-out"
       data-aos-easing="ease"
       data-aos-delay="600"
       data-aos-duration="300"
       class="hidden md:block"
     >
-      <CallToAction class:list={"w-auto cursor-pointer"} href="https://wa.me/5492984648765">
-        COTIZAR PRESUPUESTO
-        <Icon icon="arrow-right" size="1.2em" />
-      </CallToAction>
-    </div> -->
+      <ServiceCTA />
+    </div>
   </header>
   <div
     class="flex w-full flex-col items-center justify-around md:flex-row gap-10 pb-10"
@@ -61,10 +59,7 @@ import Icon from "@components/Icon.astro";
       index={2}
     />
   </div>
-  <div class="w-fit  text-xl place-self-center md:hidden">
-    <CallToAction href="/projects/">
-      COTIZAR PRESUPUESTO
-      <Icon icon="arrow-right" size="1.2em" />
-    </CallToAction>
+  <div class="text-xl place-self-center md:hidden">
+    <ServiceCTA />
   </div>
 </section>

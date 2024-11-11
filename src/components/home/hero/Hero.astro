@@ -108,17 +108,19 @@ import { CardDescription } from "@components/ui/card";
           Lleva tu sitio web al siguiente nivel
         </h1>
 
-        <span class="text-xl h-32 md:text-4xl max-w-screen-md">
+        <span class="text-xl h-20 md:h-32 md:text-4xl max-w-screen-md">
           <AnimatedFlickerHVO ctaArray={ctaArray} client:load />
         </span>
-        <div class="flex flex-wrap justify-center items-center md:items-baseline gap-4">
-          <ServiceCTA />
+        <div
+          class="flex flex-wrap justify-center items-center md:items-baseline md:gap-3"
+        >
+          <ServiceCTA CTAText="Conocer Más" />
           <CardDescription className="text-xl">
             Más de 20 marcas confian en mi trabajo
-             </CardDescription>
+          </CardDescription>
         </div>
       </div>
-      <div class="w-72 md:w-[560px] md:order-2">
+      <div class="w-72 hidden md:block md:w-[560px] md:order-2">
         <Image
           src={portrait}
           width={portrait.width}

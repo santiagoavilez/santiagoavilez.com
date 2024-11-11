@@ -1,12 +1,23 @@
 ---
 import { Button } from "@components/ui/button";
+interface Props {
+  className?: string;
+  text?: string;
+  CTAText?: string;
+}
+const {
+  className,
+  text = "Hola Santiago! Me gustaría recibir más información sobre Optimización de sitios. Mi nombre es",
+  CTAText = "Cotizar proyecto",
+} = Astro.props;
 ---
 
 <section class="flex justify-center py-2">
-
-  <a target="_blank" href="https://wa.me/5492984648765?text=Hola quiero mas informacion sobre desarrollo web">
-    <Button className="font-bold text-xl  py-7 px-5"
-      >COTIZAR PRESUPUESTO
+  <a target="_blank" href={`https://wa.me/5492984648765?text=${text}`}>
+    <Button
+      className="font-bold text-xl bg-gradient-to-r from-cerulean-600 to-cyan-400  py-7 px-5"
+    >
+      {CTAText}
     </Button>
   </a>
 </section>

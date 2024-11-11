@@ -2,12 +2,11 @@
 import CallToAction from "@components/CallToAction.astro";
 import ServiceCard from "./ServiceCard.astro";
 import desing from "@assets/services/desing.jpg";
-import webDesing from "@assets/services/web-desing.jpg";
 import webdev from "@assets/services/web-dev-background.jpg";
 
 import { CardDescription, CardTitle } from "@components/ui/card";
-import Icon from "@components/Icon.astro";
 import ServiceCTA from "./ServiceCTA.astro";
+import optimizacion from "../../../assets/services/performance.png";
 ---
 
 <section
@@ -20,7 +19,7 @@ import ServiceCTA from "./ServiceCTA.astro";
       data-aos-duration="300"
       class=""
     >
-      <CardTitle className="text-6xl pb-2">¿Que puedo hacer por vos?</CardTitle>
+      <CardTitle className="text-5xl md:text-6xl pb-2">¿Qué puedo hacer por tí? </CardTitle>
       <CardDescription className="text-lg text-wrap">
         Mi equipo puede ayudarte a construir tu proyecto digital.
       </CardDescription>
@@ -33,16 +32,16 @@ import ServiceCTA from "./ServiceCTA.astro";
       data-aos-duration="300"
       class="hidden md:block"
     >
-      <ServiceCTA />
+      <ServiceCTA CTAText="Más información" />
     </div>
   </header>
   <div
     class="flex w-full flex-col items-center justify-around md:flex-row gap-10 pb-10"
   >
     <ServiceCard
-      title="Diseño"
-      description="Contruccion de Branding, identidad visual a medida. "
-      image={webDesing}
+      title="Optimización web"
+      description="Me aseguro de que tu sitio web cargue rapido. \n\n      Me asegurare que tu sitio tenga puntaje casi perfecto en Google LightHouse."
+      image={optimizacion}
       index={1}
     />
     <ServiceCard
@@ -60,6 +59,6 @@ import ServiceCTA from "./ServiceCTA.astro";
     />
   </div>
   <div class="text-xl place-self-center md:hidden">
-    <ServiceCTA />
+    <ServiceCTA CTAText="Más información" />
   </div>
 </section>

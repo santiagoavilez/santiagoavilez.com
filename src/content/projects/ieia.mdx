@@ -1,38 +1,36 @@
 ---
 title: IEIA - Instituto Empresarial de Inteligencia Artificial
 publishDate: 2024-01-05 00:00:00
-img: /src/assets/previews/ieia-1440.png
+img: /src/assets/previews/ieia-1440.webp
 img_w: 504
 img_h: 360
 img_alt: IEIA - Instituto Empresarial de Inteligencia Artificial cover
 git: https://github.com/santiagoavilez/MelinaBatalla
 live: https://melinabatalla.com/cursos/root-program
 description: |
-    Landing page para el Instituto Empresarial de Inteligencia Artificial, con un diseño moderno y atractivo, que permite a los visitantes conocer los cursos y servicios que ofrece el instituto.
+  Landing page para el Instituto Empresarial de Inteligencia Artificial, con un diseño moderno y atractivo, que permite a los visitantes conocer los cursos y servicios que ofrece el instituto.
 tags:
   - Desarrollo web
   - Diseño web
   - Optimización web
 
 tools:
-- name: Wordrpess
-  icon: /assets/logos/React_icon.svg"
-  alt: Wordrpess logo
-- name: Elementor
-  icon: /assets/logos/figma_icon.svg"
-  alt: Elementor logo
-- name: Canva
-  icon: /assets/logos/nextjs.svg
-  alt: Canva logo
-
+  - name: Wordrpess
+    icon: /assets/logos/React_icon.svg"
+    alt: Wordrpess logo
+  - name: Elementor
+    icon: /assets/logos/figma_icon.svg"
+    alt: Elementor logo
+  - name: Canva
+    icon: /assets/logos/nextjs.svg
+    alt: Canva logo
 ---
-import { Image    } from 'astro:assets';
-import promo from '../../assets/ieia/ieia_promo_preview.png';
-import optimizacionPromo from '../../assets/ieia/ieia_optimizacion_promo.png';
-import optimizacionHome from '../../assets/ieia/ieia_optimizacion_home.png';
-import optimizacionHomePc from '../../assets/ieia/ieia_optimizacion_home_pc.png';
 
-
+import { Image } from "astro:assets";
+import promo from "../../assets/ieia/ieia_promo_preview.png";
+import optimizacionPromo from "../../assets/ieia/ieia_optimizacion_promo.png";
+import optimizacionHome from "../../assets/ieia/ieia_optimizacion_home.png";
+import optimizacionHomePc from "../../assets/ieia/ieia_optimizacion_home_pc.png";
 
 ### Introducción.
 
@@ -40,42 +38,53 @@ El Instituto Empresarial de Inteligencia Artificial es una institución educativ
 
 Ademas de construir la landing page, también se realizo la optimización de la página web, para mejorar la velocidad de carga y el rendimiento de la página. Para ello se utilizo **Elementor** un plugin de **Wordpress** que permite crear páginas web de forma sencilla y rápida.
 
-
-
 ### Migracion de diseño a Wordpress
 
 El proyecto requeria migrar secciones del sitio web a elementor ya que el sitio web aunque estaba hecho con Wordpress, la mayoria de la funcionalidad estaba hecha con codigo **(HTML, CSS y JavaScript)** lo que dificultaba la edición de la página al cliente. Esto lo logre reutilizando codigo y creando nuevas secciones con Elementor.
 
 ### Desarollo
 
-
 Para el desarrollo de la landing page se utilizo **Wordpress** como CMS y **Elementor** como constructor de páginas. El diseño de la página fue proporcionado por el cliente y se debia ser fiel al diseño original. La página cuenta con secciones como: inicio, cursos, servicios, testimonios, contacto, entre otras.
 
-
 <div class="flex justify-center my-10 ">
-<Image class="rounded-3xl" src={promo} format='webp' alt={'login page'}  width={512}   />
+  <Image
+    class="rounded-3xl"
+    src={promo}
+    format="webp"
+    alt={"login page"}
+    width={512}
+  />
 </div>
-
 
 > Optimización web
 
 Para la optimización de la página se utilizaron técnicas como la compresión de imágenes, la minificación de archivos CSS y JavaScript, la eliminación de recursos innecesarios, entre otras. Estas técnicas permitieron mejorar la velocidad de carga y el rendimiento de la página.
 
-
 <div class="flex justify-center my-10 ">
-<Image class="rounded-3xl" src={optimizacionPromo} format='webp' alt="Puntaje de 96 en Google Lighthouse de la pagina promo"  width={512}   />
+  <Image
+    class="rounded-3xl"
+    src={optimizacionPromo}
+    format="webp"
+    alt="Puntaje de 96 en Google Lighthouse de la pagina promo"
+    width={512}
+  />
 </div>
 <div class="flex justify-center my-10 ">
-<Image class="rounded-3xl" src={optimizacionHome} format='webp' alt={'Puntaje de 91 en Google Lighthouse de la home page en mobile'}  width={512}   />
+  <Image
+    class="rounded-3xl"
+    src={optimizacionHome}
+    format="webp"
+    alt={"Puntaje de 91 en Google Lighthouse de la home page en mobile"}
+    width={512}
+  />
 </div>
 
 <div class="flex justify-center my-10 ">
-<Image class="rounded-3xl" src={optimizacionHomePc} format='webp' alt={'Puntaje de 96 en Google Lighthouse de la home page en PC'}  width={512}   />
+  <Image
+    class="rounded-3xl"
+    src={optimizacionHomePc}
+    format="webp"
+    alt={"Puntaje de 96 en Google Lighthouse de la home page en PC"}
+    width={512}
+  />
 </div>
-
-
-
-
-
-
-

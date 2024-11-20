@@ -18,10 +18,10 @@ const projects = (await getCollection("projects")).sort(
 );
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/previews/*.{jpeg,jpg,png,gif}"
+  "/src/assets/previews/*.{jpeg,jpg,png,gif,webp}"
 );
 
-const projectImagesResolved = await Promise.all(projects.map( async (project) => {
+const projectImagesResolved = await Promise.all(projects.map(async (project) => {
   const previewImg = images[`${project.data.img}`];
   const img = await previewImg();
   return {
@@ -43,11 +43,11 @@ export default function ProjectsCarrousel() {
 
       plugins={[
         Autoplay({
-          delay: 4000,
+          delay: 2000,
           stopOnInteraction: false,
         }),
 
-        ClassNames( {
+        ClassNames({
           snapped: 'is-snapped',
           active: true,
         })
@@ -60,19 +60,19 @@ export default function ProjectsCarrousel() {
             <CarouselItem key={index} className="[&:not(.is-snapped)]:opacity-20 basis-10/12  md:basis-1/2 lg:basis-3/12  ">
               <div className="p-1 h-full">
                 <a href={`/projects/${project.slug}`}>
-                <Card  className="overflow-hidden h-full  ">
-                  <CardHeader className="p-0">
-                    <img className="aspect-[14/10]" src={project.img} alt={project.data.img_alt} width={1000} height={714} />
-                  </CardHeader>
-                  <CardContent className="flex flex-col gap-2   p-6">
-                    <CardTitle className="text-3xl font-semibold truncate">
-                      {project.data.title}
-                    </CardTitle>
-                    <CardDescription className="text-base line-clamp-2 ">
-                      {project.data.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
+                  <Card className="overflow-hidden h-full  ">
+                    <CardHeader className="p-0">
+                      <img className="aspect-[14/10]" loading="lazy" decoding="async" src={project.img} alt={project.data.img_alt} width={425} height={303} />
+                    </CardHeader>
+                    <CardContent className="flex flex-col gap-2   p-6">
+                      <CardTitle className="text-3xl font-semibold truncate">
+                        {project.data.title}
+                      </CardTitle>
+                      <CardDescription className="text-base line-clamp-2 ">
+                        {project.data.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
                 </a>
               </div>
 

@@ -27,12 +27,12 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/previews/*.{jpeg,jpg,png,gif}"
+  "/src/assets/previews/*.{jpeg,jpg,png,gif,webp}"
 );
 
 if (!images[entry.data.img])
   throw new Error(
-    `"${entry.data.img}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+    `"${entry.data.img}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,webp}"`
   );
 ---
 

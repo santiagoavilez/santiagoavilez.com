@@ -1,12 +1,8 @@
 ---
-import CallToAction from "@components/CallToAction.astro";
 import ServiceCard from "./ServiceCard.astro";
-import desing from "@assets/services/desing.jpg";
-import webdev from "@assets/services/web-dev-background.jpg";
 
 import { CardDescription, CardTitle } from "@components/ui/card";
 import ServiceCTA from "./ServiceCTA.astro";
-import optimizacion from "../../../assets/services/performance.png";
 ---
 
 <section
@@ -19,7 +15,9 @@ import optimizacion from "../../../assets/services/performance.png";
       data-aos-duration="300"
       class=""
     >
-      <CardTitle className="text-5xl md:text-6xl pb-2">¿Qué puedo hacer por tí? </CardTitle>
+      <CardTitle className="text-5xl md:text-6xl pb-2"
+        >¿Qué puedo hacer por tí?
+      </CardTitle>
       <CardDescription className="text-lg text-wrap">
         Mi equipo puede ayudarte a construir tu proyecto digital.
       </CardDescription>
@@ -35,26 +33,24 @@ import optimizacion from "../../../assets/services/performance.png";
       <ServiceCTA CTAText="Más información" />
     </div>
   </header>
-  <div
-    class="flex w-full flex-col items-center justify-around md:flex-row gap-10 pb-10"
-  >
-    <ServiceCard
-      title="Optimización web"
-      description="Me aseguro de que tu sitio web cargue rapido. \n\n      Me asegurare que tu sitio tenga puntaje casi perfecto en Google LightHouse."
-      image={optimizacion}
-      index={1}
-    />
+  <div class="flex w-full flex-col items-center md:flex-row justify-around gap-20 pb-10">
     <ServiceCard
       title="Desarrollo"
-      description="Construcción de sitios web, aplicaciones móviles y aplicaciones web."
-      image={webdev}
+      description="Construyo tu sitio web desde cero, adaptandome a tus necesidades y requerimientos. Me aseguro de cumplir con tus expectativas."
+      lottieUrl="https://lottie.host/7d390bad-af64-4d75-a23d-275063fc1f41/ODdq2IHc2a.lottie"
       index={0}
+    />
+    <ServiceCard
+      title="Optimización web"
+      description="Me aseguro de que tu sitio web cargue rapido. Me asegurare que tu sitio tenga puntaje casi perfecto en Google LightHouse."
+      lottieUrl="https://lottie.host/cf2234d2-f3fc-4595-b22a-82e83af81af0/kGdro5IakH.lottie"
+      index={1}
     />
 
     <ServiceCard
       title="Mantenimiento"
-      description="Mantenimiento de tu proyecto, actualizaciones y soporte técnico."
-      image={desing}
+      description="Me encargo de  mantener tu sitio web actualizado y funcionando correctamente. Me aseguro de que tu sitio web tenga un buen rendimiento."
+      lottieUrl="https://lottie.host/4150eda1-6273-4244-ad6e-efd6a9b78212/3mNcD4JiV2.lottie"
       index={2}
     />
   </div>
@@ -62,3 +58,6 @@ import optimizacion from "../../../assets/services/performance.png";
     <ServiceCTA CTAText="Más información" />
   </div>
 </section>
+<script
+  src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+  type="module"></script>

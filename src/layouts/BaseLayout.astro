@@ -10,6 +10,9 @@ import Footer from "../components/Footer.astro";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 // ..
 
+import Analytics from '@vercel/analytics/astro'
+import  SpeedInsights  from "@vercel/speed-insights/astro"
+
 import Icon, { type Props as IconProps } from "../components/Icon.astro";
 
 const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
@@ -84,7 +87,8 @@ const { title, description } = Astro.props;
 
       <Footer />
     </div>
-
+    <SpeedInsights/>
+    <Analytics />
     <script>
       // Add “loaded” class once the document has completely loaded.
       addEventListener("load", () => {

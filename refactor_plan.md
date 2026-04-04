@@ -16,13 +16,13 @@
 | 4 | Navegación | ✅ Completo |
 | 5a | Separar proyectos en Featured / Other Work | ⬜ Pendiente |
 | 5b | Agregar proyecto Fulbbo | ⬜ Pendiente |
-| 5c | Traducir descripciones de proyectos | ⬜ Pendiente |
+| 5c | Traducir descripciones de proyectos | ✅ Completo |
 | 5d | Stack badges en Featured Projects | ⬜ Pendiente |
 | 6 | CV descargable (`public/resume.pdf`) | ⬜ Pendiente |
 | 7 | Footer | ⬜ Pendiente |
-| 8 | Eliminar sección "Marcas que confían" | ⬜ Pendiente |
+| 8 | Eliminar sección "Marcas que confían" | ✅ Completo |
 
-**Progreso: 4 / 11**
+**Progreso: 6 / 11**
 
 ---
 

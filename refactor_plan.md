@@ -11,7 +11,7 @@
 | # | Tarea | Estado |
 |---|-------|--------|
 | 1 | Metadata y SEO | ✅ Completo |
-| 2 | Hero Section | ⬜ Pendiente |
+| 2 | Hero Section | ✅ Completo |
 | 3 | About Me Section | ⬜ Pendiente |
 | 4 | Navegación | ✅ Completo |
 | 5a | Separar proyectos en Featured / Other Work | ⬜ Pendiente |
@@ -22,7 +22,7 @@
 | 7 | Footer | ⬜ Pendiente |
 | 8 | Eliminar sección "Marcas que confían" | ⬜ Pendiente |
 
-**Progreso: 2 / 11**
+**Progreso: 3 / 11**
 
 ---
 

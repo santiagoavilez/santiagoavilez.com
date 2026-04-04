@@ -1,97 +1,7 @@
 ---
-import AnimatedSpan from "@components/react/animatedSpan";
-import Circles from "./Circles.astro";
-import AnimatedCtaHero from "@components/react/AnimatedCtaHero";
-import AnimatedFlickerHVO from "./AnimatedFlickerHVO";
-
-const animatedTextsArray1 = [
-  {
-    text: "Transformare tu visión en un producto, ",
-  },
-  {
-    text: " impactante ",
-    highlight: true,
-  },
-  {
-    text: "  sin desperdiciar ",
-  },
-  {
-    text: "  inversión.",
-    highlight: true,
-  },
-];
-const animatedTextsArray2 = [
-  {
-    text: "Te ayudare a crear un MVP, ",
-  },
-  {
-    text: " escalable ",
-    highlight: true,
-  },
-  {
-    text: " y ",
-  },
-  {
-    text: " atractivo ",
-    highlight: true,
-  },
-  {
-    text: " para tus usuarios.",
-  },
-];
-const animatedTextsArray3 = [
-  {
-    text: "Acelera ",
-    highlight: true,
-  },
-  {
-    text: " el lanzamiento de tu ",
-  },
-  {
-    text: " startup ",
-    highlight: true,
-  },
-  {
-    text: " con tecnologias, ",
-  },
-  {
-    text: " innovadoras y escalables. ",
-    highlight: true,
-  },
-];
-
-const mainAnimatedText = [
-  {
-    text: "Creo MVP´S que  ",
-  },
-  {
-    text: " validan ",
-    highlight: true,
-  },
-  {
-    text: " tu idea en ",
-  },
-  {
-    text: "  tiempo récord.",
-    highlight: true,
-  },
-];
-
-const ctaArray = [
-  mainAnimatedText,
-  animatedTextsArray3,
-  animatedTextsArray2,
-  animatedTextsArray1,
-];
-const arrayText = ["sitio web", "aplicación móvil", "aplicación web"];
-
-import portrait from "../../../assets/hero/profile_picture.jpg";
 import Brands from "./Brands.astro";
-
-import Santiago from "@assets/hero/retrato-old.webp";
+import portrait from "../../../assets/hero/profile_picture.jpg";
 import { Image } from "astro:assets";
-import ServiceCTA from "../services/ServiceCTA.astro";
-import { CardDescription } from "@components/ui/card";
 ---
 
 <div
@@ -104,28 +14,47 @@ import { CardDescription } from "@components/ui/card";
       class="flex flex-col md:flex-row w-full justify-around gap-6 items-center"
     >
       <div class="flex flex-col text-center md:text-left items-start gap-4">
-        <h1 class="text-4xl md:text-7xl leading-tight font-bold">
-          Lleva tu sitio web al siguiente nivel
+        <h1 class="text-4xl md:text-7xl leading-tight font-bold text-cerulean-400">
+          Full Stack Developer
         </h1>
 
-        <span class="text-xl h-20 md:h-32 md:text-4xl max-w-screen-md">
-          <AnimatedFlickerHVO ctaArray={ctaArray} client:load />
-        </span>
-        <div
-          class="flex flex-wrap justify-center items-center md:items-baseline md:gap-3"
-        >
-          <ServiceCTA CTAText="Conocer Más" />
-          <CardDescription className="text-xl">
-            Más de 20 marcas confian en mi trabajo
-          </CardDescription>
+        <p class="text-xl md:text-2xl font-semibold text-cerulean-400">
+          React · Next.js · TypeScript · Node.js · NestJS · PostgreSQL
+        </p>
+
+        <p class="text-base md:text-lg max-w-screen-md text-gray-300 leading-relaxed">
+          I design and build scalable web products <span class="text-cerulean-400 font-semibold">end-to-end</span> — from clean,
+          performant frontends to well-architected backends. <span class="text-cerulean-400 font-semibold">5+ years</span> shipping
+          real features in production.<br />
+          Currently open to full-time remote roles at product companies in the US.
+        </p>
+
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start mt-2">
+          <a href="/resume.pdf" download>
+            <button
+              class="font-bold text-xl bg-gradient-to-r from-cerulean-600 to-cyan-400 py-3 px-6 rounded-md text-white"
+            >
+              Download Resume
+            </button>
+          </a>
+          <a
+            href="https://linkedin.com/in/santiago-avilez-ariza/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button
+              class="font-bold text-xl border border-cerulean-400 text-cerulean-400 hover:bg-cerulean-400 hover:text-white transition-colors py-3 px-6 rounded-md"
+            >
+              LinkedIn ↗
+            </button>
+          </a>
         </div>
       </div>
       <div class="w-72 hidden md:block md:w-[560px] md:order-2">
         <Image
           src={portrait}
           width={500}
-          width={500}
-          alt="hero"
+          alt="Santiago Avilez — Full Stack Developer"
           class="w-full rounded-full"
         />
       </div>

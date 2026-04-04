@@ -49,19 +49,48 @@ const { odd, title, description, image } = Astro.props;
   >
     <!-- <CardTitle className="text-3xl"> {title} </CardTitle> -->
     <CardDescription className="pt-2 text-xl">
-      En tan solo tres años de trayectoria como desarrollador web, he tenido la
-      oportunidad de colaborar en más de 20 proyectos de gran envergadura,
-      abarcando diversos modelos de negocio, tales como e-commerce, medios de
-      comunicación y marcas personales.
+      I'm a <span class="text-cerulean-400 font-medium">Full Stack Developer</span> based in Argentina, with <span class="text-cerulean-400 font-medium">5+ years</span> of experience
+      building web products that actually scale.
     </CardDescription>
     <CardDescription className="pt-6 text-xl">
-      Desde hace dos años, formo parte del equipo de Carlos Corral, brindando
-      soporte técnico a más de 50 clientes.
+      I work across the full stack — building React and Next.js frontends, designing
+      REST and tRPC APIs with Node.js and NestJS, and managing PostgreSQL databases
+      with a focus on data integrity and performance. On the infrastructure side, I'm
+      comfortable with Docker, CI/CD pipelines on GitHub Actions, and deployments on
+      AWS and Vercel.
     </CardDescription>
     <CardDescription className="pt-6 text-xl">
-      Mi enfoque está en optimizar al máximo los resultados con los recursos
-      disponibles.
+      I care a lot about how code is structured. I gravitate toward <span class="text-cerulean-400 font-medium">Clean Architecture / Vertical Slice Architecture</span>
+      and <span class="text-cerulean-400 font-medium">Domain-Driven Design</span> not because they're fashionable, but because they make
+      systems easier to maintain and evolve over time — especially in startup
+      environments where requirements change fast.
+    </CardDescription>
+    <CardDescription className="pt-6 text-xl">
+      I've worked on SaaS platforms, marketplace apps, and MVPs across different
+      industries. I'm used to working asynchronously, communicating in English, and
+      owning features from spec to deployment.
+    </CardDescription>
+    <CardDescription className="pt-6 text-xl">
+      Looking for a remote, full-time role where I can contribute to a product team
+      and grow alongside it.
     </CardDescription>
 
+    <div class="pt-8 flex flex-wrap gap-4">
+      <a
+        href="/resume.pdf"
+        download
+        class="inline-flex items-center gap-2 rounded-md bg-cerulean-400 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cerulean-500 transition-colors"
+      >
+        Download Resume
+      </a>
+      <a
+        href="https://linkedin.com/in/santiago-avilez-ariza/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-md border border-cerulean-400 px-5 py-2.5 text-sm font-semibold text-cerulean-400 hover:bg-cerulean-400/10 transition-colors"
+      >
+        Let's connect on LinkedIn ↗
+      </a>
+    </div>
   </div>
 </div>

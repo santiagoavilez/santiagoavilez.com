@@ -12,7 +12,7 @@
 |---|-------|--------|
 | 1 | Metadata y SEO | ✅ Completo |
 | 2 | Hero Section | ✅ Completo |
-| 3 | About Me Section | ⬜ Pendiente |
+| 3 | About Me Section | ✅ Completo |
 | 4 | Navegación | ✅ Completo |
 | 5a | Separar proyectos en Featured / Other Work | ⬜ Pendiente |
 | 5b | Agregar proyecto Fulbbo | ⬜ Pendiente |
@@ -22,7 +22,7 @@
 | 7 | Footer | ⬜ Pendiente |
 | 8 | Eliminar sección "Marcas que confían" | ⬜ Pendiente |
 
-**Progreso: 3 / 11**
+**Progreso: 4 / 11**
 
 ---
 

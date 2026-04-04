@@ -7,16 +7,20 @@ interface Props {
 }
 
 const {
-	title = "Santiago Avilez | Desarrollador Web",
-	description = "Soy Desarrollador web full-stack, me apasiona resolver problemas complejos y crear soluciones innovadoras para mis clientes.",
+	title = "Santiago Avilez | Full Stack Developer",
+	description = "Full Stack Developer with 5+ years building scalable web products. React, Next.js, TypeScript, Node.js, NestJS. Open to full-time remote roles — US, Canada, Europe & Latin America.",
 } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
-<meta name="description" property="og:description" content={description} />
+<meta name="description" content={description} />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content="Full Stack Developer — React · Next.js · TypeScript · Node.js · NestJS. Open to full-time remote roles — US, Canada, Europe & Latin America." />
+<meta property="og:url" content="https://santiagoavilez.com" />
 
 <link rel="icon" type="image/svg+xml" href="/isologo-500.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />

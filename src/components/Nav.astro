@@ -6,11 +6,12 @@ import isologo500 from "../../public/assets/isologo-horizontal-500.png";
 import isologo600 from "../assets/isologo-horizontal-600.png";
 
 /** Main menu items */
-const textLinks: { label: string; href: string }[] = [
-  { label: "Inicio", href: "/" },
-  { label: "Proyectos", href: "/projects/" },
+const textLinks: { label: string; href: string; download?: boolean }[] = [
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/projects/" },
   // { label: "Blog", href: "/blog/" },
-  { label: "Sobre mí", href: "/#about" },
+  { label: "About", href: "/#about" },
+  { label: "Resume", href: "/resume.pdf", download: true },
 ];
 
 /** Icon links to social media — edit these with links to your profiles! */
@@ -19,16 +20,6 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
     label: "LinkedIn",
     href: "https://linkedin.com/in/santiago-avilez-ariza/",
     icon: "linkedin",
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/santiago.avilez.dev/",
-    icon: "instagram",
-  },
-  {
-    label: "Tiktok",
-    href: "https://www.tiktok.com/@santiago.avilez.dev",
-    icon: "tiktok",
   },
   {
     label: "GitHub",
@@ -76,7 +67,7 @@ import MenuNav from "./react/MenuNav";
     >
       <ul class="nav-items">
         {
-          textLinks.map(({ label, href }) => (
+          textLinks.map(({ label, href, download }) => (
             <li class="">
               <a
                 aria-current={Astro.url.pathname === href}
@@ -89,6 +80,7 @@ import MenuNav from "./react/MenuNav";
                   },
                 ]}
                 href={href}
+                download={download || undefined}
               >
                 {label}
               </a>
@@ -123,7 +115,7 @@ import MenuNav from "./react/MenuNav";
   <div id="menu-content" class="w-full hidden md:block sticky z-50">
     <ul class="nav-items">
       {
-        textLinks.map(({ label, href }) => (
+        textLinks.map(({ label, href, download }) => (
           <li class="">
             <a
               aria-current={Astro.url.pathname === href}
@@ -136,6 +128,7 @@ import MenuNav from "./react/MenuNav";
                 },
               ]}
               href={href}
+              download={download || undefined}
             >
               {label}
             </a>

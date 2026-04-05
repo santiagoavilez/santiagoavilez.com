@@ -1,0 +1,71 @@
+---
+const experience = [
+  {
+    role: "Full Stack Developer",
+    company: "Secretaría de Modernización — Municipalidad de Neuquén",
+    period: "Feb 2025 – Present",
+    description:
+      "Architected citizen-facing digital platforms (React + NestJS + PostgreSQL) serving 12,000+ users/year, replacing manual government processes with online services. Led performance refactor reducing load times by 30% and boosting form completion by 15%.",
+    url: null,
+  },
+  {
+    role: "Full Stack Developer",
+    company: "Eximo",
+    period: "Dec 2020 – Jan 2025",
+    description:
+      "Built full-stack applications for enterprise clients with 5,000+ active users, owning end-to-end delivery from DB modeling to production deployment. Reduced page load times by 40% through frontend and backend optimizations.",
+    url: null,
+  },
+  {
+    role: "Co-Founder & Lead Engineer",
+    company: "Fulbbo",
+    period: "2023 – Present",
+    description:
+      "Designed and built a full-stack soccer social platform — booking, payments, real-time chat, and geographic search. Reduced Google Places API costs by ~90% with a custom PostgreSQL cache system.",
+    url: "https://fulbbo.vercel.app",
+  },
+];
+---
+
+<section class="w-full max-w-[68rem] mx-auto px-6 py-8">
+  <p class="text-xs font-semibold uppercase tracking-widest text-cerulean-400/60 mb-6">
+    Experience
+  </p>
+  <div class="relative flex flex-col gap-0 border-l-2 border-cerulean-400/30 ml-2">
+    {
+      experience.map((entry) => (
+        <div class="relative pl-6 pb-8 last:pb-0">
+          {/* Dot marker */}
+          <span class="absolute -left-[7px] top-[4px] w-3 h-3 rounded-full bg-cerulean-400 border-2 border-cerulean-400/40" />
+
+          {/* Role */}
+          <p class="font-semibold text-sm text-white leading-snug">
+            {entry.role}
+          </p>
+
+          {/* Company · Period */}
+          <p class="text-xs text-gray-400 mt-0.5 tracking-wide">
+            {entry.company} · {entry.period}
+          </p>
+
+          {/* Description */}
+          <p class="text-xs text-gray-400 mt-1 leading-relaxed max-w-xl">
+            {entry.description}
+          </p>
+
+          {/* URL — only if not null */}
+          {entry.url !== null && (
+            <a
+              href={entry.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block mt-1.5 text-[11px] text-cerulean-400 hover:text-cerulean-300 transition-colors"
+            >
+              {new URL(entry.url).hostname} ↗
+            </a>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</section>

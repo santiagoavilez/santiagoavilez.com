@@ -1,0 +1,56 @@
+---
+const groups = [
+  {
+    label: "Languages",
+    items: ["TypeScript", "JavaScript", "SQL"],
+  },
+  {
+    label: "Frontend",
+    items: ["React", "Next.js", "Tailwind CSS", "Redux", "Zustand", "shadcn/ui"],
+  },
+  {
+    label: "Backend",
+    items: ["Node.js", "NestJS", "Express", "tRPC", "REST APIs"],
+  },
+  {
+    label: "Databases",
+    items: ["PostgreSQL", "MySQL", "TypeORM", "Drizzle"],
+  },
+  {
+    label: "Infra",
+    items: ["Docker", "AWS", "GitHub Actions", "Vercel", "CI/CD"],
+  },
+  {
+    label: "Testing",
+    items: ["Jest", "Vitest"],
+  },
+  {
+    label: "Architecture",
+    items: ["Clean Architecture", "DDD", "Vertical Slice", "SOLID"],
+  },
+];
+---
+
+<section class="w-full max-w-[68rem] mx-auto px-6 py-8">
+  <p class="text-xs font-semibold uppercase tracking-widest text-cerulean-400/60 mb-6">
+    Tech Stack
+  </p>
+  <div class="flex flex-col gap-3">
+    {
+      groups.map((group) => (
+        <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+          <span class="w-full sm:w-[130px] sm:min-w-[130px] text-xs font-semibold uppercase tracking-wide text-gray-500 sm:text-right pt-[3px]">
+            {group.label}
+          </span>
+          <div class="flex flex-wrap gap-2">
+            {group.items.map((tech) => (
+              <span class="text-xs font-medium px-3 py-1 rounded-full border border-cerulean-400/30 text-cerulean-400 bg-cerulean-400/5">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

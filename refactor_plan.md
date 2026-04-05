@@ -14,15 +14,17 @@
 | 2 | Hero Section | ✅ Completo |
 | 3 | About Me Section | ✅ Completo |
 | 4 | Navegación | ✅ Completo |
-| 5a | Separar proyectos en Featured / Other Work | ⬜ Pendiente |
+| 5a | Separar proyectos en Featured / Other Work | ✅ Completo |
 | 5b | Agregar proyecto Fulbbo | ⬜ Pendiente |
 | 5c | Traducir descripciones de proyectos | ✅ Completo |
 | 5d | Stack badges en Featured Projects | ⬜ Pendiente |
+| 5e | Stack & Experience section | ✅ Completo |
+| 5f | Experience timeline section | ✅ Completo |
 | 6 | CV descargable (`public/resume.pdf`) | ⬜ Pendiente |
 | 7 | Footer | ⬜ Pendiente |
 | 8 | Eliminar sección "Marcas que confían" | ✅ Completo |
 
-**Progreso: 6 / 11**
+**Progreso: 9 / 13**
 
 ---
 
@@ -311,6 +313,206 @@ Cada proyecto Featured debe mostrar visualmente las tecnologías usadas. Ejemplo
 ```
 stack: ["Next.js", "TypeScript", "NestJS", "PostgreSQL", "Docker"]
 ```
+# Tarea 5e — Agregar sección "Stack & Experience"
+
+> Estado: ✅ LISTO PARA EJECUTAR
+> Posición en la página: Entre el Hero y la sección de Proyectos (index.astro)
+
+---
+
+## ANTES DE EJECUTAR
+
+1. Revisar cómo están estructurados los componentes existentes:
+   ```bash
+   ls src/components/
+   cat src/pages/index.astro
+   ```
+2. Identificar el sistema de estilos (Tailwind, CSS modules, etc.)
+3. Respetar la paleta de colores, tipografía y espaciado existente — esta sección debe sentirse parte del mismo sitio, no un bloque ajeno.
+
+---
+
+## ESTRUCTURA DEL COMPONENTE
+
+Crear un nuevo componente: `src/components/StackAndExperience.astro`
+
+La sección tiene dos bloques visuales side-by-side en desktop, apilados en mobile:
+
+```
+┌─────────────────────────────────────────────────┐
+│                 Tech Stack                       │  <- título de sección
+├────────────────────┬────────────────────────────┤
+│                    │                            │
+│   Stack (grilla    │   Experience (timeline     │
+│   de categorías)   │   vertical simple)         │
+│                    │                            │
+└────────────────────┴────────────────────────────┘
+```
+
+---
+
+## BLOQUE 1 — TECH STACK
+
+Mostrar el stack organizado por categorías. Cada categoría tiene un label y una lista de badges/chips de tecnología.
+
+**Datos:**
+
+```javascript
+const stack = [
+  {
+    category: "Languages",
+    items: ["TypeScript", "JavaScript", "SQL"]
+  },
+  {
+    category: "Frontend",
+    items: ["React", "Next.js", "Tailwind CSS", "Redux", "Zustand", "shadcn/ui"]
+  },
+  {
+    category: "Backend",
+    items: ["Node.js", "NestJS", "Express", "tRPC", "REST APIs"]
+  },
+  {
+    category: "Databases",
+    items: ["PostgreSQL", "MySQL", "TypeORM", "Drizzle"]
+  },
+  {
+    category: "Infra & Testing",
+    items: ["Docker", "AWS", "GitHub Actions", "Vercel", "CI/CD", "Jest", "Vitest"]
+  },
+  {
+    category: "Architecture",
+    items: ["Clean Architecture", "DDD", "Vertical Slice", "SOLID"]
+  }
+]
+```
+
+**Render esperado por categoría:**
+```
+Languages
+[TypeScript] [JavaScript] [SQL]
+
+Frontend
+[React] [Next.js] [Tailwind CSS] [Redux] [Zustand] [shadcn/ui]
+
+...etc
+```
+
+Los badges deben ser elementos visuales simples (texto con borde redondeado o fondo sutil), no iconos — para que sea rápido de leer y escalar bien si se agregan tecnologías.
+
+---
+
+## BLOQUE 2 — EXPERIENCE
+
+Timeline vertical simple con 3 items. Cada item tiene: rol, empresa/proyecto, período y una línea de descripción.
+
+**Datos:**
+
+```javascript
+const experience = [
+  {
+    role: "Full Stack Developer",
+    company: "Secretaría de Modernización — Municipalidad de Neuquén",
+    period: "Feb 2025 – Present",
+    description: "Architected citizen-facing digital platforms (React + NestJS + PostgreSQL) serving 12,000+ users/year, replacing manual government processes with online services. Led performance refactor reducing load times by 30% and boosting form completion by 15%.",
+    url: null  // plataforma interna, sin link público
+  },
+  {
+    role: "Full Stack Developer",
+    company: "Eximo",
+    period: "Dec 2020 – Jan 2025",
+    description: "Built full-stack applications for enterprise clients with 5,000+ active users, owning end-to-end delivery from DB modeling to production deployment. Reduced page load times by 40% through frontend and backend optimizations.",
+    url: null  // empresa de clientes, sin link público representativo
+  },
+  {
+    role: "Co-Founder & Lead Engineer",
+    company: "Fulbbo",
+    period: "2023 – Present",
+    description: "Designed and built a full-stack soccer social platform — booking, payments, real-time chat, and geographic search. Reduced Google Places API costs by ~90% with a custom PostgreSQL cache system.",
+    url: "https://fulbbo.vercel.app"
+  }
+]
+```
+
+⚠️ Nota de orden: los items van de más reciente a más antiguo (Municipalidad → Eximo → Fulbbo). Fulbbo va último porque es un proyecto personal/side, no un empleo — pero tiene URL así que mantiene visibilidad.
+
+Render esperado por item:
+●  Full Stack Developer
+   Secretaría de Modernización — Municipalidad de Neuquén · Feb 2025 – Present
+   Architected citizen-facing digital platforms serving 12,000+ users/year...
+
+●  Full Stack Developer
+   Eximo · Dec 2020 – Jan 2025
+   Built full-stack applications for enterprise clients with 5,000+ active users...
+
+●  Co-Founder & Lead Engineer
+   Fulbbo · 2023 – Present
+   Designed and built a full-stack soccer social platform...
+   [fulbbo.vercel.app ↗]
+La línea vertical que conecta los puntos (●) es el único elemento decorativo — mantenerla sutil, del color del tema existente.
+Si el item tiene URL, mostrar el link al final. Si no tiene URL (Municipalidad, Eximo), mostrar solo texto plano sin link.
+
+---
+
+## INTEGRACIÓN EN index.astro
+
+Importar y ubicar el componente entre el Hero y la sección de Proyectos:
+
+```astro
+---
+import Hero from '../components/Hero.astro';
+import StackAndExperience from '../components/StackAndExperience.astro'; // <- nuevo
+import Projects from '../components/Projects.astro'; // nombre real puede variar
+import About from '../components/About.astro';       // nombre real puede variar
+---
+
+<Hero />
+<StackAndExperience />   <!-- entre hero y proyectos -->
+<Projects />
+<About />
+```
+
+> ⚠️ Los nombres de los componentes existentes pueden ser distintos. Verificar con `cat src/pages/index.astro` antes de editar.
+
+---
+
+## TÍTULO DE LA SECCIÓN
+
+```
+Skills & Experience
+```
+
+Usar el mismo estilo visual de título que usan las secciones "Proyectos realizados" y "Sobre mí" ya existentes (mismo tamaño, mismo peso, mismo espaciado).
+
+---
+
+## RESPONSIVE
+
+- **Desktop (md+):** dos columnas — stack a la izquierda, experience a la derecha
+- **Mobile:** una columna — stack arriba, experience abajo
+- Los badges del stack deben hacer wrap naturalmente en mobile
+
+---
+
+## NOTAS DE ESTILO
+
+- No introducir nuevos colores — usar los variables CSS o clases Tailwind ya presentes en el proyecto
+- El espaciado vertical entre esta sección y las adyacentes (Hero arriba, Projects abajo) debe ser consistente con el espaciado entre las otras secciones del sitio
+- Si el sitio usa `section` como contenedor semántico, mantener esa convención
+
+---
+
+## VERIFICACIÓN POST-EJECUCIÓN
+
+- [ ] La sección aparece entre el Hero y los Proyectos en el home
+- [ ] El stack muestra las 6 categorías con todos sus items
+- [ ] Los badges/chips del stack son legibles en mobile y desktop
+- [ ] La timeline de Experience muestra los 3 items en orden
+- [ ] Fulbbo tiene link clickeable (fulbbo.vercel.app)
+- [ ] Food Handler Platform NO tiene link (solo texto)
+- [ ] "Freelance & Agency Work" linkea a /projects
+- [ ] La sección es responsive: 2 columnas en desktop, 1 en mobile
+- [ ] El estilo visual es consistente con el resto del sitio (mismos colores, tipografía, espaciado)
+- [ ] El título de sección "Skills & Experience" usa el mismo estilo que los otros títulos de sección
 
 ---
 

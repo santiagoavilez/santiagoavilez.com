@@ -22,6 +22,7 @@ export const collections = {
       img_w: z.number(),
       img_h: z.number(),
       img_alt: z.string().optional(),
+      featured: z.boolean().optional().default(false),
     }),
   }),
   blog: defineCollection({

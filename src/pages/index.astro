@@ -3,6 +3,8 @@ import Hero from "@components/home/hero/Hero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AboutUs from "@components/home/about/AboutUs.astro";
 import ProjectsPreview from "@components/home/projects/ProjectsPreview.astro";
+import StackSection from "@components/home/stack/StackSection.astro";
+import ExperienceSection from "@components/home/experience/ExperienceSection.astro";
 ---
 
 <BaseLayout>
@@ -10,6 +12,8 @@ import ProjectsPreview from "@components/home/projects/ProjectsPreview.astro";
     class="w-full h-full min-h-screen flex flex-col items-center mx-auto overflow-x-hidden"
   >
     <Hero />
+    <StackSection />
+    <ExperienceSection />
     <ProjectsPreview />
     <AboutUs />
   </div>

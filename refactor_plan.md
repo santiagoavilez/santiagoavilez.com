@@ -20,8 +20,8 @@
 | 5d | Stack badges en Featured Projects | ⬜ Pendiente |
 | 5e | Stack & Experience section | ✅ Completo |
 | 5f | Experience timeline section | ✅ Completo |
-| 6 | CV descargable (`public/resume.pdf`) | ⬜ Pendiente |
-| 7 | Footer | ⬜ Pendiente |
+| 6 | CV descargable (`public/resume.pdf`) | ✅ Completo |
+| 7 | Footer | ✅ Completo |
 | 8 | Eliminar sección "Marcas que confían" | ✅ Completo |
 
 **Progreso: 9 / 13**

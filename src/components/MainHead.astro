@@ -6,9 +6,11 @@ interface Props {
 	description?: string | undefined;
 }
 
+const yearsOfExperience = Math.floor((Date.now() - new Date(2020, 11, 1).getTime()) / (365.25 * 24 * 60 * 60 * 1000));
+
 const {
 	title = "Santiago Avilez | Full Stack Developer",
-	description = "Full Stack Developer with 5+ years building scalable web products. React, Next.js, TypeScript, Node.js, NestJS. Open to full-time remote roles — US, Canada, Europe & Latin America.",
+	description = `Full Stack Developer with ${yearsOfExperience}+ years building scalable web products. React, Next.js, TypeScript, Node.js, NestJS. Open to full-time remote roles — US, Canada, Europe & Latin America.`,
 } = Astro.props;
 ---
 

@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import { CardDescription, CardTitle } from "@components/ui/card";
 import { ArrowUpRight } from "lucide-react";
 
+const yearsOfExperience = Math.floor((Date.now() - new Date(2020, 11, 1).getTime()) / (365.25 * 24 * 60 * 60 * 1000));
+
 interface Props {
   title: string;
   description: string;
@@ -49,7 +51,7 @@ const { odd, title, description, image } = Astro.props;
   >
     <!-- <CardTitle className="text-3xl"> {title} </CardTitle> -->
     <CardDescription className="pt-2 text-xl">
-      I'm a <span class="text-cerulean-400 font-medium">Full Stack Developer</span> based in Argentina, with <span class="text-cerulean-400 font-medium">5+ years</span> of experience
+      I'm a <span class="text-cerulean-400 font-medium">Full Stack Developer</span> based in Argentina, with <span class="text-cerulean-400 font-medium">{yearsOfExperience}+ years</span> of experience
       building web products that actually scale.
     </CardDescription>
     <CardDescription className="pt-6 text-xl">
@@ -78,7 +80,7 @@ const { odd, title, description, image } = Astro.props;
     <div class="pt-8 flex flex-wrap gap-4">
       <a
         href="/resume.pdf"
-        download
+        download="Santiago_Avilez_Full_Stack_Developer.pdf"
         class="inline-flex items-center gap-2 rounded-md bg-cerulean-400 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cerulean-500 transition-colors"
       >
         Download Resume

@@ -9,11 +9,13 @@ import GithubProject from "./GithubProject.astro";
 interface Props {
   index: number;
   project: CollectionEntry<"projects"> | CollectionEntry<"blog">;
+  showStack?: boolean;
 }
 
 const {
   index,
   project: { data, slug },
+  showStack = false,
 } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -46,6 +48,18 @@ if (!images[data.img])
     <p class="my-3 font-normal text-gray-300">
       {data.description}
     </p>
+
+    {
+      showStack && data?.tools && data.tools.length > 0 && (
+        <div class="flex flex-wrap gap-2 pt-3">
+          {data.tools.map((tool) => (
+            <span class="text-xs px-3 py-1 rounded-full border border-cerulean-400/30 text-cerulean-400 bg-cerulean-400/5">
+              {tool.name}
+            </span>
+          ))}
+        </div>
+      )
+    }
 
     {
       (data?.live || data?.git) && (

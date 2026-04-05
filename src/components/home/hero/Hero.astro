@@ -1,6 +1,8 @@
 ---
 import portrait from "../../../assets/hero/profile_picture.jpg";
 import { Image } from "astro:assets";
+
+const yearsOfExperience = Math.floor((Date.now() - new Date(2020, 11, 1).getTime()) / (365.25 * 24 * 60 * 60 * 1000));
 ---
 
 <div
@@ -23,13 +25,13 @@ import { Image } from "astro:assets";
 
         <p class="text-base md:text-lg max-w-screen-md text-gray-300 leading-relaxed">
           I design and build scalable web products <span class="text-cerulean-400 font-semibold">end-to-end</span> — from clean,
-          performant frontends to well-architected backends. <span class="text-cerulean-400 font-semibold">5+ years</span> shipping
+          performant frontends to well-architected backends. <span class="text-cerulean-400 font-semibold">{yearsOfExperience}+ years</span> shipping
           real features in production.<br />
           Currently open to full-time remote roles at product companies in the US.
         </p>
 
         <div class="flex flex-wrap gap-3 justify-center md:justify-start mt-2">
-          <a href="/resume.pdf" download>
+          <a href="/resume.pdf" download="Santiago_Avilez_Full_Stack_Developer.pdf">
             <button
               class="font-bold text-xl bg-gradient-to-r from-cerulean-600 to-cyan-400 py-3 px-6 rounded-md text-white"
             >

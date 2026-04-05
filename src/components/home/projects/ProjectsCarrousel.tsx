@@ -13,9 +13,9 @@ import Autoplay from "embla-carousel-autoplay"
 import ClassNames from 'embla-carousel-class-names'
 
 
-const projects = (await getCollection("projects")).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
+const projects = (await getCollection("projects"))
+  .filter((p) => !p.data.featured)
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/previews/*.{jpeg,jpg,png,gif,webp}"

@@ -1,0 +1,45 @@
+---
+const education = [
+  {
+    degree: "Systems & Computer Engineering",
+    institution: "Universidad de los Andes",
+    period: "2023 – Present",
+    note: "ongoing",
+  },
+  {
+    degree: "Bachelor's in Web Development",
+    institution: "National University of Comahue",
+    period: "2019 – 2022",
+  },
+];
+---
+
+<section class="w-full max-w-[68rem] mx-auto px-6 py-8">
+  <p
+    class="text-xs font-semibold uppercase tracking-widest text-cerulean-400/60 mb-6"
+  >
+    Education
+  </p>
+  <div
+    class="relative flex flex-col gap-0 border-l-2 border-cerulean-400/30 ml-2"
+  >
+    {
+      education.map((entry) => (
+        <div class="relative pl-6 pb-8 last:pb-0">
+          <span class="absolute -left-[7px] top-[4px] w-3 h-3 rounded-full bg-cerulean-400 border-2 border-cerulean-400/40" />
+
+          <p class="font-semibold text-sm text-white leading-snug">
+            {entry.degree}
+          </p>
+
+          <p class="text-xs text-gray-400 mt-0.5 tracking-wide">
+            {entry.institution} · {entry.period}
+            {entry.note && (
+              <span class="ml-1 text-cerulean-400/70">({entry.note})</span>
+            )}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -411,7 +411,7 @@ Timeline vertical simple con 3 items. Cada item tiene: rol, empresa/proyecto, pe
 const experience = [
   {
     role: "Full Stack Developer",
-    company: "Secretaría de Modernización — Municipalidad de Neuquén",
+    company: "Zoada Dev Studio",
     period: "Feb 2025 – Present",
     description: "Architected citizen-facing digital platforms (React + NestJS + PostgreSQL) serving 12,000+ users/year, replacing manual government processes with online services. Led performance refactor reducing load times by 30% and boosting form completion by 15%.",
     url: null  // plataforma interna, sin link público
@@ -437,7 +437,7 @@ const experience = [
 
 Render esperado por item:
 ●  Full Stack Developer
-   Secretaría de Modernización — Municipalidad de Neuquén · Feb 2025 – Present
+   Zoada Dev Studio · Feb 2025 – Present
    Architected citizen-facing digital platforms serving 12,000+ users/year...
 
 ●  Full Stack Developer

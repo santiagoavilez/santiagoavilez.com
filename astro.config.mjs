@@ -8,6 +8,8 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   site: "https://santiagoavilez.com",
   output: "hybrid",
-  adapter: vercel(),
+  adapter: vercel({
+    runtime: 'nodejs22.x'
+  }),
   integrations: [tailwind(), mdx(), sitemap(), react()],
 });

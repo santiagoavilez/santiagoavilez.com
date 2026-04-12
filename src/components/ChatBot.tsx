@@ -1,6 +1,6 @@
 import { MessageCircle, RotateCcw, Send, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import type { FormEvent } from "react";
+import type { FormEvent, ReactNode } from "react";
 import {
   Sheet,
   SheetContent,
@@ -31,6 +31,41 @@ function TypingIndicator() {
       <span className="h-2 w-2 animate-bounce rounded-full bg-primary/70" />
     </div>
   );
+}
+
+function normalizeMessageContent(content: string): string {
+  return content.replace(/\r\n/g, "\n").replace(/\\n/g, "\n");
+}
+
+function renderInlineMarkdown(text: string): ReactNode[] {
+  const segments = text.split(/(\*\*[^*]+\*\*)/g);
+
+  return segments.map((segment, index) => {
+    const isBold =
+      segment.startsWith("**") && segment.endsWith("**") && segment.length > 4;
+
+    if (isBold) {
+      return (
+        <strong key={`bold-${index}`} className="font-semibold">
+          {segment.slice(2, -2)}
+        </strong>
+      );
+    }
+
+    return <span key={`text-${index}`}>{segment}</span>;
+  });
+}
+
+function renderMessageContent(content: string): ReactNode[] {
+  const normalized = normalizeMessageContent(content);
+  const lines = normalized.split("\n");
+
+  return lines.map((line, lineIndex) => (
+    <span key={`line-${lineIndex}`}>
+      {renderInlineMarkdown(line)}
+      {lineIndex < lines.length - 1 && <br />}
+    </span>
+  ));
 }
 
 export default function ChatBot() {
@@ -192,7 +227,7 @@ export default function ChatBot() {
                         : "rounded-bl-md border border-border bg-muted/70 text-card-foreground"
                     }`}
                   >
-                    {message.content}
+                    {isUser ? message.content : renderMessageContent(message.content)}
                   </p>
                 </div>
               );

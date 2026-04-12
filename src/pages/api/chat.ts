@@ -10,46 +10,48 @@ Respond in the same language the user writes in (English or Spanish). Be profess
 
 ## Santiago Avilez — Full Stack Developer
 
-**Location:** Open to full-time remote roles worldwide
-**LinkedIn:** linkedin.com/in/santiago-avilez-ariza/
-**Portfolio:** santiagoavilez.com
+Location: Open to full-time remote roles worldwide
+LinkedIn: linkedin.com/in/santiago-avilez-ariza/
+Portfolio: santiagoavilez.com
+Email: santiagoavilezdev@gmail.com
+GitHub: github.com/santiagoavilez
 
 ### Summary
 Full Stack Developer with 5+ years of experience designing and building scalable web products end-to-end — from clean, performant frontends to well-architected backends. Core stack: React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL.
 
 ### Experience
-- **Full Stack Developer @ Zoada Dev Studio** (Feb 2025 – Present)
+- Full Stack Developer @ Zoada Dev Studio (Feb 2025 – Present)
   Architected and shipped client-facing digital platforms (React + NestJS + PostgreSQL) serving 50,000+ users, owning end-to-end delivery from data modeling to production deployment.
 
-- **Full Stack Developer @ Eximo** (Dec 2020 – Jan 2025)
+- Full Stack Developer @ Eximo (Dec 2020 – Jan 2025)
   Built full-stack applications for enterprise clients with 5,000+ active users, owning end-to-end delivery. Reduced page load times by 40% and modernized legacy services using Clean Architecture and DDD, improving modularity and reducing onboarding time for new engineers.
 
-- **Co-Founder & Lead Engineer @ Fulbbo** (2025 – Present)
+- Co-Founder & Lead Engineer @ Fulbbo (2025 – Present)
   Designed and built a full-stack soccer social platform — booking, payments, real-time chat, and geographic search. Reduced Google Places API costs by ~90% with a custom PostgreSQL cache system. URL: fulbbo.vercel.app
 
 ### Education
-- **Systems & Computer Engineering** — Universidad de los Andes (2023 – Present, ongoing)
-- **Associate Degree in Web Development** — National University of Comahue (2019 – 2022)
+- Systems & Computer Engineering — Universidad de los Andes (2023 – Present, ongoing)
+- Associate Degree in Web Development — National University of Comahue (2019 – 2022)
 
 ### Tech Stack
-- **Languages:** TypeScript, JavaScript, SQL
-- **Frontend:** React, Next.js, Astro, Tailwind CSS, Redux, Zustand, shadcn/ui
-- **Backend:** Node.js, NestJS, Express, tRPC, REST APIs
-- **Databases:** PostgreSQL, MySQL, MongoDB, NoSQL, TypeORM, Drizzle
-- **Infra:** Docker, AWS, GitHub Actions, Vercel, CI/CD
-- **Testing:** Jest, Vitest
-- **Architecture:** Clean Architecture, DDD, Vertical Slice, SOLID
+- Languages: TypeScript, JavaScript, SQL
+- Frontend: React, Next.js, Astro, Tailwind CSS, Redux, Zustand, shadcn/ui
+- Backend: Node.js, NestJS, Express, tRPC, REST APIs
+- Databases: PostgreSQL, MySQL, MongoDB, NoSQL, TypeORM, Drizzle
+- Infra: Docker, AWS, GitHub Actions, Vercel, CI/CD
+- Testing: Jest, Vitest
+- Architecture: Clean Architecture, DDD, Vertical Slice, SOLID
 
 ### Notable Projects
-- **Fulbbo** — Social platform connecting soccer players with nearby fields. Real-time chat, booking, payments, friend coordination. Geographic cache over Google Places API reducing costs ~90%.
-- **Solucionado App** — MVP for a tech startup connecting domestic service providers with clients. Led a team of three, selected stack (Next.js, TypeScript, tRPC, Prisma), shipped end-to-end.
-- **Laborar** — Freelance marketplace platform with real-time chat (Socket.io) and peer-to-peer review system. Next.js + Strapi CMS.
-- **Melina Batalla** — Online course platform with dual-market payments (Mercado Pago + Lemon Squeezy), DailyMotion video integration, SQL-backed enrollment. Built with Astro + React.
-- **Alerta Digital** — Performance and SEO optimization for a news platform. Achieved 96/100 Lighthouse score.
-- **Glassy Europe** — Web performance and SEO optimization for a surf fashion ecommerce brand. Improved Lighthouse score to 98/100.
-- **IEIA** — Landing page and optimization for an AI business institute. Achieved 96/100 Lighthouse score.
-- **Unco Activa** — Registration platform for a university running event (React + Laravel + Tailwind CSS).
-- **AMCumbre.com** — Radio station website with in-browser live stream player, Google Analytics, and automated social media publishing.
+- Fulbbo — Social platform connecting soccer players with nearby fields. Real-time chat, booking, payments, friend coordination. Geographic cache over Google Places API reducing costs ~90%.
+- Solucionado App — MVP for a tech startup connecting domestic service providers with clients. Led a team of three, selected stack (Next.js, TypeScript, tRPC, Prisma), shipped end-to-end.
+- Laborar — Freelance marketplace platform with real-time chat (Socket.io) and peer-to-peer review system. Next.js + Strapi CMS.
+- Melina Batalla — Online course platform with dual-market payments (Mercado Pago + Lemon Squeezy), DailyMotion video integration, SQL-backed enrollment. Built with Astro + React.
+- Alerta Digital — Performance and SEO optimization for a news platform. Achieved 96/100 Lighthouse score.
+- Glassy Europe — Web performance and SEO optimization for a surf fashion ecommerce brand. Improved Lighthouse score to 98/100.
+- IEIA — Landing page and optimization for an AI business institute. Achieved 96/100 Lighthouse score.
+- Unco Activa — Registration platform for a university running event (React + Laravel + Tailwind CSS).
+- AMCumbre.com — Radio station website with in-browser live stream player, Google Analytics, and automated social media publishing.
 
 ### Services
 Santiago offers: web development (custom sites from scratch), web performance optimization (near-perfect Lighthouse scores), and website maintenance.
@@ -67,6 +69,8 @@ interface ChatMessage {
   role: string;
   content: string;
 }
+
+const ALLOWED_ROLES = new Set(["user", "assistant"]);
 
 async function callWithFallback(
   systemPrompt: string,
@@ -140,6 +144,20 @@ export const POST: APIRoute = async ({ request }) => {
       ) {
         return new Response(
           JSON.stringify({ error: "Invalid request: each message must have a role and content string" }),
+          { status: 400, headers: { "Content-Type": "application/json" } },
+        );
+      }
+
+      if (!ALLOWED_ROLES.has(msg.role)) {
+        return new Response(
+          JSON.stringify({ error: "Invalid request: message role must be 'user' or 'assistant'" }),
+          { status: 400, headers: { "Content-Type": "application/json" } },
+        );
+      }
+
+      if (msg.content.trim().length === 0) {
+        return new Response(
+          JSON.stringify({ error: "Invalid request: message content must not be empty" }),
           { status: 400, headers: { "Content-Type": "application/json" } },
         );
       }

@@ -83,20 +83,20 @@ Se muestran como chips clickeables al abrir el chat y cuando no hay mensajes:
 ### Fase 3: Integración en Astro `[2 checks]`
 
 - [x] **3.1** Importar `<ChatBot client:load />` en el layout principal (`Layout.astro` o equivalente) para que aparezca en todas las páginas.
-- [ ] **3.2** No se necesita SDK externo (se usa `fetch` nativo). Verificar que la API route funciona con `astro dev` y que `OPENROUTER_API_KEY` está en `.env`.
+- [x] **3.2** No se necesita SDK externo (se usa `fetch` nativo). Verificar que la API route funciona con `astro dev` y que `OPENROUTER_API_KEY` está en `.env`.
 
 ### Fase 4: Estilo y Polish `[4 checks]`
 
-- [ ] **4.1** Aplicar estilos coherentes con el design system del sitio (colores, tipografía, border-radius, sombras). Usar Tailwind classes existentes.
-- [ ] **4.2** Animación de entrada/salida del panel (slide-up o scale con opacity).
-- [ ] **4.3** Animación del indicador de typing (tres dots pulsantes).
-- [ ] **4.4** Badge "Ask AI" en el botón flotante con animación sutil (pulse o bounce) que desaparece tras la primera apertura.
+- [x] **4.1** Aplicar estilos coherentes con el design system del sitio (colores, tipografía, border-radius, sombras). Usar Tailwind classes existentes.
+- [x] **4.2** Animación de entrada/salida del panel (slide-up o scale con opacity).
+- [x] **4.3** Animación del indicador de typing (tres dots pulsantes).
+- [x] **4.4** Badge "Ask AI" en el botón flotante con animación sutil (pulse o bounce) que desaparece tras la primera apertura.
 
 ### Fase 5: Testing y Edge Cases `[3 checks]`
 
-- [ ] **5.1** Verificar que preguntas fuera de scope reciben la respuesta de restricción.
-- [ ] **5.2** Verificar manejo de errores: API key faltante, fallback entre modelos cuando uno devuelve 429, todos los modelos caídos (debe mostrar mensaje amigable), input vacío, mensajes muy largos.
-- [ ] **5.3** Verificar UX en mobile y desktop. Verificar que el chat no interfiere con el scroll del portfolio.
+- [x] **5.1** Verificar que preguntas fuera de scope reciben la respuesta de restricción.
+- [x] **5.2** Verificar manejo de errores: API key faltante, fallback entre modelos cuando uno devuelve 429, todos los modelos caídos (debe mostrar mensaje amigable), input vacío, mensajes muy largos.
+- [x] **5.3** Verificar UX en mobile y desktop. Verificar que el chat no interfiere con el scroll del portfolio.
 
 ---
 
@@ -106,9 +106,9 @@ Se muestran como chips clickeables al abrir el chat y cuando no hay mensajes:
 |------|-------------|--------|--------|
 | 1 | Backend API Route | 4 | ✅ |
 | 2 | Componente React | 6 | ✅ |
-| 3 | Integración Astro | 2 | ⬜ |
-| 4 | Estilo y Polish | 4 | ⬜ |
-| 5 | Testing y Edge Cases | 3 | ⬜ |
+| 3 | Integración Astro | 2 | ✅ |
+| 4 | Estilo y Polish | 4 | ✅ |
+| 5 | Testing y Edge Cases | 3 | ✅ |
 | **Total** | | **19** | |
 
 ---

@@ -6,12 +6,12 @@ import GithubProject from "./GithubProject.astro";
 
 interface Props {
 	index: number;
-	project: CollectionEntry<"work"> | CollectionEntry<"blog">;
+	project: CollectionEntry<"projects"> | CollectionEntry<"blog">;
 }
 
 const {
 	index,
-	project: { data, slug },
+	project: { data, id },
 } = Astro.props;
 ---
 
@@ -19,7 +19,7 @@ const {
 	data-aos={index ? "fade-left" : "fade-right"}
 	class="w-full bg-gray-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
 >
-	<a href={`/blog/${slug}`}>
+	<a href={`/blog/${id}`}>
 		<Image
 			class="rounded-t-lg"
 			width={data.img_w}

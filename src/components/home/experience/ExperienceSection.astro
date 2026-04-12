@@ -31,15 +31,20 @@ const experience = [
   <p class="text-xs font-semibold uppercase tracking-widest text-cerulean-400/60 mb-6">
     Experience
   </p>
-  <div class="relative flex flex-col gap-0 border-l-2 border-cerulean-400/30 ml-2">
+  <div class="timeline-wrapper relative flex flex-col gap-0 ml-2">
+    {/* Background track */}
+    <div class="absolute left-0 top-0 bottom-0 w-[2px] bg-cerulean-400/30"></div>
+    {/* Scroll-filled track */}
+    <div class="timeline-fill absolute left-0 top-0 w-[2px] bg-cerulean-400 origin-top" style="transform: scaleY(0);"></div>
+
     {
       experience.map((entry) => (
-        <div class="relative pl-6 pb-8 last:pb-0">
+        <div class="timeline-entry group relative pl-6 pb-8 last:pb-0 rounded-r-lg transition-all duration-300 hover:bg-cerulean-400/[0.04]">
           {/* Dot marker */}
-          <span class="absolute -left-[7px] top-[4px] w-3 h-3 rounded-full bg-cerulean-400 border-2 border-cerulean-400/40" />
+          <span class="absolute -left-[7px] top-[4px] w-3 h-3 rounded-full bg-cerulean-400 border-2 border-cerulean-400/40 transition-all duration-300 group-hover:scale-125 group-hover:shadow-[0_0_10px_rgba(0,164,219,0.4)]" />
 
           {/* Role */}
-          <p class="font-semibold text-sm text-white leading-snug">
+          <p class="font-semibold text-sm text-white leading-snug transition-colors duration-200 group-hover:text-cerulean-400">
             {entry.role}
           </p>
 
@@ -69,3 +74,42 @@ const experience = [
     }
   </div>
 </section>
+
+<script>
+  function initTimelineFill() {
+    document.querySelectorAll('.timeline-wrapper').forEach((wrapper) => {
+      const fill = wrapper.querySelector('.timeline-fill') as HTMLElement;
+      if (!fill) return;
+
+      const observer = new IntersectionObserver(() => {
+        requestAnimationFrame(() => updateFill(wrapper as HTMLElement, fill));
+      }, { threshold: 0 });
+
+      observer.observe(wrapper);
+
+      const onScroll = () => requestAnimationFrame(() => updateFill(wrapper as HTMLElement, fill));
+      window.addEventListener('scroll', onScroll, { passive: true });
+    });
+  }
+
+  function updateFill(wrapper: HTMLElement, fill: HTMLElement) {
+    const rect = wrapper.getBoundingClientRect();
+    const viewportH = window.innerHeight;
+
+    // Start filling when the top of the wrapper reaches 80% of viewport
+    const startTrigger = viewportH * 0.8;
+    const scrolled = startTrigger - rect.top;
+    const totalHeight = rect.height;
+
+    if (scrolled <= 0) {
+      fill.style.transform = 'scaleY(0)';
+      return;
+    }
+
+    const progress = Math.min(scrolled / totalHeight, 1);
+    fill.style.transform = `scaleY(${progress})`;
+  }
+
+  document.addEventListener('astro:page-load', initTimelineFill);
+  initTimelineFill();
+</script>

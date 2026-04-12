@@ -40,12 +40,16 @@ El system prompt incluye el CV completo de Santiago (experiencia, proyectos, ski
 
 ## Preguntas Sugeridas
 
-Se muestran como chips clickeables al abrir el chat y cuando no hay mensajes:
+### Iniciales (sin mensajes)
+Se muestran como chips clickeables al abrir el chat cuando no hay mensajes:
 
 1. "What's Santiago's tech stack?"
 2. "Tell me about Fulbbo"
 3. "What's his work experience?"
 4. "Is he open to remote roles?"
+
+### Dinámicas (después de cada respuesta)
+Después de cada respuesta del AI, se muestran 2-3 chips con preguntas de seguimiento contextuales. El backend instruye al modelo a incluir una línea `SUGGESTIONS:[...]` al final de su respuesta, que se parsea y se elimina del texto visible. Si el parseo falla, no se muestran sugerencias.
 
 ---
 
@@ -54,7 +58,8 @@ Se muestran como chips clickeables al abrir el chat y cuando no hay mensajes:
 - **Botón flotante**: esquina inferior derecha, ícono de chat, con badge animado "Ask AI" que desaparece tras abrir.
 - **Panel de chat**: se expande sobre el contenido (no desplaza layout). Ancho ~380px desktop, fullscreen en mobile.
 - **Header del panel**: "Chat with Santiago's AI" + botón cerrar.
-- **Chips de preguntas sugeridas**: visibles al inicio, desaparecen tras el primer mensaje.
+- **Chips de preguntas sugeridas**: visibles al inicio con preguntas predeterminadas; después de cada respuesta del AI se muestran 2-3 sugerencias contextuales de seguimiento.
+- **Botón limpiar conversación**: ícono ↻ en header, visible solo cuando hay mensajes. Resetea mensajes, sugerencias (vuelve a las iniciales) e input.
 - **Área de mensajes**: burbujas diferenciadas user/assistant, auto-scroll al último mensaje.
 - **Input**: campo de texto + botón enviar. Deshabilitado mientras se espera respuesta.
 - **Loading**: indicador de typing (tres dots animados) mientras se espera la respuesta.

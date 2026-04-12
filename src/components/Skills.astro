@@ -3,7 +3,7 @@ import Icon from "./Icon.astro";
 ---
 
 <section class="box skills">
-	<div class="stack gap-2 lg:gap-4 animate__animated animate__fadeInUp">
+	<div class="skill-card stack gap-2 lg:gap-4 animate__animated animate__fadeInUp">
 		<Icon
 			icon="terminal-window"
 			color="var(--accent-regular)"
@@ -16,7 +16,7 @@ import Icon from "./Icon.astro";
 			(frontend), asi como en la arquitectura interna (backend).
 		</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4 animate__animated animate__fadeInUp">
+	<div class="skill-card stack gap-2 lg:gap-4 animate__animated animate__fadeInUp">
 		<Icon
 			icon="book"
 			color="var(--accent-regular)"
@@ -30,7 +30,7 @@ import Icon from "./Icon.astro";
 			la programación.
 		</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4 animate__animated animate__fadeInUp">
+	<div class="skill-card stack gap-2 lg:gap-4 animate__animated animate__fadeInUp">
 		<Icon
 			icon="idea"
 			color="var(--accent-regular)"
@@ -67,6 +67,23 @@ import Icon from "./Icon.astro";
 
 	.skills p {
 		color: var(--gray-200);
+	}
+
+	.skill-card {
+		padding: 1.5rem;
+		border-radius: 0.75rem;
+		transition: all 0.3s ease;
+		cursor: default;
+	}
+
+	.skill-card:hover {
+		background-color: rgba(0, 164, 219, 0.04);
+		transform: translateY(-4px);
+		box-shadow: 0 8px 24px rgba(0, 164, 219, 0.08);
+	}
+
+	.skill-card:hover h2 {
+		color: var(--accent-regular);
 	}
 
 	@media (min-width: 50em) {

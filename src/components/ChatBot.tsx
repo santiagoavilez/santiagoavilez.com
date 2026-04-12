@@ -1,6 +1,13 @@
-import { MessageCircle, Send, X } from "lucide-react";
+import { MessageCircle, RotateCcw, Send, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "./ui/sheet";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -31,8 +38,10 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState("");
+  const [suggestions, setSuggestions] = useState<string[]>(SUGGESTED_QUESTIONS);
   const [hasOpenedOnce, setHasOpenedOnce] = useState(false);
   const endOfMessagesRef = useRef<HTMLDivElement | null>(null);
+  const launcherButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (isOpen && !hasOpenedOnce) {
@@ -55,6 +64,7 @@ export default function ChatBot() {
 
     setMessages(nextMessages);
     setInput("");
+    setSuggestions([]);
     setIsLoading(true);
 
     try {
@@ -77,6 +87,8 @@ export default function ChatBot() {
         return;
       }
 
+      const newSuggestions = Array.isArray(data?.suggestions) ? data.suggestions : [];
+      setSuggestions(newSuggestions);
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
       setMessages((prev) => [
@@ -96,9 +108,12 @@ export default function ChatBot() {
   return (
     <>
       <button
+        ref={launcherButtonRef}
         type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
-        className="fixed bottom-5 right-5 z-[70] inline-flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-primary shadow-[var(--shadow-md)] transition-all duration-200 hover:scale-105 hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        onClick={() => setIsOpen(true)}
+        className={`fixed bottom-5 right-5 z-[70] inline-flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-primary shadow-[var(--shadow-md)] transition-all duration-200 hover:scale-105 hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+          isOpen ? "pointer-events-none scale-95 opacity-0" : "pointer-events-auto scale-100 opacity-100"
+        }`}
         aria-label={isOpen ? "Close chat" : "Open chat"}
       >
         <MessageCircle className="h-6 w-6" />
@@ -109,53 +124,58 @@ export default function ChatBot() {
         )}
       </button>
 
-      <div
-        className={`fixed inset-0 z-[65] transition-all duration-200 ease-out sm:inset-auto sm:bottom-24 sm:right-5 ${
-          isOpen
-            ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-            : "pointer-events-none translate-y-3 scale-[0.98] opacity-0 sm:translate-y-2"
-        }`}
-      >
-        <div className="flex h-[100dvh] w-full flex-col border border-border bg-card text-card-foreground shadow-[var(--shadow-lg)] backdrop-blur-sm sm:h-[580px] sm:w-[380px] sm:rounded-lg">
-          <header className="flex items-center justify-between border-b border-border px-4 py-3">
-            <div>
-              <p className="text-sm font-semibold text-card-foreground">
-                Chat with Santiago&apos;s AI
-              </p>
-              <p className="text-xs text-muted-foreground">
-                Ask about projects, skills, and experience
-              </p>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetContent
+          side="bottom"
+          closeHidden
+          onCloseAutoFocus={(event) => {
+            event.preventDefault();
+            launcherButtonRef.current?.focus();
+          }}
+          className="z-[75] flex h-[82dvh] w-full flex-col gap-0 rounded-t-2xl border border-border bg-card p-0 text-card-foreground shadow-[var(--shadow-lg)] sm:inset-auto sm:bottom-24 sm:right-5 sm:h-[580px] sm:w-[380px] sm:max-w-[380px] sm:rounded-lg sm:border"
+        >
+          <SheetHeader className="border-b border-border px-4 py-3 text-left">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <SheetTitle className="text-sm font-semibold leading-none">
+                  Chat with Santiago&apos;s AI
+                </SheetTitle>
+                <SheetDescription className="mt-1 text-xs">
+                  Ask about projects, skills, and experience
+                </SheetDescription>
+              </div>
+              <div className="flex items-center gap-1">
+                {messages.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMessages([]);
+                      setSuggestions(SUGGESTED_QUESTIONS);
+                      setInput("");
+                    }}
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    aria-label="Clear conversation"
+                  >
+                    <RotateCcw className="h-3.5 w-3.5" />
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  aria-label="Close chat panel"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
             </div>
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              aria-label="Close chat panel"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          </header>
+          </SheetHeader>
 
           <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
             {messages.length === 0 && (
-              <div className="space-y-3">
-                <p className="text-sm text-muted-foreground">
-                  Ask me anything about Santiago&apos;s experience, projects, or tech stack.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {SUGGESTED_QUESTIONS.map((question) => (
-                    <button
-                      key={question}
-                      type="button"
-                      disabled={isLoading}
-                      onClick={() => void sendMessage(question)}
-                      className="rounded-full border border-border bg-muted px-3 py-1.5 text-xs font-medium text-foreground transition hover:bg-accent hover:text-accent-foreground disabled:cursor-not-allowed disabled:opacity-60"
-                    >
-                      {question}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <p className="text-sm text-muted-foreground">
+                Ask me anything about Santiago&apos;s experience, projects, or tech stack.
+              </p>
             )}
 
             {messages.map((message, index) => {
@@ -186,6 +206,22 @@ export default function ChatBot() {
               </div>
             )}
 
+            {!isLoading && suggestions.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {suggestions.map((question) => (
+                  <button
+                    key={question}
+                    type="button"
+                    disabled={isLoading}
+                    onClick={() => void sendMessage(question)}
+                    className="rounded-full border border-border bg-muted px-3 py-1.5 text-xs font-medium text-foreground transition hover:bg-accent hover:text-accent-foreground disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {question}
+                  </button>
+                ))}
+              </div>
+            )}
+
             <div ref={endOfMessagesRef} />
           </div>
 
@@ -212,8 +248,8 @@ export default function ChatBot() {
               </button>
             </div>
           </form>
-        </div>
-      </div>
+        </SheetContent>
+      </Sheet>
     </>
   );
 }

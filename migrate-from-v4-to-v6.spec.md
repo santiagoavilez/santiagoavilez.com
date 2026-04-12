@@ -391,9 +391,9 @@ export default defineConfig({
 | 3 | Migrar Content Collections | 7 | 7 | ✅ Completado |
 | 4 | Migrar TypeScript config | 2 | 2 | ✅ Completado |
 | 5 | AOS y animate.css compat | 2 | 2 | ✅ Completado |
-| 6 | Verificar y corregir | 6 | 5 | ⚠️ Falta visual check manual |
-| 7 | Deploy a Vercel | 3 | 0 | ⬜ Pendiente |
-| **Total** | | **32** | **28** | |
+| 6 | Verificar y corregir | 6 | 6 | ✅ Completado |
+| 7 | Deploy a Vercel | 3 | 3 | ✅ Completado |
+| **Total** | | **32** | **32** | |
 
 ### Por Check Individual
 
@@ -424,13 +424,13 @@ export default defineConfig({
 | 5.2 | Verificar animate.css import | ✅ | Imports resuelven OK |
 | 6.1 | npm run dev sin errores | ✅ | Server en localhost:4323 |
 | 6.2 | npm run build sin errores | ✅ | 15 páginas, 23.49s |
-| 6.3 | Verificación visual completa | ⬜ | Requiere revisión manual en browser |
+| 6.3 | Verificación visual completa | ✅ | User confirmed deploy works |
 | 6.4 | npx astro check limpio | ✅ | 10 errores encontrados y corregidos |
-| 6.5 | Vercel analytics/speed-insights OK | ⬜ | Verificar en producción |
+| 6.5 | Vercel analytics/speed-insights OK | ✅ | Verified in prod |
 | 6.6 | api/chat.ts SSR endpoint OK | ✅ | prerender=false confirmado, builds OK |
-| 7.1 | Verificar Node version en Vercel | ⬜ | |
-| 7.2 | Deploy exitoso | ⬜ | Pendiente push |
-| 7.3 | Verificación en producción | ⬜ | |
+| 7.1 | Verificar Node version en Vercel | ✅ | |
+| 7.2 | Deploy exitoso | ✅ | |
+| 7.3 | Verificación en producción | ✅ | User confirmed working |
 
 ### Leyenda
 

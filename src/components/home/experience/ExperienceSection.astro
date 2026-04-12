@@ -7,6 +7,7 @@ const experience = [
     description:
       "Architected and shipped client-facing digital platforms (React + NestJS + PostgreSQL) serving 50,000+ users, owning end-to-end delivery from data modeling to production deployment.",
     url: null,
+    stack: ['TypeScript' , "React", "NestJS", "PostgreSQL", "Docker" ,"Jest" ],
   },
   {
     role: "Full Stack Developer",
@@ -15,6 +16,7 @@ const experience = [
     description:
       "Built full-stack applications for enterprise clients with 5,000+ active users, owning end-to-end delivery. Reduced page load times by 40% and modernized legacy services using Clean Architecture and DDD, improving modularity and reducing onboarding time for new engineers.",
     url: null,
+    stack: ['TypeScript', "React", "NestJS", "PostgreSQL" , "Tailwind CSS" ,'CI/CD'],
   },
   {
     role: "Co-Founder & Lead Engineer",
@@ -23,6 +25,7 @@ const experience = [
     description:
       "Designed and built a full-stack soccer social platform — booking, payments, real-time chat, and geographic search. Reduced Google Places API costs by ~90% with a custom PostgreSQL cache system.",
     url: "https://fulbbo.vercel.app",
+    stack: ["TypeScript" ,"React", "Next.js", "Node.js", "PostgreSQL", "Vercel" , "Vitest"],
   },
 ];
 ---
@@ -57,6 +60,15 @@ const experience = [
           <p class="text-xs text-gray-400 mt-1 leading-relaxed max-w-xl">
             {entry.description}
           </p>
+
+          {/* Stack badges */}
+          <div class="flex flex-wrap gap-2">
+            {entry.stack.map((stack) => (
+              <span class="text-xs font-medium px-3 py-1 rounded-full border border-cerulean-400/30 text-cerulean-400 bg-cerulean-400/5 hover:bg-cerulean-400/20 hover:border-cerulean-400/60 hover:scale-105 hover:shadow-[0_0_12px_rgba(0,164,219,0.15)] transition-all duration-200 cursor-default mt-2">
+                {stack}
+              </span>
+            ))}
+          </div>
 
           {/* URL — only if not null */}
           {entry.url !== null && (

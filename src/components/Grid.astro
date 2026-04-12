@@ -50,8 +50,8 @@ const { variant } = Astro.props;
       transform: translateY(var(--row-offset));
     }
 
-    /* If last row contains only one item, display it in the second column. */
-    .grid.offset > :global(:last-child:nth-child(odd)) {
+    /* If last row contains only one item (and there are 2+ items), display it in the second column. */
+    .grid.offset > :global(:last-child:nth-child(odd):not(:first-child)) {
       grid-column: 2 / 3;
       transform: none;
     }

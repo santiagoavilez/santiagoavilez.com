@@ -94,9 +94,9 @@ Se muestran como chips clickeables al abrir el chat y cuando no hay mensajes:
 
 ### Fase 5: Testing y Edge Cases `[3 checks]`
 
-- [ ] **5.1** Verificar que preguntas fuera de scope reciben la respuesta de restricción.
-- [ ] **5.2** Verificar manejo de errores: API key faltante, fallback entre modelos cuando uno devuelve 429, todos los modelos caídos (debe mostrar mensaje amigable), input vacío, mensajes muy largos.
-- [ ] **5.3** Verificar UX en mobile y desktop. Verificar que el chat no interfiere con el scroll del portfolio.
+- [x] **5.1** Verificar que preguntas fuera de scope reciben la respuesta de restricción.
+- [x] **5.2** Verificar manejo de errores: API key faltante, fallback entre modelos cuando uno devuelve 429, todos los modelos caídos (debe mostrar mensaje amigable), input vacío, mensajes muy largos.
+- [x] **5.3** Verificar UX en mobile y desktop. Verificar que el chat no interfiere con el scroll del portfolio.
 
 ---
 
@@ -108,7 +108,7 @@ Se muestran como chips clickeables al abrir el chat y cuando no hay mensajes:
 | 2 | Componente React | 6 | ✅ |
 | 3 | Integración Astro | 2 | ✅ |
 | 4 | Estilo y Polish | 4 | ✅ |
-| 5 | Testing y Edge Cases | 3 | ⬜ |
+| 5 | Testing y Edge Cases | 3 | ✅ |
 | **Total** | | **19** | |
 
 ---

@@ -70,6 +70,8 @@ interface ChatMessage {
   content: string;
 }
 
+const ALLOWED_ROLES = new Set(["user", "assistant"]);
+
 async function callWithFallback(
   systemPrompt: string,
   userMessages: ChatMessage[],
@@ -142,6 +144,20 @@ export const POST: APIRoute = async ({ request }) => {
       ) {
         return new Response(
           JSON.stringify({ error: "Invalid request: each message must have a role and content string" }),
+          { status: 400, headers: { "Content-Type": "application/json" } },
+        );
+      }
+
+      if (!ALLOWED_ROLES.has(msg.role)) {
+        return new Response(
+          JSON.stringify({ error: "Invalid request: message role must be 'user' or 'assistant'" }),
+          { status: 400, headers: { "Content-Type": "application/json" } },
+        );
+      }
+
+      if (msg.content.trim().length === 0) {
+        return new Response(
+          JSON.stringify({ error: "Invalid request: message content must not be empty" }),
           { status: 400, headers: { "Content-Type": "application/json" } },
         );
       }

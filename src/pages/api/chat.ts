@@ -55,6 +55,10 @@ Full Stack Developer with 5+ years of experience designing and building scalable
 
 ### Services
 Santiago offers: web development (custom sites from scratch), web performance optimization (near-perfect Lighthouse scores), and website maintenance.
+
+IMPORTANT: At the very end of every response, include exactly 2-3 follow-up questions the user might want to ask next, formatted as a JSON array on its own line, prefixed with "SUGGESTIONS:" — for example:
+SUGGESTIONS:["What technologies did he use?","Tell me more about his role","How long did he work there?"]
+Do NOT include this in the visible response text. This line must be the LAST line of your response.
 `;
 
 const MODELS = [
@@ -75,7 +79,7 @@ const ALLOWED_ROLES = new Set(["user", "assistant"]);
 async function callWithFallback(
   systemPrompt: string,
   userMessages: ChatMessage[],
-): Promise<{ reply: string } | { error: string }> {
+): Promise<{ reply: string; suggestions: string[] } | { error: string }> {
   const apiKey = import.meta.env.OPENROUTER_API_KEY;
   if (!apiKey) {
     return { error: "Server misconfiguration: missing API key" };
@@ -112,7 +116,22 @@ async function callWithFallback(
       const reply = data?.choices?.[0]?.message?.content;
 
       if (typeof reply === "string" && reply.trim().length > 0) {
-        return { reply: reply.trim() };
+        const trimmedReply = reply.trim();
+        const lines = trimmedReply.split("\n");
+        let suggestions: string[] = [];
+        let cleanedReply = trimmedReply;
+
+        const lastLine = lines[lines.length - 1].trim();
+        if (lastLine.startsWith("SUGGESTIONS:")) {
+          try {
+            suggestions = JSON.parse(lastLine.slice("SUGGESTIONS:".length));
+          } catch {
+            suggestions = [];
+          }
+          cleanedReply = lines.slice(0, -1).join("\n").trim();
+        }
+
+        return { reply: cleanedReply, suggestions };
       }
 
       // Empty or malformed response, try next model

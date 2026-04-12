@@ -1,10 +1,10 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ContactCTA from "../../components/ContactCTA.astro";
 import Hero from "../../components/Hero.astro";
-import Icon, { Props as IconProps } from "../../components/Icon.astro";
+import Icon, { type Props as IconProps } from "../../components/Icon.astro";
 import Pill from "../../components/Pill.astro";
 import "animate.css";
 
@@ -36,13 +36,13 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 export async function getStaticPaths() {
     const blog = await getCollection("blog");
     return blog.map((entry) => ({
-        params: { slug: entry.slug },
+        params: { slug: entry.id },
         props: { entry },
     }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>

@@ -6,34 +6,23 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@components/ui/carousel";
-import type { ImageMetadata } from "astro";
-import { getCollection } from "astro:content";
 
 import Autoplay from "embla-carousel-autoplay"
 import ClassNames from 'embla-carousel-class-names'
 
+export interface ProjectItem {
+  id: string;
+  img: string;
+  img_alt?: string;
+  title: string;
+  description: string;
+}
 
-const projects = (await getCollection("projects"))
-  .filter((p) => !p.data.featured)
-  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+interface ProjectsCarrouselProps {
+  projects: ProjectItem[];
+}
 
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/previews/*.{jpeg,jpg,png,gif,webp}"
-);
-
-const projectImagesResolved = await Promise.all(projects.map(async (project) => {
-  const previewImg = images[`${project.data.img}`];
-  const img = await previewImg();
-  return {
-    ...project,
-    img: img.default.src,
-    img_w: img.default.width,
-    img_h: img.default.height,
-  };
-}));
-
-
-export default function ProjectsCarrousel() {
+export default function ProjectsCarrousel({ projects }: ProjectsCarrouselProps) {
   return (
     <Carousel
       opts={{
@@ -55,21 +44,21 @@ export default function ProjectsCarrousel() {
       className="w-full  "
     >
       <CarouselContent  >
-        {projectImagesResolved.map((project, index) => {
+        {projects.map((project, index) => {
           return (
             <CarouselItem key={index} className="[&:not(.is-snapped)]:opacity-20 basis-10/12  md:basis-1/2 lg:basis-3/12  ">
               <div className="p-1 h-full">
-                <a href={`/projects/${project.slug}`}>
+                <a href={`/projects/${project.id}`}>
                   <Card className="overflow-hidden h-full  ">
                     <CardHeader className="p-0">
-                      <img className="aspect-[14/10]" loading="lazy" decoding="async" src={project.img} alt={project.data.img_alt} width={425} height={303} />
+                      <img className="aspect-[14/10]" loading="lazy" decoding="async" src={project.img} alt={project.img_alt} width={425} height={303} />
                     </CardHeader>
                     <CardContent className="flex flex-col gap-2   p-6">
                       <CardTitle className="text-3xl font-semibold truncate">
-                        {project.data.title}
+                        {project.title}
                       </CardTitle>
                       <CardDescription className="text-base line-clamp-2 ">
-                        {project.data.description}
+                        {project.description}
                       </CardDescription>
                     </CardContent>
                   </Card>

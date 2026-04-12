@@ -4,39 +4,22 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@components/ui/carousel";
-import type { ImageMetadata } from "astro";
-import { getCollection } from "astro:content";
 
 import AutoScroll from "embla-carousel-auto-scroll"
 
-
-
-const projects = (await getCollection("projects")).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/previews/*.{jpeg,jpg,png,gif}"
-);
-console.log(images);
-
-const projectImagesResolved = await Promise.all(projects.map(async (project) => {
-  const previewImg = images[`${project.data.img}`];
-  const img = await previewImg();
-  return {
-    ...project,
-    img: img.default.src,
-    img_w: img.default.width,
-    img_h: img.default.height,
-  };
-}));
+export interface HeroProjectItem {
+  id: string;
+  img: string;
+  img_alt?: string;
+}
 
 interface HeroCarrouselProps {
+  projects: HeroProjectItem[];
   direction?: "forward" | "backward";
   speed?: number;
 }
 
-export default function HeroCarrousel({ direction, speed }: HeroCarrouselProps) {
+export default function HeroCarrousel({ projects, direction, speed }: HeroCarrouselProps) {
 
   return (
     <Carousel
@@ -59,14 +42,14 @@ export default function HeroCarrousel({ direction, speed }: HeroCarrouselProps) 
       className="w-full "
     >
       <CarouselContent className="" >
-        {projectImagesResolved.map((project, index) => {
+        {projects.map((project, index) => {
           return (
             <>
               <CarouselItem key={index} className="   basis-10/12  md:basis-1/2 lg:basis-3/12  ">
                 <div className="p-1 h-full">
                   <Card className="overflow-hidden h-full  ">
                     <CardHeader className="p-0">
-                      <img className="aspect-[14/10]" src={project.img} alt={project.data.img_alt} width={1000} height={714} />
+                      <img className="aspect-[14/10]" src={project.img} alt={project.img_alt} width={1000} height={714} />
                     </CardHeader>
 
                   </Card>
@@ -77,7 +60,7 @@ export default function HeroCarrousel({ direction, speed }: HeroCarrouselProps) 
                 <div className="p-1 h-full">
                   <Card className="overflow-hidden h-full  ">
                     <CardHeader className="p-0">
-                      <img className="aspect-[14/10]" src={project.img} alt={project.data.img_alt} width={1000} height={714} />
+                      <img className="aspect-[14/10]" src={project.img} alt={project.img_alt} width={1000} height={714} />
                     </CardHeader>
 
                   </Card>

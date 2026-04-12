@@ -17,7 +17,7 @@ const AnimatedCta = ({ arrayText , isDeleting }: IanimatedCta) => {
 
     useEffect(() => {
         let i = 0; // index for the current character
-        let typingInterval;
+        let typingInterval: ReturnType<typeof setInterval> | undefined;
 
         if (!isDeleting) {
             typingInterval = setInterval(() => {

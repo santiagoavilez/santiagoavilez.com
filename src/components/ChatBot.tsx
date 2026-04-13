@@ -167,7 +167,7 @@ export default function ChatBot() {
             event.preventDefault();
             launcherButtonRef.current?.focus();
           }}
-          className="z-[75] flex h-[82dvh] w-full flex-col gap-0 rounded-t-2xl border border-border bg-card p-0 text-card-foreground shadow-[var(--shadow-lg)] sm:inset-auto sm:bottom-24 sm:right-5 sm:h-[580px] sm:w-[380px] sm:max-w-[380px] sm:rounded-lg sm:border"
+          className="z-[75] flex h-[82dvh] w-full flex-col gap-0 rounded-t-2xl border border-border bg-card p-0 text-card-foreground shadow-[var(--shadow-lg)] sm:inset-auto sm:bottom-5 sm:right-5 sm:h-[580px] sm:w-[380px] sm:max-w-[380px] sm:rounded-lg sm:border"
         >
           <SheetHeader className="border-b border-border px-4 py-3 text-left">
             <div className="flex items-start justify-between gap-3">

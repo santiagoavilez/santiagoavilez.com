@@ -151,9 +151,9 @@ export default function ChatBot() {
         }`}
         aria-label={isOpen ? "Close chat" : "Open chat"}
       >
-        <MessageCircle className="h-6 w-6" />
+        <MessageCircle className="h-6 w-6 text-cerulean-500" />
         {!hasOpenedOnce && (
-          <span className="absolute -left-[4.6rem] inline-flex animate-pulse items-center rounded-full border border-border bg-muted px-3 py-1 text-xs font-semibold text-foreground shadow-[var(--shadow-sm)] backdrop-blur-sm">
+          <span className="absolute text-cerulean-500 font-bold -left-[4.6rem] inline-flex animate-pulse items-center rounded-full border border-border bg-muted px-3 py-1 text-xs font-semibold text-foreground shadow-[var(--shadow-sm)] backdrop-blur-sm">
             Ask AI
           </span>
         )}
@@ -249,7 +249,7 @@ export default function ChatBot() {
                     type="button"
                     disabled={isLoading}
                     onClick={() => void sendMessage(question)}
-                    className="rounded-full border border-border bg-muted px-3 py-1.5 text-xs font-medium text-foreground transition hover:bg-accent hover:text-accent-foreground disabled:cursor-not-allowed disabled:opacity-60"
+                    className="rounded-full border border-border bg-muted px-3 py-1.5 text-xs font-medium text-cerulean-300 transition hover:bg-accent hover:text-accent-foreground disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {question}
                   </button>

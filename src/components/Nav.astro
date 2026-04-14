@@ -4,14 +4,16 @@ import ThemeToggle from "./ThemeToggle.astro";
 import { Image } from "astro:assets";
 import isologo500 from "../../public/assets/isologo-horizontal-500.png";
 import isologo600 from "../assets/isologo-horizontal-600.png";
-
+import { Picture } from "astro:assets";
+import MenuNav from "./react/MenuNav";
+import { DownloadCloud } from "lucide-react";
 /** Main menu items */
-const textLinks: { label: string; href: string; download?: string }[] = [
+const textLinks: { label: string; href: string; download?: string; icon?: boolean }[] = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/projects/" },
   // { label: "Blog", href: "/blog/" },
   { label: "About", href: "/#about" },
-  { label: "Resume", href: "/resume.pdf", download: "Santiago_Avilez_Full_Stack_Developer.pdf" },
+  { icon: true, label: "Resume", href: "/resume.pdf", download: "Santiago_Avilez_Full_Stack_Developer.pdf" },
 ];
 
 /** Icon links to social media — edit these with links to your profiles! */
@@ -28,8 +30,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
   },
 ];
 
-import { Picture } from "astro:assets";
-import MenuNav from "./react/MenuNav";
+
 ---
 
 <nav
@@ -67,12 +68,12 @@ import MenuNav from "./react/MenuNav";
     >
       <ul class="nav-items">
         {
-          textLinks.map(({ label, href, download }) => (
+          textLinks.map(({ label, href, download, icon }) => (
             <li class="">
               <a
                 aria-current={Astro.url.pathname === href}
                 class:list={[
-                  "link ",
+                  "link",
                   {
                     active:
                       Astro.url.pathname === href ||
@@ -82,7 +83,8 @@ import MenuNav from "./react/MenuNav";
                 href={href}
                 download={download || undefined}
               >
-                {label}
+                {icon && <DownloadCloud />}
+                <span>{label}</span>
               </a>
             </li>
           ))
@@ -115,7 +117,7 @@ import MenuNav from "./react/MenuNav";
   <div id="menu-content" class="w-full hidden md:block sticky z-50">
     <ul class="nav-items">
       {
-        textLinks.map(({ label, href, download }) => (
+        textLinks.map(({ label, href, download , icon}) => (
           <li class="">
             <a
               aria-current={Astro.url.pathname === href}
@@ -130,7 +132,8 @@ import MenuNav from "./react/MenuNav";
               href={href}
               download={download || undefined}
             >
-              {label}
+              {icon && <DownloadCloud />}
+              <span>{label}</span>
             </a>
           </li>
         ))
@@ -248,7 +251,9 @@ import MenuNav from "./react/MenuNav";
   }
 
   .link {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--gray-300);
     text-decoration: none;
   }

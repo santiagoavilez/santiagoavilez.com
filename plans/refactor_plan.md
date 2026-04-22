@@ -433,7 +433,7 @@ const experience = [
 ]
 ```
 
-⚠️ Nota de orden: los items van de más reciente a más antiguo (Municipalidad → Eximo → Fulbbo). Fulbbo va último porque es un proyecto personal/side, no un empleo — pero tiene URL así que mantiene visibilidad.
+⚠️ Nota de orden: los items van de más reciente a más antiguo (Zoada dev studio → Eximo → Fulbbo). Fulbbo va último porque es un proyecto personal/side, no un empleo — pero tiene URL así que mantiene visibilidad.
 
 Render esperado por item:
 ●  Full Stack Developer
@@ -449,7 +449,7 @@ Render esperado por item:
    Designed and built a full-stack soccer social platform...
    [fulbbo.vercel.app ↗]
 La línea vertical que conecta los puntos (●) es el único elemento decorativo — mantenerla sutil, del color del tema existente.
-Si el item tiene URL, mostrar el link al final. Si no tiene URL (Municipalidad, Eximo), mostrar solo texto plano sin link.
+Si el item tiene URL, mostrar el link al final. Si no tiene URL (Zoada, Eximo), mostrar solo texto plano sin link.
 
 ---
 

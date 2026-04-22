@@ -3,34 +3,33 @@ import { getCollection } from "astro:content";
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import Icon from "@components/Icon.astro";
+import { FEATURED_ORDER, OTHER_WORK_ORDER } from "@lib/projectOrder";
 
-const allProjects = (await getCollection("projects")).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
-const featured = allProjects.filter((p) => p.data.featured);
-const nonFeatured = allProjects.filter((p) => !p.data.featured);
-type ProjectEntry = (typeof nonFeatured)[number];
+const allProjects = await getCollection("projects");
+type ProjectEntry = (typeof allProjects)[number];
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/previews/*.{jpeg,jpg,png,gif,webp}"
 );
 
+const orderedFeatured: ProjectEntry[] = [];
+for (const id of FEATURED_ORDER) {
+  const project = allProjects.find((p) => p.id === id && p.data.featured);
+  if (project) orderedFeatured.push(project);
+}
+
 const featuredWithImages = await Promise.all(
-  featured.map(async (project) => {
+  orderedFeatured.map(async (project) => {
     const { default: src } = await images[project.data.img]();
     return { project, src };
   })
 );
 
-// Define the order for Other Work grid
-const gridOrder = ['solucionado', 'melina-batalla', 'laborar', 'unco-activa', 'amcumbre.com', 'glassy'];
-
+const nonFeatured = allProjects.filter((p) => !p.data.featured);
 const orderedGridProjects: ProjectEntry[] = [];
-for (const id of gridOrder) {
+for (const id of OTHER_WORK_ORDER) {
   const project = nonFeatured.find((p) => p.id === id);
-  if (project) {
-    orderedGridProjects.push(project);
-  }
+  if (project) orderedGridProjects.push(project);
 }
 
 const gridProjects = await Promise.all(

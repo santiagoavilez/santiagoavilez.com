@@ -1,75 +1,229 @@
 ---
 import { getCollection } from "astro:content";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
-
 import ContactCTA from "../components/ContactCTA.astro";
-import PortfolioPreview from "../components/PortfolioPreview.astro";
-import Hero from "../components/Hero.astro";
-import Grid from "../components/Grid.astro";
+import { FEATURED_ORDER, OTHER_WORK_ORDER } from "@lib/projectOrder";
 
-const allProjects = (await getCollection("projects")).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+const allProjects = await getCollection("projects");
+type ProjectEntry = (typeof allProjects)[number];
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/previews/*.{jpeg,jpg,png,gif,webp}"
 );
 
-// Fulbbo will be added in Task 5b — it will appear first in Featured Projects via featured: true + publishDate
-const featured = allProjects.filter((p) => p.data.featured);
-const otherWork = allProjects.filter((p) => !p.data.featured);
+const orderedFeatured: ProjectEntry[] = [];
+for (const id of FEATURED_ORDER) {
+  const project = allProjects.find((p) => p.id === id && p.data.featured);
+  if (project) orderedFeatured.push(project);
+}
+
+const featuredWithImages = await Promise.all(
+  orderedFeatured.map(async (project) => {
+    const { default: src } = await images[project.data.img]();
+    return { project, src };
+  })
+);
+
+const nonFeatured = allProjects.filter((p) => !p.data.featured);
+const orderedOtherWork: ProjectEntry[] = [];
+for (const id of OTHER_WORK_ORDER) {
+  const project = nonFeatured.find((p) => p.id === id);
+  if (project) orderedOtherWork.push(project);
+}
+
+const otherWorkWithImages = await Promise.all(
+  orderedOtherWork.map(async (project) => {
+    const imageLoader = images[project.data.img];
+    if (!imageLoader) {
+      throw new Error(
+        `"${project.data.img}" does not exist in glob: "/src/assets/previews/*.{jpeg,jpg,png,gif,webp}"`
+      );
+    }
+    const { default: src } = await imageLoader();
+    return { project, src };
+  })
+);
 ---
 
 <BaseLayout
-	title="My Work | Santiago Avilez"
-	description="A look at my most recent projects — from full-stack engineering work to client and optimization projects."
+  title="My Work | Santiago Avilez"
+  description="A look at my most recent projects — from full-stack engineering work to client and optimization projects."
 >
-	<div class="stack gap-20">
-		<main class="wrapper stack gap-16">
-			<Hero
-				title="My Work"
-				tagline="A look at my most recent projects — end-to-end engineering work and client projects."
-				align="start"
-			/>
+  <div class="flex flex-col gap-20 pb-20">
 
-			<!-- Featured Projects -->
-			<section class="stack gap-8">
-				<header class="stack gap-2">
-					<h2 class="text-2xl font-semibold">Featured Projects</h2>
-					<p class="text-gray-400">End-to-end engineering work</p>
-				</header>
-				<Grid variant="offset">
-					{
-						featured.map((project, index) => (
-							<li class="overflow-hidden">
-								<PortfolioPreview
-									index={index % 2}
-									project={project}
-									showStack={true}
-								/>
-							</li>
-						))
-					}
-				</Grid>
-			</section>
+    <!-- Page header -->
+    <div class="w-full border-b border-gray-800 bg-gray-950/50">
+      <div class="flex flex-col gap-3 px-6 py-16 w-full max-w-[68rem] mx-auto">
+        <h1 class="text-5xl font-bold text-white">My Work</h1>
+        <p class="text-gray-400 text-lg max-w-xl">
+          End-to-end engineering work, client projects, and things I've built for fun.
+        </p>
+      </div>
+    </div>
 
-			<!-- Other Work -->
-			<section class="stack gap-8">
-				<header class="stack gap-2">
-					<h2 class="text-2xl font-semibold">Other Work</h2>
-					<p class="text-gray-400">Client and optimization work</p>
-				</header>
-				<Grid variant="offset">
-					{
-						otherWork.map((project, index) => (
-							<li class="overflow-hidden">
-								<PortfolioPreview
-									index={index % 2}
-									project={project}
-								/>
-							</li>
-						))
-					}
-				</Grid>
-			</section>
-		</main>
-		<ContactCTA />
-	</div>
+    <div class="flex flex-col gap-20 px-6 w-full max-w-[68rem] mx-auto">
+
+      <!-- Featured Projects -->
+      <section class="flex flex-col gap-6">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Featured</p>
+        <div class="flex flex-col gap-8">
+          {featuredWithImages.map(({ project, src }) => (
+            <article class="flex flex-col md:flex-row rounded-2xl overflow-hidden border border-gray-800 bg-gray-900/30 group hover:border-cerulean-400/40 transition-all duration-300 hover:shadow-lg hover:shadow-cerulean-400/5">
+
+              <!-- Image -->
+              <a href={`/projects/${project.id}`} class="md:w-[42%] shrink-0 block overflow-hidden">
+                <Image
+                  src={src}
+                  alt={project.data.img_alt || project.data.title}
+                  width={project.data.img_w}
+                  height={project.data.img_h}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  format="webp"
+                />
+              </a>
+
+              <!-- Content -->
+              <div class="flex flex-col justify-center gap-5 p-7 md:p-10">
+
+                {project.data.role && (
+                  <span class="text-xs font-semibold text-cerulean-400 uppercase tracking-widest">
+                    {project.data.role}
+                  </span>
+                )}
+
+                <a href={`/projects/${project.id}`}>
+                  <h2 class="text-2xl font-bold text-white group-hover:text-cerulean-400 transition-colors duration-200">
+                    {project.data.title}
+                  </h2>
+                </a>
+
+                <p class="text-gray-400 text-sm leading-relaxed">
+                  {project.data.description}
+                </p>
+
+                {project.data.highlights && project.data.highlights.length > 0 && (
+                  <ul class="flex flex-col gap-2.5">
+                    {project.data.highlights.map((h) => (
+                      <li class="flex gap-2.5 text-sm text-gray-400 leading-snug">
+                        <span class="text-cerulean-400 shrink-0 mt-0.5 text-xs">▸</span>
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {project.data.tools && project.data.tools.length > 0 && (
+                  <div class="flex flex-wrap gap-2">
+                    {project.data.tools.map((tool) => (
+                      <span class="text-xs px-3 py-1 rounded-full border border-cerulean-400/30 text-cerulean-400 bg-cerulean-400/5">
+                        {tool.name}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div class="flex gap-5 flex-wrap items-center pt-1">
+                  {project.data.live && (
+                    <a
+                      href={project.data.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm font-semibold text-cerulean-400 hover:underline"
+                    >
+                      Live Preview ↗
+                    </a>
+                  )}
+                  {project.data.git ? (
+                    <a
+                      href={project.data.git}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm text-gray-500 hover:text-gray-300 transition-colors"
+                    >
+                      GitHub ↗
+                    </a>
+                  ) : (
+                    <span class="text-sm text-gray-600">🔒 Private codebase</span>
+                  )}
+                </div>
+
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Other Work -->
+      <section class="flex flex-col gap-6">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Other Work</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+          {otherWorkWithImages.map(({ project, src }, index) => (
+            <article
+              class="group rounded-2xl overflow-hidden border border-gray-800 bg-gray-900/30 hover:border-cerulean-400/40 transition-all duration-300 hover:shadow-lg hover:shadow-cerulean-400/5"
+              data-aos="fade-up"
+              data-aos-delay={String(index * 100)}
+            >
+              <a href={`/projects/${project.id}`} class="block">
+                <div class="overflow-hidden">
+                  <Image
+                    src={src}
+                    alt={project.data.img_alt || project.data.title}
+                    width={project.data.img_w}
+                    height={project.data.img_h}
+                    class="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
+                    format="webp"
+                  />
+                </div>
+                <div class="p-5 flex flex-col gap-5">
+                  <h3 class="text-lg font-semibold text-white group-hover:text-cerulean-400 transition-colors duration-200">
+                    {project.data.title}
+                  </h3>
+                  <p class="text-sm text-gray-400 leading-relaxed">
+                    {project.data.description}
+                  </p>
+                  {project.data.tools && project.data.tools.length > 0 && (
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                      {project.data.tools.map((tool) => (
+                        <span class="text-xs px-2.5 py-0.5 rounded-full border border-cerulean-400/30 text-cerulean-400 bg-cerulean-400/5">
+                          {tool.name}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <div class="flex gap-4 items-center ">
+                    {project.data.live && (
+                      <a
+                        href={project.data.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-xs font-medium text-cerulean-400 hover:underline"
+                      >
+                        Live ↗
+                      </a>
+                    )}
+                    {project.data.git && (
+                      <a
+                        href={project.data.git}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+                      >
+                        GitHub ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+    </div>
+
+    <ContactCTA />
+  </div>
 </BaseLayout>

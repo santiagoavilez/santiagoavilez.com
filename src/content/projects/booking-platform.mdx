@@ -1,0 +1,71 @@
+---
+title: Booking Platform
+publishDate: 2026-02-01 00:00:00
+img: /src/assets/previews/booking-platform-preview.webp
+img_w: 1139
+img_h: 641
+img_alt: Booking Platform — Clean Architecture showcase
+featured: false
+git: https://github.com/santiagoavilez/booking-platform-api
+role: Solo Engineer
+description: |
+  Calendly-inspired scheduling system built as an architecture showcase — Clean Architecture, NestJS, CI/CD with CircleCI, and ~90% test coverage.
+tags:
+  - TypeScript
+  - NestJS
+  - React
+  - PostgreSQL
+
+tools:
+  - name: TypeScript
+  - name: NestJS
+  - name: React
+  - name: PostgreSQL
+  - name: Drizzle
+  - name: Docker
+  - name: CircleCI
+---
+
+## Overview
+
+A Calendly-inspired appointment scheduling system built across two repositories — a NestJS REST API and a React frontend. The goal wasn't to compete with Calendly in the market; it was to build a real-world domain problem from scratch using proper engineering practices, then document every decision.
+
+The result: Clean Architecture applied end-to-end, ~90% test coverage enforced by CI, Docker environments for dev/test/prod, and a README that explains _why_ each technical choice was made — not just what was chosen.
+
+[API Repository ↗](https://github.com/santiagoavilez/booking-platform-api) · [Web Repository ↗](https://github.com/santiagoavilez/booking-platform-web)
+
+## Architecture
+
+The API follows Clean Architecture with a strict 4-layer separation:
+
+| Layer | Responsibility |
+|---|---|
+| `domain/` | Framework-agnostic entities, enums, and service interfaces |
+| `application/` | Use cases — pure business logic with no infrastructure dependencies |
+| `infrastructure/` | Drizzle ORM, PostgreSQL, external services |
+| `interfaces/` | NestJS controllers, HTTP adapters |
+
+This separation means the domain layer has zero dependencies on NestJS, Drizzle, or anything external. Use cases depend only on interfaces (repository contracts), making them fully testable by swapping in mocks — no database required for unit tests.
+
+## Technical Decisions
+
+Every major choice in this project was documented with explicit rationale:
+
+**NestJS over Express/Fastify** — Built-in dependency injection, guards, interceptors, and pipes enforce consistent patterns at scale. The modular architecture maps directly to Clean Architecture modules, which isn't the case with Express.
+
+**Drizzle over Prisma/TypeORM** — SQL-like query API gives more control over complex queries without abstraction overhead. Lower runtime cost and smaller bundle than Prisma, and better TypeScript inference than TypeORM.
+
+**Clean Architecture over layered MVC** — The domain layer is framework-independent and portable. Swapping ORMs or HTTP frameworks only requires changes in the infrastructure layer. This matters in fast-moving environments where requirements and tooling change.
+
+## CI/CD & Testing
+
+- **CircleCI** pipeline runs on every push to `main`
+- **Unit + E2E tests** isolated in a Docker test environment (`docker-compose.test.yml`)
+- **~90% test coverage** tracked via Coveralls
+- Three Docker Compose configurations: `dev` (hot reload), `test` (isolated), `prod` (production build)
+
+The test environment spins up a dedicated PostgreSQL container, so tests never touch the dev database and can run fully reproducibly in any environment.
+
+## What I Learned
+
+Building a domain that already has a mature solution (Calendly) forced good architectural decisions early — there was no excuse to cut corners because the domain is well-understood. It was a useful constraint: you know exactly what the system _should_ do, so you can focus entirely on _how_ it's built.

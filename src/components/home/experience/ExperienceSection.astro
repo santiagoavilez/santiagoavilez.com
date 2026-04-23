@@ -31,7 +31,7 @@ const experience = [
 ---
 
 <section class="w-full max-w-[68rem] mx-auto px-6 py-8">
-  <p class="text-xs font-semibold uppercase tracking-widest text-cerulean-400/60 mb-6">
+  <p class="text-xs font-semibold uppercase tracking-widest text-cerulean-400/60 mb-6" data-aos="fade-right">
     Experience
   </p>
   <div class="timeline-wrapper relative flex flex-col gap-0 ml-2">
@@ -93,22 +93,33 @@ const experience = [
       const fill = wrapper.querySelector('.timeline-fill') as HTMLElement;
       if (!fill) return;
 
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const timelineEntries = Array.from(wrapper.querySelectorAll('.timeline-entry')) as HTMLElement[];
+      const revealed = new Set<HTMLElement>();
+
+      if (!reducedMotion) {
+        timelineEntries.forEach(entry => {
+          entry.style.opacity = '0';
+          entry.style.transform = 'translateY(12px)';
+          entry.style.transition = 'opacity 400ms ease-out, transform 400ms ease-out';
+        });
+      }
+
       const observer = new IntersectionObserver(() => {
-        requestAnimationFrame(() => updateFill(wrapper as HTMLElement, fill));
+        requestAnimationFrame(() => updateFill(wrapper as HTMLElement, fill, timelineEntries, revealed, reducedMotion));
       }, { threshold: 0 });
 
       observer.observe(wrapper);
 
-      const onScroll = () => requestAnimationFrame(() => updateFill(wrapper as HTMLElement, fill));
+      const onScroll = () => requestAnimationFrame(() => updateFill(wrapper as HTMLElement, fill, timelineEntries, revealed, reducedMotion));
       window.addEventListener('scroll', onScroll, { passive: true });
     });
   }
 
-  function updateFill(wrapper: HTMLElement, fill: HTMLElement) {
+  function updateFill(wrapper: HTMLElement, fill: HTMLElement, timelineEntries: HTMLElement[], revealed: Set<HTMLElement>, reducedMotion: boolean) {
     const rect = wrapper.getBoundingClientRect();
     const viewportH = window.innerHeight;
 
-    // Start filling when the top of the wrapper reaches 80% of viewport
     const startTrigger = viewportH * 0.8;
     const scrolled = startTrigger - rect.top;
     const totalHeight = rect.height;
@@ -120,6 +131,17 @@ const experience = [
 
     const progress = Math.min(scrolled / totalHeight, 1);
     fill.style.transform = `scaleY(${progress})`;
+
+    const wrapperHeight = wrapper.getBoundingClientRect().height;
+    timelineEntries.forEach(entry => {
+      if (revealed.has(entry)) return;
+      const threshold = (entry.offsetTop / wrapperHeight) - 0.05;
+      if (progress >= threshold) {
+        revealed.add(entry);
+        entry.style.opacity = '1';
+        entry.style.transform = 'none';
+      }
+    });
   }
 
   document.addEventListener('astro:page-load', initTimelineFill);

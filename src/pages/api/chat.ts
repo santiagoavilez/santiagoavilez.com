@@ -20,10 +20,10 @@ GitHub: github.com/santiagoavilez
 Full Stack Developer with 5+ years of experience designing and building scalable web products end-to-end — from clean, performant frontends to well-architected backends. Core stack: React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL.
 
 ### Experience
-- Full Stack Developer @ Zoada Dev Studio (Feb 2025 – Present)
+- Full Stack Developer @ Government Digital Modernization Office (Feb 2025 – Present)
   Architected and shipped client-facing digital platforms (React + NestJS + PostgreSQL) serving 50,000+ users, owning end-to-end delivery from data modeling to production deployment.
 
-- Full Stack Developer @ Eximo (Dec 2020 – Jan 2025)
+- Full Stack Developer @ Zoada Dev Studio (Dec 2020 – Jan 2025)
   Built full-stack applications for enterprise clients with 5,000+ active users, owning end-to-end delivery. Reduced page load times by 40% and modernized legacy services using Clean Architecture and DDD, improving modularity and reducing onboarding time for new engineers.
 
 - Co-Founder & Lead Engineer @ Fulbbo (2025 – Present)
@@ -100,7 +100,7 @@ const ALLOWED = [
 
   // Experience and roles
   /\b(experiencia|experience|trabajo|work|career|rol|role|seniority|años|years|impacto|impact)\b/,
-  /\b(zoada|eximo|fulbbo|co-founder|lead\s+engineer|full\s+stack)\b/,
+  /\b(zoada|fulbbo|co-founder|lead\s+engineer|full\s+stack)\b/,
 
   // Skills / stack
   /\b(skill|skills|habilidades|stack|tech\s+stack|tecnologias|tecnología|tools|herramientas)\b/,
@@ -173,7 +173,7 @@ function buildScopeGuardPayload(spanish: boolean): {
         "Solo puedo responder preguntas sobre Santiago: su experiencia, skills, stack, proyectos, educación y disponibilidad laboral.",
       suggestions: [
         "¿Cuál es el stack principal de Santiago?",
-        "¿Qué impacto tuvo su trabajo en Zoada o Eximo?",
+        "¿Qué impacto tuvo su trabajo en Zoada Dev Studio?",
         "Cuéntame sobre Fulbbo y su rol allí",
       ],
     };
@@ -184,7 +184,7 @@ function buildScopeGuardPayload(spanish: boolean): {
       "I can only answer questions about Santiago: his experience, skills, tech stack, projects, education, and work availability.",
     suggestions: [
       "What is Santiago's main tech stack?",
-      "What impact did he have at Zoada or Eximo?",
+      "What impact did he have at Zoada Dev Studio?",
       "Tell me about Fulbbo and his role there",
     ],
   };

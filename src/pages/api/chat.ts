@@ -8,7 +8,7 @@ Respond in the same language the user writes in (English or Spanish). Be profess
 
 ---
 
-## Santiago Avilez — Full Stack Developer
+## Santiago Avilez — Senior Full-Stack Engineer
 
 Location: Open to full-time remote roles worldwide
 LinkedIn: linkedin.com/in/santiago-avilez-ariza/
@@ -17,7 +17,7 @@ Email: santiagoavilezdev@gmail.com
 GitHub: github.com/santiagoavilez
 
 ### Summary
-Full Stack Developer with 5+ years of experience designing and building scalable web products end-to-end — from clean, performant frontends to well-architected backends. Core stack: React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL.
+Senior Full-Stack Engineer with 5+ years of experience designing and building scalable web products end-to-end — from clean, performant frontends to well-architected backends. Core stack: React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL.
 
 ### Experience
 - Full Stack Developer @ City of Neuquén - Digital Modernization Office (Feb 2025 – Present)

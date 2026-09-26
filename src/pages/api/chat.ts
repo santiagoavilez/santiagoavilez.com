@@ -27,6 +27,13 @@ Senior Full-Stack Engineer with 5+ years of experience designing and building sc
   - Mentor junior developers through pairing and architecture guidance
   Stack: TypeScript, React, Next.js, NestJS, PostgreSQL, Docker, Jest
 
+- Full-Stack Engineer @ Zoada Dev Studio (Dec 2020 – Jan 2025)
+  Built and shipped full-stack applications for clients in media, e-commerce, education and startups, owning delivery from DB modeling to production.
+  - Chose Vertical Slice Architecture over the studio's default Clean Architecture for a platform serving 100,000+ users
+  - Reduced server-side response times by 40% through NestJS query optimization
+  - Integrated payment gateways and third-party APIs under real production load
+  Stack: TypeScript, React, Next.js, NestJS, PostgreSQL, MySQL, Jest
+
 - Co-Founder & Lead Engineer @ Fulbbo (Aug 2025 – Present)
   SaaS platform connecting soccer players with nearby fields — real-time booking, match coordination and team management. Live in production; I own every architecture decision.
   - Cut Google Places API costs ~90% with a PostgreSQL geographic cache, keeping responses under 100ms
@@ -34,13 +41,6 @@ Senior Full-Stack Engineer with 5+ years of experience designing and building sc
   - Fixed a MercadoPago webhook race condition with idempotency keys and retry logic
   Stack: TypeScript, Next.js, tRPC, Drizzle, Supabase, PostgreSQL, Vitest
   URL: fulbbo.com
-
-- Full-Stack Engineer @ Zoada Dev Studio (Dec 2020 – Jan 2025)
-  Built and shipped full-stack applications for clients in media, e-commerce, education and startups, owning delivery from DB modeling to production.
-  - Chose Vertical Slice Architecture over the studio's default Clean Architecture for a platform serving 100,000+ users
-  - Reduced server-side response times by 40% through NestJS query optimization
-  - Integrated payment gateways and third-party APIs under real production load
-  Stack: TypeScript, React, Next.js, NestJS, PostgreSQL, MySQL, Jest
 
 ### Education
 - Systems & Computer Engineering — Universidad de los Andes (2023 – Present, ongoing)

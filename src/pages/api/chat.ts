@@ -20,8 +20,8 @@ GitHub: github.com/santiagoavilez
 Full Stack Developer with 5+ years of experience designing and building scalable web products end-to-end — from clean, performant frontends to well-architected backends. Core stack: React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL.
 
 ### Experience
-- Full Stack Developer @ Government Digital Modernization Office (Feb 2025 – Present)
-  Architected and shipped client-facing digital platforms (React + NestJS + PostgreSQL) serving 50,000+ users, owning end-to-end delivery from data modeling to production deployment.
+- Full Stack Developer @ City of Neuquén - Digital Modernization Office (Feb 2025 – Present)
+  Architected and shipped client-facing digital platforms (React + NestJS + PostgreSQL) serving 100,000+ users, owning end-to-end delivery from data modeling to production deployment.
 
 - Full Stack Developer @ Zoada Dev Studio (Dec 2020 – Jan 2025)
   Built full-stack applications for enterprise clients with 5,000+ active users, owning end-to-end delivery. Reduced page load times by 40% and modernized legacy services using Clean Architecture and DDD, improving modularity and reducing onboarding time for new engineers.

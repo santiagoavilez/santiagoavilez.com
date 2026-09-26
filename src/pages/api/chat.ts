@@ -20,14 +20,27 @@ GitHub: github.com/santiagoavilez
 Senior Full-Stack Engineer with 5+ years of experience designing and building scalable web products end-to-end — from clean, performant frontends to well-architected backends. Core stack: React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL.
 
 ### Experience
-- Full Stack Developer @ City of Neuquén - Digital Modernization Office (Feb 2025 – Present)
-  Architected and shipped client-facing digital platforms (React + NestJS + PostgreSQL) serving 100,000+ users, owning end-to-end delivery from data modeling to production deployment.
+- Full-Stack Engineer @ City of Neuquén — Digital Modernization Office (Feb 2025 – Present)
+  I own architecture and technical direction for digital platforms serving 100,000+ users/year, from data modeling to production, with full autonomy.
+  - Led a frontend performance refactor: load times −30%, form completion +15%
+  - Set the testing standard with Jest (~85% coverage on critical modules)
+  - Mentor junior developers through pairing and architecture guidance
+  Stack: TypeScript, React, Next.js, NestJS, PostgreSQL, Docker, Jest
 
-- Full Stack Developer @ Zoada Dev Studio (Dec 2020 – Jan 2025)
-  Built full-stack applications for enterprise clients with 5,000+ active users, owning end-to-end delivery. Reduced page load times by 40% and modernized legacy services using Clean Architecture and DDD, improving modularity and reducing onboarding time for new engineers.
+- Co-Founder & Lead Engineer @ Fulbbo (Aug 2025 – Present)
+  SaaS platform connecting soccer players with nearby fields — real-time booking, match coordination and team management. Live in production; I own every architecture decision.
+  - Cut Google Places API costs ~90% with a PostgreSQL geographic cache, keeping responses under 100ms
+  - Enforced multi-tenant isolation with Postgres row-level security
+  - Fixed a MercadoPago webhook race condition with idempotency keys and retry logic
+  Stack: TypeScript, Next.js, tRPC, Drizzle, Supabase, PostgreSQL, Vitest
+  URL: fulbbo.com
 
-- Co-Founder & Lead Engineer @ Fulbbo (2025 – Present)
-  Designed and built a full-stack soccer social platform — booking, payments, real-time chat, and geographic search. Reduced Google Places API costs by ~90% with a custom PostgreSQL cache system. URL: fulbbo.vercel.app
+- Full-Stack Engineer @ Zoada Dev Studio (Dec 2020 – Jan 2025)
+  Built and shipped full-stack applications for clients in media, e-commerce, education and startups, owning delivery from DB modeling to production.
+  - Chose Vertical Slice Architecture over the studio's default Clean Architecture for a platform serving 100,000+ users
+  - Reduced server-side response times by 40% through NestJS query optimization
+  - Integrated payment gateways and third-party APIs under real production load
+  Stack: TypeScript, React, Next.js, NestJS, PostgreSQL, MySQL, Jest
 
 ### Education
 - Systems & Computer Engineering — Universidad de los Andes (2023 – Present, ongoing)

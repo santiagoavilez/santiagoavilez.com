@@ -1,31 +1,46 @@
 ---
 const experience = [
   {
-    role: "Full Stack Developer",
-    company: "City of Neuquén - Digital Modernization Office",
+    role: "Full-Stack Engineer",
+    company: "City of Neuquén — Digital Modernization Office",
     period: "Feb 2025 – Present",
     description:
-      "Architected and shipped client-facing digital platforms (React + NestJS + PostgreSQL) serving 100,000+ users, owning end-to-end delivery from data modeling to production deployment.",
+      "I own architecture and technical direction for digital platforms serving 100,000+ users/year, from data modeling to production, with full autonomy.",
+    highlights: [
+      "Led a frontend performance refactor: load times −30%, form completion +15%",
+      "Set the testing standard with Jest (~85% coverage on critical modules)",
+      "Mentor junior developers through pairing and architecture guidance",
+    ],
     url: null,
-    stack: ['TypeScript' , "React", "NestJS", "PostgreSQL", "Docker" ,"Jest" ],
-  },
-  {
-    role: "Full Stack Developer",
-    company: "Zoada dev studio",
-    period: "Dec 2020 – Jan 2025",
-    description:
-      "Built full-stack applications for enterprise clients with 5,000+ active users, owning end-to-end delivery. Reduced page load times by 40% and modernized legacy services using Clean Architecture and DDD, improving modularity and reducing onboarding time for new engineers.",
-    url: null,
-    stack: ['TypeScript', "React", "NestJS", "PostgreSQL" , "Tailwind CSS" ,'CI/CD'],
+    stack: ["TypeScript", "React", "Next.js", "NestJS", "PostgreSQL", "Docker", "Jest"],
   },
   {
     role: "Co-Founder & Lead Engineer",
     company: "Fulbbo",
-    period: "2025 – Present",
+    period: "Aug 2025 – Present",
     description:
-      "Designed and built a full-stack soccer social platform — booking, payments, real-time chat, and geographic search. Reduced Google Places API costs by ~90% with a custom PostgreSQL cache system.",
-    url: "https://fulbbo.vercel.app",
-    stack: ["TypeScript" ,"React", "Next.js", "Node.js", "PostgreSQL", "Vercel" , "Vitest"],
+      "SaaS platform connecting soccer players with nearby fields — real-time booking, match coordination and team management. Live in production; I own every architecture decision.",
+    highlights: [
+      "Cut Google Places API costs ~90% with a PostgreSQL geographic cache, keeping responses under 100ms",
+      "Enforced multi-tenant isolation with Postgres row-level security",
+      "Fixed a MercadoPago webhook race condition with idempotency keys and retry logic",
+    ],
+    url: "https://fulbbo.com",
+    stack: ["TypeScript", "Next.js", "tRPC", "Drizzle", "Supabase", "PostgreSQL", "Vitest"],
+  },
+  {
+    role: "Full-Stack Engineer",
+    company: "Zoada Dev Studio",
+    period: "Dec 2020 – Jan 2025",
+    description:
+      "Built and shipped full-stack applications for clients in media, e-commerce, education and startups, owning delivery from DB modeling to production.",
+    highlights: [
+      "Chose Vertical Slice Architecture over the studio's default Clean Architecture for a platform serving 100,000+ users",
+      "Reduced server-side response times by 40% through NestJS query optimization",
+      "Integrated payment gateways and third-party APIs under real production load",
+    ],
+    url: null,
+    stack: ["TypeScript", "React", "Next.js", "NestJS", "PostgreSQL", "MySQL", "Jest"],
   },
 ];
 ---
@@ -60,6 +75,15 @@ const experience = [
           <p class="text-xs text-gray-400 mt-1 leading-relaxed max-w-xl">
             {entry.description}
           </p>
+
+          {/* Highlights */}
+          {entry.highlights?.length > 0 && (
+            <ul class="list-disc pl-4 mt-1.5 space-y-1 text-xs text-gray-400 leading-relaxed max-w-xl marker:text-cerulean-400/60">
+              {entry.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          )}
 
           {/* Stack badges */}
           <div class="flex flex-wrap gap-2">

@@ -11,7 +11,7 @@ npm run preview   # Preview production build locally
 npx astro check   # TypeScript/Astro type checking
 ```
 
-No test framework is configured.
+`npm test` runs the chatbot scope-guard tests (`test/chatScope.test.ts`) with Node's built-in `node:test` runner; there is no other test framework.
 
 ## Architecture
 

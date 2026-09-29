@@ -17,13 +17,13 @@ Email: santiagoavilezdev@gmail.com
 GitHub: github.com/santiagoavilez
 
 ### Summary
-Senior Full-Stack Engineer with 5+ years of experience designing and building scalable web products end-to-end — from clean, performant frontends to well-architected backends. Core stack: React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL.
+Senior Full-Stack Engineer with 5+ years of experience designing and building scalable web products end-to-end — from architecture decisions and trade-offs to production. Builds platforms that serve 100,000+ users, ships production AI features, and mentors developers along the way. Core stack: TypeScript, Node.js, NestJS, React, Next.js, PostgreSQL, AI (LLMs, RAG, MCP).
 
 ### Experience
 - Full-Stack Engineer @ City of Neuquén — Digital Modernization Office (Feb 2025 – Present)
   I own architecture and technical direction for digital platforms serving 100,000+ users/year, from data modeling to production, with full autonomy.
   - Led a frontend performance refactor: load times −30%, form completion +15%
-  - Set the testing standard with Jest (~85% coverage on critical modules)
+  - Built an MCP server doing RAG over the organization's repos, commits, PRs and docs (github.com/santiagoavilez/muni-mcp-repos-rag)
   - Mentor junior developers through pairing and architecture guidance
   Stack: TypeScript, React, Next.js, NestJS, PostgreSQL, Docker, Jest
 
@@ -38,8 +38,8 @@ Senior Full-Stack Engineer with 5+ years of experience designing and building sc
   SaaS platform connecting soccer players with nearby fields — real-time booking, match coordination and team management. Live in production; I own every architecture decision.
   - Cut Google Places API costs ~90% with a PostgreSQL geographic cache, keeping responses under 100ms
   - Enforced multi-tenant isolation with Postgres row-level security
-  - Fixed a MercadoPago webhook race condition with idempotency keys and retry logic
-  Stack: TypeScript, Next.js, tRPC, Drizzle, Supabase, PostgreSQL, Vitest
+  - Built AI search that turns natural-language queries into validated filters (GPT-4o mini, function calling, Zod)
+  Stack: TypeScript, Next.js, tRPC, Drizzle, Supabase, PostgreSQL, Redis, OpenAI, Vitest
   URL: fulbbo.com
 
 ### Education
@@ -50,13 +50,19 @@ Senior Full-Stack Engineer with 5+ years of experience designing and building sc
 - Languages: TypeScript, JavaScript, SQL
 - Frontend: React, Next.js, Astro, Tailwind CSS, Redux, Zustand, shadcn/ui
 - Backend: Node.js, NestJS, Express, tRPC, REST APIs
-- Databases: PostgreSQL, MySQL, MongoDB, NoSQL, TypeORM, Drizzle
-- Infra: Docker, AWS, GitHub Actions, Vercel, CI/CD
+- AI: OpenAI, LLM Tool Calling, RAG, MCP, Zod, Claude Code
+- Databases: PostgreSQL, MySQL, MongoDB, NoSQL, Redis, TypeORM, Drizzle
+- Infra: Docker, GitHub Actions, Vercel, CI/CD
 - Testing: Jest, Vitest
 - Architecture: Clean Architecture, DDD, Vertical Slice, SOLID
 
 ### Notable Projects
-- Fulbbo — Social platform connecting soccer players with nearby fields. Real-time chat, booking, payments, friend coordination. Geographic cache over Google Places API reducing costs ~90%.
+- Fulbbo — Social platform connecting soccer players with nearby fields: booking, payments, match coordination and AI-powered search. Live in production.
+  - Geographic cache over Google Places API (PostgreSQL + 5 km grid), reducing API costs by ~90% in high-traffic zones.
+  - AI search layer (GPT-4o mini, function calling, Zod) that turns ambiguous queries into validated filters, cached in Redis.
+  - WhatsApp booking chatbot with LLM tool calling that maps free text to allow-listed actions.
+  - Fixed a MercadoPago webhook race condition that double-processed payments, using idempotency keys and retry logic.
+- Repo RAG MCP Server — MCP server that indexes an organization's repositories (code, commits, PRs and docs) so developers can query the codebase from AI assistants like Claude Code and Cursor. Built with TypeScript, MCP SDK, Ollama embeddings, SQLite and Zod. Public: github.com/santiagoavilez/muni-mcp-repos-rag
 - Solucionado App — MVP for a tech startup connecting domestic service providers with clients. Led a team of three, selected stack (Next.js, TypeScript, tRPC, Prisma), shipped end-to-end.
 - Laborar — Freelance marketplace platform with real-time chat (Socket.io) and peer-to-peer review system. Next.js + Strapi CMS.
 - Melina Batalla — Online course platform with dual-market payments (Mercado Pago + Lemon Squeezy), DailyMotion video integration, SQL-backed enrollment. Built with Astro + React.
@@ -117,11 +123,14 @@ const ALLOWED = [
 
   // Skills / stack
   /\b(skill|skills|habilidades|stack|tech\s+stack|tecnologias|tecnología|tools|herramientas)\b/,
-  /\b(react|next\.?js|astro|tailwind|redux|zustand|node\.?js|nestjs|express|trpc|postgres(?:ql)?|mysql|mongodb|docker|aws|vercel|ci\/cd|jest|vitest|ddd|solid|clean\s+architecture)\b/,
+  /\b(react|next\.?js|astro|tailwind|redux|zustand|node\.?js|nestjs|express|trpc|postgres(?:ql)?|mysql|mongodb|redis|docker|aws|vercel|ci\/cd|jest|vitest|ddd|solid|clean\s+architecture)\b/,
+
+  // AI
+  /\b(ai|ia|inteligencia\s+artificial|artificial\s+intelligence|llms?|rag|mcp|openai|gpt|claude|embeddings?|chatbot|agents?|agentes?|tool\s+calling|zod|ollama)\b/,
 
   // Projects and education
   /\b(proyecto|project|proyectos|projects|case\s+study|portfolio\s+project)\b/,
-  /\b(solucionado|laborar|melina\s+batalla|alerta\s+digital|glassy\s+europe|ieia|unco\s+activa|amcumbre)\b/,
+  /\b(repo\s+rag|solucionado|laborar|melina\s+batalla|alerta\s+digital|glassy\s+europe|ieia|unco\s+activa|amcumbre)\b/,
   /\b(educacion|education|universidad|university|engineering|ingenieria|systems\s+engineering)\b/,
 
   // Services

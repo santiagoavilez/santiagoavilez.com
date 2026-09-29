@@ -17,6 +17,9 @@ const BLOCKED = [
 
 // Stack terms that contain blocked words ("code", "function"); removed before the BLOCKED check.
 const STACK_PHRASES = /\b(claude\s+code|function\s+calling)\b/gi;
+// Stripping those phrases must not let code-generation requests through.
+const GENERATION_REQUEST =
+  /\b(write|escribe|genera|generame|generate|crea|create|hazme|haz|make|build|implementa|implement|develop|desarrolla|programa)\b/i;
 
 const ALLOWED = [
   // Identity / availability / contact
@@ -69,7 +72,10 @@ export function evaluateScope(rawMessage: string): ScopeEvaluationResult {
   }
 
   const guardText = message.replace(STACK_PHRASES, " ");
-  const matchesBlocked = BLOCKED.some((pattern) => pattern.test(guardText));
+  const strippedStackPhrase = guardText !== message;
+  const matchesBlocked =
+    BLOCKED.some((pattern) => pattern.test(guardText)) ||
+    (strippedStackPhrase && GENERATION_REQUEST.test(guardText));
   if (matchesBlocked) {
     return { allowed: false };
   }

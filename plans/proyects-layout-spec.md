@@ -69,7 +69,7 @@ Reemplazar el carrusel de Embla en la sección "Other Work" del homepage por un 
 
 ### Featured Card (Fulbbo) — se mantiene como está
 - Imagen cover grande
-- Badge "Featured" + "Co-Founder & Lead Engineer"
+- Badge "Featured" + "Lead Engineer"
 - Título + descripción
 - Bullet points con logros
 - Stack badges

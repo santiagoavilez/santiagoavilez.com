@@ -170,15 +170,15 @@ CTA secundario: [Let's connect on LinkedIn ↗] → https://linkedin.com/in/sant
 
 ## Datos del proyecto
 
-| Campo | Valor |
-|---|---|
-| Nombre | Fulbbo |
-| Tipo | Featured Project (con stack badges y link live) |
-| Rol | Co-Founder & Lead Engineer |
-| Live URL | https://fulbbo.vercel.app |
-| Repo | Privado — no agregar link de GitHub |
-| Nota de repo | `Private codebase` |
-| Stack | TypeScript · Next.js · React · Node.js · PostgreSQL · Vercel · Vitest · Vertical Slice Architecture |
+| Campo        | Valor                                                                                               |
+| --------------| -----------------------------------------------------------------------------------------------------|
+| Nombre       | Fulbbo                                                                                              |
+| Tipo         | Featured Project (con stack badges y link live)                                                     |
+| Rol          | Lead Engineer                                                                                       |
+| Live URL     | https://fulbbo.vercel.app                                                                           |
+| Repo         | Privado — no agregar link de GitHub                                                                 |
+| Nota de repo | `Private codebase`                                                                                  |
+| Stack        | TypeScript · Next.js · React · Node.js · PostgreSQL · Vercel · Vitest · Vertical Slice Architecture |
 
 ---
 
@@ -197,7 +197,7 @@ real-time chat, booking, payments, and friend coordination.
 
 **Badge de rol (opcional, si el diseño lo permite):**
 ```
-Co-Founder & Lead Engineer
+Lead Engineer
 ```
 
 ---
@@ -424,7 +424,7 @@ const experience = [
     url: null  // empresa de clientes, sin link público representativo
   },
   {
-    role: "Co-Founder & Lead Engineer",
+    role: "Lead Engineer",
     company: "Fulbbo",
     period: "2023 – Present",
     description: "Designed and built a full-stack soccer social platform — booking, payments, real-time chat, and geographic search. Reduced Google Places API costs by ~90% with a custom PostgreSQL cache system.",
@@ -444,7 +444,7 @@ Render esperado por item:
    Eximo · Dec 2020 – Jan 2025
    Built full-stack applications for enterprise clients with 5,000+ active users...
 
-●  Co-Founder & Lead Engineer
+●  Lead Engineer
    Fulbbo · 2023 – Present
    Designed and built a full-stack soccer social platform...
    [fulbbo.vercel.app ↗]

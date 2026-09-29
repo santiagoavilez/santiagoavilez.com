@@ -34,7 +34,7 @@ Senior Full-Stack Engineer with 5+ years of experience designing and building sc
   - Integrated payment gateways and third-party APIs under real production load
   Stack: TypeScript, React, Next.js, NestJS, PostgreSQL, MySQL, Jest
 
-- Co-Founder & Lead Engineer @ Fulbbo (Aug 2025 – Present)
+- Lead Engineer @ Fulbbo (Aug 2025 – Present)
   SaaS platform connecting soccer players with nearby fields — real-time booking, match coordination and team management. Live in production; I own every architecture decision.
   - Cut Google Places API costs ~90% with a PostgreSQL geographic cache, keeping responses under 100ms
   - Enforced multi-tenant isolation with Postgres row-level security
@@ -113,7 +113,7 @@ const ALLOWED = [
 
   // Experience and roles
   /\b(experiencia|experience|trabajo|work|career|rol|role|seniority|años|years|impacto|impact)\b/,
-  /\b(zoada|fulbbo|co-founder|lead\s+engineer|full\s+stack)\b/,
+  /\b(zoada|fulbbo|lead\s+engineer|full\s+stack)\b/,
 
   // Skills / stack
   /\b(skill|skills|habilidades|stack|tech\s+stack|tecnologias|tecnología|tools|herramientas)\b/,

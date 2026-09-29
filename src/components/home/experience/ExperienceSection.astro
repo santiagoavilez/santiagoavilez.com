@@ -8,11 +8,22 @@ const experience = [
       "I own architecture and technical direction for digital platforms serving 100,000+ users/year, from data modeling to production, with full autonomy.",
     highlights: [
       "Led a frontend performance refactor: load times −30%, form completion +15%",
-      "Set the testing standard with Jest (~85% coverage on critical modules)",
+      {
+        text: "Built an MCP server doing RAG over the organization's repos, commits, PRs and docs",
+        url: "https://github.com/santiagoavilez/muni-mcp-repos-rag",
+      },
       "Mentor junior developers through pairing and architecture guidance",
     ],
     url: null,
-    stack: ["TypeScript", "React", "Next.js", "NestJS", "PostgreSQL", "Docker", "Jest"],
+    stack: [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "Docker",
+      "Jest",
+    ],
   },
   {
     role: "Full-Stack Engineer",
@@ -26,10 +37,18 @@ const experience = [
       "Integrated payment gateways and third-party APIs under real production load",
     ],
     url: null,
-    stack: ["TypeScript", "React", "Next.js", "NestJS", "PostgreSQL", "MySQL", "Jest"],
+    stack: [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "MySQL",
+      "Jest",
+    ],
   },
   {
-    role: "Co-Founder & Lead Engineer",
+    role: "Lead Engineer",
     company: "Fulbbo",
     period: "Aug 2025 – Present",
     description:
@@ -37,23 +56,42 @@ const experience = [
     highlights: [
       "Cut Google Places API costs ~90% with a PostgreSQL geographic cache, keeping responses under 100ms",
       "Enforced multi-tenant isolation with Postgres row-level security",
-      "Fixed a MercadoPago webhook race condition with idempotency keys and retry logic",
+      "Built AI search that turns natural-language queries into validated filters (GPT-4o mini, function calling, Zod)",
+      "Built a WhatsApp booking chatbot (LLM-agnostic: GPT-4o mini / Claude Haiku, tool calling, Zod) mapping free text to allow-listed actions.",
     ],
     url: "https://fulbbo.com",
-    stack: ["TypeScript", "Next.js", "tRPC", "Drizzle", "Supabase", "PostgreSQL", "Vitest"],
+    stack: [
+      "TypeScript",
+      "Next.js",
+      "tRPC",
+      "Drizzle",
+      "Supabase",
+      "PostgreSQL",
+      "Redis",
+      "OpenAI",
+      "Vitest",
+    ],
   },
 ];
 ---
 
 <section class="w-full max-w-[68rem] mx-auto px-6 py-8">
-  <p class="text-xs font-semibold uppercase tracking-widest text-cerulean-400/60 mb-6" data-aos="fade-right">
+  <p
+    class="text-xs font-semibold uppercase tracking-widest text-cerulean-400/60 mb-6"
+    data-aos="fade-right"
+  >
     Experience
   </p>
   <div class="timeline-wrapper relative flex flex-col gap-0 ml-2">
     {/* Background track */}
-    <div class="absolute left-0 top-0 bottom-0 w-[2px] bg-cerulean-400/30"></div>
+    <div class="absolute left-0 top-0 bottom-0 w-[2px] bg-cerulean-400/30">
+    </div>
     {/* Scroll-filled track */}
-    <div class="timeline-fill absolute left-0 top-0 w-[2px] bg-cerulean-400 origin-top" style="transform: scaleY(0);"></div>
+    <div
+      class="timeline-fill absolute left-0 top-0 w-[2px] bg-cerulean-400 origin-top"
+      style="transform: scaleY(0);"
+    >
+    </div>
 
     {
       experience.map((entry) => (
@@ -80,7 +118,20 @@ const experience = [
           {entry.highlights?.length > 0 && (
             <ul class="list-disc pl-4 mt-1.5 space-y-1 text-xs text-gray-400 leading-relaxed max-w-xl marker:text-cerulean-400/60">
               {entry.highlights.map((highlight) => (
-                <li>{highlight}</li>
+                <li>
+                  {typeof highlight === "string" ? (
+                    highlight
+                  ) : (
+                    <a
+                      href={highlight.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:text-cerulean-400 underline decoration-cerulean-400/40 underline-offset-2 transition-colors"
+                    >
+                      {highlight.text} ↗
+                    </a>
+                  )}
+                </li>
               ))}
             </ul>
           )}
@@ -113,34 +164,65 @@ const experience = [
 
 <script>
   function initTimelineFill() {
-    document.querySelectorAll('.timeline-wrapper').forEach((wrapper) => {
-      const fill = wrapper.querySelector('.timeline-fill') as HTMLElement;
+    document.querySelectorAll(".timeline-wrapper").forEach((wrapper) => {
+      const fill = wrapper.querySelector(".timeline-fill") as HTMLElement;
       if (!fill) return;
 
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const timelineEntries = Array.from(wrapper.querySelectorAll('.timeline-entry')) as HTMLElement[];
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      const timelineEntries = Array.from(
+        wrapper.querySelectorAll(".timeline-entry"),
+      ) as HTMLElement[];
       const revealed = new Set<HTMLElement>();
 
       if (!reducedMotion) {
-        timelineEntries.forEach(entry => {
-          entry.style.opacity = '0';
-          entry.style.transform = 'translateY(12px)';
-          entry.style.transition = 'opacity 400ms ease-out, transform 400ms ease-out';
+        timelineEntries.forEach((entry) => {
+          entry.style.opacity = "0";
+          entry.style.transform = "translateY(12px)";
+          entry.style.transition =
+            "opacity 400ms ease-out, transform 400ms ease-out";
         });
       }
 
-      const observer = new IntersectionObserver(() => {
-        requestAnimationFrame(() => updateFill(wrapper as HTMLElement, fill, timelineEntries, revealed, reducedMotion));
-      }, { threshold: 0 });
+      const observer = new IntersectionObserver(
+        () => {
+          requestAnimationFrame(() =>
+            updateFill(
+              wrapper as HTMLElement,
+              fill,
+              timelineEntries,
+              revealed,
+              reducedMotion,
+            ),
+          );
+        },
+        { threshold: 0 },
+      );
 
       observer.observe(wrapper);
 
-      const onScroll = () => requestAnimationFrame(() => updateFill(wrapper as HTMLElement, fill, timelineEntries, revealed, reducedMotion));
-      window.addEventListener('scroll', onScroll, { passive: true });
+      const onScroll = () =>
+        requestAnimationFrame(() =>
+          updateFill(
+            wrapper as HTMLElement,
+            fill,
+            timelineEntries,
+            revealed,
+            reducedMotion,
+          ),
+        );
+      window.addEventListener("scroll", onScroll, { passive: true });
     });
   }
 
-  function updateFill(wrapper: HTMLElement, fill: HTMLElement, timelineEntries: HTMLElement[], revealed: Set<HTMLElement>, reducedMotion: boolean) {
+  function updateFill(
+    wrapper: HTMLElement,
+    fill: HTMLElement,
+    timelineEntries: HTMLElement[],
+    revealed: Set<HTMLElement>,
+    reducedMotion: boolean,
+  ) {
     const rect = wrapper.getBoundingClientRect();
     const viewportH = window.innerHeight;
 
@@ -149,7 +231,7 @@ const experience = [
     const totalHeight = rect.height;
 
     if (scrolled <= 0) {
-      fill.style.transform = 'scaleY(0)';
+      fill.style.transform = "scaleY(0)";
       return;
     }
 
@@ -157,17 +239,17 @@ const experience = [
     fill.style.transform = `scaleY(${progress})`;
 
     const wrapperHeight = wrapper.getBoundingClientRect().height;
-    timelineEntries.forEach(entry => {
+    timelineEntries.forEach((entry) => {
       if (revealed.has(entry)) return;
-      const threshold = (entry.offsetTop / wrapperHeight) - 0.05;
+      const threshold = entry.offsetTop / wrapperHeight - 0.05;
       if (progress >= threshold) {
         revealed.add(entry);
-        entry.style.opacity = '1';
-        entry.style.transform = 'none';
+        entry.style.opacity = "1";
+        entry.style.transform = "none";
       }
     });
   }
 
-  document.addEventListener('astro:page-load', initTimelineFill);
+  document.addEventListener("astro:page-load", initTimelineFill);
   initTimelineFill();
 </script>

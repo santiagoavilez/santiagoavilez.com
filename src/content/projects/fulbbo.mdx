@@ -8,15 +8,14 @@ img_h: 360
 img_alt: Fulbbo — Soccer Social Platform
 featured: true
 live: https://fulbbo.com
-role: Co-Founder & Lead Engineer
+role: Lead Engineer
 description: |
-  Social platform connecting soccer players with nearby fields — featuring
-  real-time chat, booking, payments, and friend coordination.
+  Social platform connecting soccer players with nearby fields: booking, payments, match coordination and AI-powered search. Live in production.
 highlights:
-  - Designed a geographic cache system over Google Places API (PostgreSQL + 5km grid), reducing API costs by ~90% in high-traffic zones.
-  - Built a real-time chat system enabling live coordination between players, handling concurrent interactions and real-time updates.
-  - Architected a scalable monorepo with end-to-end type safety across frontend and backend, with automated CI/CD pipelines.
-  - Designed the full booking and payment flow covering field availability, reservations, and in-app payments.
+  - Designed a geographic cache over Google Places API (PostgreSQL + 5 km grid), reducing API costs by ~90% in high-traffic zones.
+  - Built an AI search layer (GPT-4o mini, function calling, Zod) that turns ambiguous queries into validated filters, cached in Redis.
+  - Built a WhatsApp booking chatbot with LLM tool calling that maps free text to allow-listed actions.
+  - Fixed a MercadoPago webhook race condition that double-processed payments, using idempotency keys and retry logic.
 tags:
   - Full Stack
   - SaaS
@@ -25,10 +24,11 @@ tags:
 tools:
   - name: TypeScript
   - name: Next.js
-  - name: React
-  - name: Node.js
+  - name: tRPC
+  - name: Drizzle
   - name: PostgreSQL
-  - name: Vercel
+  - name: Redis
+  - name: OpenAI
   - name: Vitest
 ---
 

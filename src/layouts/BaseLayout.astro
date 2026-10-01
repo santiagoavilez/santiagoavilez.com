@@ -92,6 +92,52 @@ const { title, description } = Astro.props;
     <SpeedInsights/>
     <Analytics />
     <script>
+      import { initClarity, trackEvent } from "../lib/analytics";
+      import { classifyLink, slug } from "../lib/linkEvents";
+
+      initClarity();
+
+      // Delegated click tracking: covers every CTA/link without touching each component.
+      document.addEventListener("click", (event) => {
+        try {
+          if (!(event.target instanceof Element)) return;
+          const link = event.target.closest("a");
+          if (!link) return;
+
+          if (link.dataset.track) {
+            trackEvent(`${link.dataset.track}_${slug(link.dataset.trackProject ?? "unknown")}`);
+            return;
+          }
+
+          const source = link.closest("nav")
+            ? "nav"
+            : link.closest("footer")
+              ? "footer"
+              : link.closest("[id]")?.id || "page";
+          classifyLink(link.getAttribute("href") ?? "", location.origin, source).forEach(trackEvent);
+        } catch {
+          // Analytics must never break navigation.
+        }
+      });
+
+      // Fire once per section the first time 10% of it is visible. The ratio is relative to the
+      // section's own height, so a higher threshold would never fire for sections taller than the viewport.
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            sectionObserver.unobserve(entry.target);
+            const section = (entry.target as HTMLElement).dataset.trackSection;
+            if (section) trackEvent(`section_viewed_${slug(section)}`);
+          }
+        },
+        { threshold: 0.1 }
+      );
+      document
+        .querySelectorAll("[data-track-section]")
+        .forEach((el) => sectionObserver.observe(el));
+    </script>
+    <script>
       // Add “loaded” class once the document has completely loaded.
       addEventListener("load", () => {
         document.documentElement.classList.add("loaded");

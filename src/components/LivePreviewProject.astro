@@ -1,13 +1,16 @@
 ---
 interface Props {
     href?: string;
+    project?: string;
 }
 
-const href = Astro.props.href;
+const { href, project } = Astro.props;
 ---
 
 <a
     href={href}
+    data-track="project_live_click"
+    data-track-project={project}
     target="_blank"
     rel="noopener noreferrer"
     class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-cerulean-400 to-indigo-600 group-hover:from-cerulean-400 group-hover:to-indigo-600 hover:text-gray-950 text-white focus:ring-4 focus:outline-none focus:ring-cerulean-600 cursor-pointer"

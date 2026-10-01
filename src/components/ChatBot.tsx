@@ -8,6 +8,8 @@ import {
   SheetHeader,
   SheetTitle,
 } from "./ui/sheet";
+import { trackEvent } from "../lib/analytics";
+import { suggestionEventName } from "../lib/linkEvents";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -81,6 +83,7 @@ export default function ChatBot() {
   useEffect(() => {
     if (isOpen && !hasOpenedOnce) {
       setHasOpenedOnce(true);
+      trackEvent("chat_open");
     }
   }, [hasOpenedOnce, isOpen]);
 
@@ -96,6 +99,14 @@ export default function ChatBot() {
 
     const nextUserMessage: ChatMessage = { role: "user", content };
     const nextMessages = [...messages, nextUserMessage];
+
+    if (messages.length === 0) {
+      trackEvent(`chat_first_message_${rawMessage ? "suggestion" : "typed"}`);
+    }
+    trackEvent("chat_message_sent");
+    if (rawMessage) {
+      trackEvent(suggestionEventName(content, SUGGESTED_QUESTIONS));
+    }
 
     setMessages(nextMessages);
     setInput("");
@@ -115,6 +126,7 @@ export default function ChatBot() {
         typeof data?.error === "string" ? data.error : FALLBACK_ERROR;
 
       if (!response.ok || !reply) {
+        trackEvent("chat_error");
         setMessages((prev) => [
           ...prev,
           { role: "assistant", content: errorMessage },

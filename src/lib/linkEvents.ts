@@ -39,13 +39,7 @@ export function slug(text: string): string {
  */
 export function classifyLink(href: string, origin: string, source: string): string[] {
   if (!href) return [];
-
-  if (href.toLowerCase().endsWith(".pdf")) {
-    return ["cv_download", `cv_download_${slug(source)}`];
-  }
-  if (href.startsWith("mailto:")) {
-    return ["email_click"];
-  }
+  if (href.startsWith("mailto:")) return ["email_click"];
 
   let url: URL;
   try {
@@ -56,6 +50,9 @@ export function classifyLink(href: string, origin: string, source: string): stri
   if (url.protocol !== "http:" && url.protocol !== "https:") return [];
 
   if (url.origin === origin) {
+    if (url.pathname.toLowerCase().endsWith(".pdf")) {
+      return ["cv_download", `cv_download_${slug(source)}`];
+    }
     return /^\/(projects|blog)\//.test(url.pathname) ? ["project_or_post_open"] : [];
   }
 
@@ -64,4 +61,14 @@ export function classifyLink(href: string, origin: string, source: string): stri
   if (network) return [`social_click_${network}`];
 
   return ["external_link_click", `external_link_click_${slug(host)}`];
+}
+
+/**
+ * Suggestions from a closed list get their own event; model-generated ones share a single name
+ * so the number of distinct Clarity event names stays bounded.
+ */
+export function suggestionEventName(text: string, knownSuggestions: readonly string[]): string {
+  return knownSuggestions.includes(text)
+    ? `chat_suggestion_click_${slug(text)}`
+    : "chat_suggestion_click_dynamic";
 }

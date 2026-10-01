@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { classifyLink, slug } from "../src/lib/linkEvents.ts";
+import { classifyLink, slug, suggestionEventName } from "../src/lib/linkEvents.ts";
 
 const ORIGIN = "https://santiagoavilez.com";
 
@@ -29,6 +29,25 @@ test("pdf links are CV downloads with an aggregate and a per-source event", () =
     "cv_download",
     "cv_download_nav",
   ]);
+});
+
+test("pdf links with a query or hash are still CV downloads", () => {
+  assert.deepEqual(classifyLink("/cv.pdf?v=2", ORIGIN, "hero"), ["cv_download", "cv_download_hero"]);
+  assert.deepEqual(classifyLink("/cv.pdf#page=1", ORIGIN, "hero"), ["cv_download", "cv_download_hero"]);
+  assert.deepEqual(classifyLink(`${ORIGIN}/cv.PDF`, ORIGIN, "about"), ["cv_download", "cv_download_about"]);
+});
+
+test("external pdfs are not CV downloads", () => {
+  assert.deepEqual(classifyLink("https://example.com/paper.pdf", ORIGIN, "page"), [
+    "external_link_click",
+    "external_link_click_example_com",
+  ]);
+});
+
+test("known suggestions get their own event, dynamic ones share a bounded name", () => {
+  const known = ["Tell me about Fulbbo", "What's his work experience?"];
+  assert.equal(suggestionEventName("Tell me about Fulbbo", known), "chat_suggestion_click_tell_me_about_fulbbo");
+  assert.equal(suggestionEventName("Something the model invented", known), "chat_suggestion_click_dynamic");
 });
 
 test("mailto links are email clicks", () => {

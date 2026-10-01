@@ -120,7 +120,8 @@ const { title, description } = Astro.props;
         }
       });
 
-      // Fire once per section the first time at least 40% of it is visible.
+      // Fire once per section the first time 10% of it is visible. The ratio is relative to the
+      // section's own height, so a higher threshold would never fire for sections taller than the viewport.
       const sectionObserver = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
@@ -130,7 +131,7 @@ const { title, description } = Astro.props;
             if (section) trackEvent(`section_viewed_${slug(section)}`);
           }
         },
-        { threshold: 0.4 }
+        { threshold: 0.1 }
       );
       document
         .querySelectorAll("[data-track-section]")

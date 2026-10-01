@@ -64,8 +64,8 @@ if (!images[data.img])
     {
       (data?.live || data?.git) && (
         <div class="flex flex-row flex-wrap justify-start gap-2 pt-5">
-          {data?.live && <LivePreviewProject href={data?.live} />}
-          {data?.git && <GithubProject href={data?.git} />}
+          {data?.live && <LivePreviewProject href={data?.live} project={data.title} />}
+          {data?.git && <GithubProject href={data?.git} project={data.title} />}
         </div>
       )
     }

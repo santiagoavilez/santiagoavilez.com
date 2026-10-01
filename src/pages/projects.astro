@@ -129,6 +129,8 @@ const otherWorkWithImages = await Promise.all(
                   {project.data.live && (
                     <a
                       href={project.data.live}
+                      data-track="project_live_click"
+                      data-track-project={project.data.title}
                       target="_blank"
                       rel="noopener noreferrer"
                       class="text-sm font-semibold text-cerulean-400 hover:underline"
@@ -139,6 +141,8 @@ const otherWorkWithImages = await Promise.all(
                   {project.data.git ? (
                     <a
                       href={project.data.git}
+                      data-track="project_github_click"
+                      data-track-project={project.data.title}
                       target="_blank"
                       rel="noopener noreferrer"
                       class="text-sm text-gray-500 hover:text-gray-300 transition-colors"
@@ -197,6 +201,8 @@ const otherWorkWithImages = await Promise.all(
                     {project.data.live && (
                       <a
                         href={project.data.live}
+                        data-track="project_live_click"
+                        data-track-project={project.data.title}
                         target="_blank"
                         rel="noopener noreferrer"
                         class="text-xs font-medium text-cerulean-400 hover:underline"
@@ -207,6 +213,8 @@ const otherWorkWithImages = await Promise.all(
                     {project.data.git && (
                       <a
                         href={project.data.git}
+                        data-track="project_github_click"
+                        data-track-project={project.data.title}
                         target="_blank"
                         rel="noopener noreferrer"
                         class="text-xs text-gray-500 hover:text-gray-300 transition-colors"

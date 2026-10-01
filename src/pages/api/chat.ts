@@ -83,11 +83,11 @@ Do NOT include this in the visible response text. This line must be the LAST lin
 `;
 
 const MODELS = [
-  "openai/gpt-oss-120b:free",
-  "google/gemma-3-27b-it:free",
-  "deepseek/deepseek-chat-v3.1:free",
-  "qwen/qwen3-235b-a22b:free",
-  "mistralai/mistral-small-3.1-24b-instruct:free",
+  "google/gemma-4-31b-it:free",
+  "qwen/qwen3.8-27b:free",
+  "nvidia/nemotron-3-super-120b-a12b:free",
+  "google/gemma-4-26b-a4b-it:free",
+  "thinkingmachines/inkling:free",
 ];
 
 interface ChatMessage {
@@ -167,11 +167,11 @@ async function callWithFallback(
         },
       );
 
-      if (response.status === 429 || response.status >= 500) {
-        continue;
-      }
-
       if (!response.ok) {
+        const errorBody = await response.text().catch(() => "");
+        console.error(
+          `[chat] model ${model} failed: ${response.status} ${errorBody.slice(0, 500)}`,
+        );
         continue;
       }
 
@@ -198,9 +198,11 @@ async function callWithFallback(
       }
 
       // Empty or malformed response, try next model
+      console.error(`[chat] model ${model} returned empty or malformed reply`);
       continue;
-    } catch {
+    } catch (error) {
       // Network error, try next model
+      console.error(`[chat] model ${model} request threw:`, error);
       continue;
     }
   }

@@ -6,8 +6,12 @@ let initialized = false;
 
 export function initClarity(): void {
   if (initialized || !PROJECT_ID || import.meta.env.DEV) return;
-  Clarity.init(PROJECT_ID);
-  initialized = true;
+  try {
+    Clarity.init(PROJECT_ID);
+    initialized = true;
+  } catch {
+    // Analytics must never break the page; trackEvent stays a no-op if init fails.
+  }
 }
 
 /**

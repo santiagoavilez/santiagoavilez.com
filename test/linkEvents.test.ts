@@ -6,8 +6,22 @@ const ORIGIN = "https://santiagoavilez.com";
 
 test("slug normalizes text into a safe event suffix", () => {
   assert.equal(slug("Fulbbo Platform!"), "fulbbo_platform");
-  assert.equal(slug("  ¿Qué hizo con IA?  "), "qu_hizo_con_ia");
+  assert.equal(slug("  ¿Qué hizo con IA?  "), "que_hizo_con_ia");
   assert.equal(slug("a".repeat(100)).length, 40);
+});
+
+test("slug never returns an empty suffix", () => {
+  assert.equal(slug(""), "other");
+  assert.equal(slug("你好"), "other");
+  assert.equal(slug("¿?"), "other");
+});
+
+test("long texts that share a prefix do not collide", () => {
+  const prefix = "what is santiago's experience with ".padEnd(60, "x");
+  const a = slug(`${prefix} react`);
+  const b = slug(`${prefix} astro`);
+  assert.notEqual(a, b);
+  assert.ok(a.length <= 40 && b.length <= 40);
 });
 
 test("pdf links are CV downloads with an aggregate and a per-source event", () => {

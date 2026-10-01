@@ -16,5 +16,9 @@ export function initClarity(): void {
  */
 export function trackEvent(name: string): void {
   if (!initialized) return;
-  Clarity.event(name);
+  try {
+    Clarity.event(name);
+  } catch {
+    // Analytics must never break the page (blocked script, SDK failure).
+  }
 }

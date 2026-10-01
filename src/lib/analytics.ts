@@ -10,13 +10,11 @@ export function initClarity(): void {
   initialized = true;
 }
 
-/** Fires a Clarity custom event; optional tags make it filterable in the dashboard. */
-export function trackEvent(name: string, tags?: Record<string, string>): void {
+/**
+ * Fires a Clarity custom event. Put any varying dimension in the event name:
+ * Clarity tags are session-level, so per-event values would overwrite each other.
+ */
+export function trackEvent(name: string): void {
   if (!initialized) return;
   Clarity.event(name);
-  if (tags) {
-    for (const [key, value] of Object.entries(tags)) {
-      Clarity.setTag(key, value);
-    }
-  }
 }

@@ -12,7 +12,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "node --experimental-strip-types --test test/chatScope.test.ts"
+    "test": "node --experimental-strip-types --test test/chatScope.test.ts test/linkEvents.test.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",

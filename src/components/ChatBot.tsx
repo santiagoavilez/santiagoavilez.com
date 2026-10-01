@@ -9,6 +9,7 @@ import {
   SheetTitle,
 } from "./ui/sheet";
 import { trackEvent } from "../lib/analytics";
+import { slug } from "../lib/linkEvents";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -100,11 +101,11 @@ export default function ChatBot() {
     const nextMessages = [...messages, nextUserMessage];
 
     if (messages.length === 0) {
-      trackEvent("chat_first_message", { chat_input: rawMessage ? "suggestion" : "typed" });
+      trackEvent(`chat_first_message_${rawMessage ? "suggestion" : "typed"}`);
     }
     trackEvent("chat_message_sent");
     if (rawMessage) {
-      trackEvent("chat_suggestion_click", { chat_suggestion: content.slice(0, 80) });
+      trackEvent(`chat_suggestion_click_${slug(content)}`);
     }
 
     setMessages(nextMessages);

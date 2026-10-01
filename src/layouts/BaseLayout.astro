@@ -93,35 +93,30 @@ const { title, description } = Astro.props;
     <Analytics />
     <script>
       import { initClarity, trackEvent } from "../lib/analytics";
+      import { classifyLink, slug } from "../lib/linkEvents";
 
       initClarity();
 
       // Delegated click tracking: covers every CTA/link without touching each component.
       document.addEventListener("click", (event) => {
-        const link = (event.target as Element | null)?.closest("a");
-        if (!link) return;
+        try {
+          if (!(event.target instanceof Element)) return;
+          const link = event.target.closest("a");
+          if (!link) return;
 
-        const customEvent = link.dataset.track;
-        if (customEvent) {
-          trackEvent(customEvent, { project: link.dataset.trackProject ?? "unknown" });
-          return;
-        }
+          if (link.dataset.track) {
+            trackEvent(`${link.dataset.track}_${slug(link.dataset.trackProject ?? "unknown")}`);
+            return;
+          }
 
-        const href = link.getAttribute("href") ?? "";
-        const source =
-          link.closest("nav") ? "nav" : link.closest("footer") ? "footer" : link.closest("[id]")?.id || "page";
-
-        if (href.toLowerCase().endsWith(".pdf")) {
-          trackEvent("cv_download", { cv_source: source });
-        } else if (href.startsWith("mailto:")) {
-          trackEvent("email_click", { email_source: source });
-        } else if (/linkedin\.com|github\.com|instagram\.com|tiktok\.com/.test(href)) {
-          const network = href.match(/(linkedin|github|instagram|tiktok)/)?.[1] ?? "other";
-          trackEvent(`social_click_${network}`);
-        } else if (/^\/(projects|blog)\//.test(href)) {
-          trackEvent("project_or_post_open", { target: href });
-        } else if (/^https?:\/\//.test(href) && !href.includes("santiagoavilez.com")) {
-          trackEvent("external_link_click", { target: new URL(href).hostname });
+          const source = link.closest("nav")
+            ? "nav"
+            : link.closest("footer")
+              ? "footer"
+              : link.closest("[id]")?.id || "page";
+          classifyLink(link.getAttribute("href") ?? "", location.origin, source).forEach(trackEvent);
+        } catch {
+          // Analytics must never break navigation.
         }
       });
 

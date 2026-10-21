@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { evaluateScope } from "@lib/chatScope";
+import { getFreeModels } from "@lib/freeModels";
 
 export const prerender = false;
 
@@ -81,15 +82,6 @@ IMPORTANT: At the very end of every response, include exactly 2-3 follow-up ques
 SUGGESTIONS:["What technologies did he use?","Tell me more about his role","How long did he work there?"]
 Do NOT include this in the visible response text. This line must be the LAST line of your response.
 `;
-
-const MODELS = [
-  "google/gemma-4-31b-it:free",
-  "qwen/qwen3.8-27b:free",
-  "nvidia/nemotron-3-super-120b-a12b:free",
-  "google/gemma-4-26b-a4b-it:free",
-  "thinkingmachines/inkling:free",
-];
-
 interface ChatMessage {
   role: string;
   content: string;
@@ -153,7 +145,7 @@ async function callWithFallback(
     ...userMessages,
   ];
 
-  for (const model of MODELS) {
+  for (const model of await getFreeModels()) {
     try {
       const response = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
